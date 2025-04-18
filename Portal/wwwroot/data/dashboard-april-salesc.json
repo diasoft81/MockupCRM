@@ -1,0 +1,136 @@
+{
+	"filters": {
+		"month": "April",
+		"sales": "Sales C",
+		"region": "North",
+		"channel": "Hybrid",
+		"product": "EV Charger C",
+		"stacked": true
+	},
+	"summary": {
+		"lead": 160,
+		"target": 180,
+		"qualified": 120,
+		"dealClosed": 70,
+		"activityToday": 20
+	},
+	"leadStages": {
+		"Lead": 60,
+		"Qualified": 40,
+		"Survey": 30,
+		"Negotiation": 25,
+		"Win": 18,
+		"Lost": 12
+	},
+	"leadTrend8Weeks": [
+		{
+			"week": "W1",
+			"Lead": 8,
+			"Qualified": 5,
+			"Survey": 4,
+			"Negotiation": 3,
+			"Win": 2,
+			"Lost": 2
+		},
+		{
+			"week": "W2",
+			"Lead": 9,
+			"Qualified": 6,
+			"Survey": 5,
+			"Negotiation": 4,
+			"Win": 3,
+			"Lost": 3
+		},
+		{
+			"week": "W3",
+			"Lead": 10,
+			"Qualified": 7,
+			"Survey": 6,
+			"Negotiation": 5,
+			"Win": 4,
+			"Lost": 4
+		},
+		{
+			"week": "W4",
+			"Lead": 11,
+			"Qualified": 8,
+			"Survey": 7,
+			"Negotiation": 6,
+			"Win": 5,
+			"Lost": 5
+		},
+		{
+			"week": "W5",
+			"Lead": 12,
+			"Qualified": 9,
+			"Survey": 8,
+			"Negotiation": 7,
+			"Win": 6,
+			"Lost": 6
+		},
+		{
+			"week": "W6",
+			"Lead": 13,
+			"Qualified": 10,
+			"Survey": 9,
+			"Negotiation": 8,
+			"Win": 7,
+			"Lost": 7
+		},
+		{
+			"week": "W7",
+			"Lead": 14,
+			"Qualified": 11,
+			"Survey": 10,
+			"Negotiation": 9,
+			"Win": 8,
+			"Lost": 8
+		},
+		{
+			"week": "W8",
+			"Lead": 15,
+			"Qualified": 12,
+			"Survey": 11,
+			"Negotiation": 10,
+			"Win": 9,
+			"Lost": 9
+		}
+	],
+	"activityWeeklyBySales": [
+		{
+			"sales": "Sales C",
+			"region": "North",
+			"product": "EV Charger C",
+			"weeks": {
+				"W1": 15,
+				"W2": 18,
+				"W3": 20,
+				"W4": 22
+			}
+		}
+	],
+	"activityThisWeekPie": {
+		"Sales A": 35,
+		"Sales B": 25,
+		"Sales C": 30,
+		"Sales D": 10
+	},
+	"activityPlan": {
+		"total": 150,
+		"meeting": 70,
+		"call": 50,
+		"email": 20,
+		"proposal": 10
+	},
+	"taskDetails": [
+		{
+			"title": "Proposal Discussion with ABC Corp",
+			"dueDate": "2025-04-05",
+			"status": "Completed",
+			"assignedTo": "Sales C",
+			"channel": "Hybrid",
+			"region": "North",
+			"product": "EV Charger C"
+		}
+	]
+}

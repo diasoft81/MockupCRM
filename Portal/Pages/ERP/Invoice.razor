@@ -1,0 +1,57 @@
+﻿@page "/invoice"
+@layout WebLayout
+
+<PageTitle>Invoice</PageTitle>
+
+@* <h3 class="mb-4 text-primary">Faktur Penjualan</h3> *@
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="invoiceNumber">Nomor Faktur</label>
+                <input type="text" class="form-control" id="invoiceNumber" placeholder="Nomor faktur" required>
+            </div>
+
+            <div class="form-group">
+                <label for="customerName">Nama Pelanggan</label>
+                <input type="text" class="form-control" id="customerName" placeholder="Nama pelanggan" required>
+            </div>
+
+            <div class="form-group">
+                <label for="invoiceDate">Tanggal Faktur</label>
+                <input type="date" class="form-control" id="invoiceDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="productName">Nama Produk</label>
+                <input type="text" class="form-control" id="productName" placeholder="Nama produk" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Jumlah</label>
+                <input type="number" class="form-control" id="quantity" placeholder="Jumlah" required>
+            </div>
+
+            <div class="form-group">
+                <label for="unitPrice">Harga Satuan</label>
+                <input type="number" class="form-control" id="unitPrice" placeholder="Harga satuan" required>
+            </div>
+
+            <div class="form-group">
+                <label for="totalPrice">Total Harga</label>
+                <input type="number" class="form-control" id="totalPrice" placeholder="Total harga" required disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="paymentStatus">Status Pembayaran</label>
+                <select class="form-control" id="paymentStatus" required>
+                    <option value="unpaid">Belum Dibayar</option>
+                    <option value="paid">Dibayar</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Buat Faktur</button>
+        </form>
+    </div>
+</div>

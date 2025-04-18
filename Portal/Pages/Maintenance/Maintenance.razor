@@ -1,0 +1,52 @@
+﻿@page "/maintenance"
+@layout WebLayout
+
+<PageTitle>Pemeliharaan & Troubleshooting</PageTitle>
+
+@* <h3 class="mb-4 text-primary">Pemeliharaan & Troubleshooting Unit EV Charging</h3> *@
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="serviceOrderNumber">Nomor Order Layanan</label>
+                <input type="text" class="form-control" id="serviceOrderNumber" placeholder="Nomor order layanan" required>
+            </div>
+
+            <div class="form-group">
+                <label for="customerName">Nama Pelanggan</label>
+                <input type="text" class="form-control" id="customerName" placeholder="Nama pelanggan" required>
+            </div>
+
+            <div class="form-group">
+                <label for="serviceDate">Tanggal Pemeliharaan</label>
+                <input type="date" class="form-control" id="serviceDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="problemDescription">Deskripsi Masalah</label>
+                <textarea class="form-control" id="problemDescription" rows="3" placeholder="Deskripsi masalah yang ditemukan"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="serviceType">Jenis Layanan</label>
+                <select class="form-control" id="serviceType" required>
+                    <option value="maintenance">Pemeliharaan</option>
+                    <option value="troubleshooting">Troubleshooting</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="sparePartsUsed">Sparepart yang Digunakan</label>
+                <input type="text" class="form-control" id="sparePartsUsed" placeholder="Sparepart yang digunakan dalam perbaikan">
+            </div>
+
+            <div class="form-group">
+                <label for="nextServiceDate">Tanggal Pemeliharaan Berikutnya</label>
+                <input type="date" class="form-control" id="nextServiceDate">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Selesaikan Pemeliharaan</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@page "/workorder"
+@layout WebLayout
+
+<PageTitle>Work Order</PageTitle>
+
+@* <h3 class="mb-4 text-primary">Pekerjaan Pemeliharaan & Instalasi</h3> *@
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="customerName">Nama Pelanggan</label>
+                <input type="text" class="form-control" id="customerName" placeholder="Nama pelanggan">
+            </div>
+
+            <div class="form-group">
+                <label for="workOrderDate">Tanggal Pemesanan</label>
+                <input type="date" class="form-control" id="workOrderDate">
+            </div>
+
+            <div class="form-group">
+                <label for="workType">Jenis Pekerjaan</label>
+                <select class="form-control" id="workType">
+                    <option>Instalasi</option>
+                    <option>Pemeliharaan</option>
+                    <option>Perbaikan</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="workDescription">Deskripsi Pekerjaan</label>
+                <textarea class="form-control" id="workDescription" rows="3" placeholder="Deskripsi pekerjaan"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="assignedTechnician">Teknisi yang Ditugaskan</label>
+                <input type="text" class="form-control" id="assignedTechnician" placeholder="Nama teknisi">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Buat Work Order</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,172 @@
+﻿@page "/kanban"
+@using CoreNET.Blazor.Shared.Helper
+@using Portal.Model
+@using Portal.Pages.CRM
+@layout WebLayout
+@inject IJSRuntime JS
+@inject IDialogService DialogService
+
+<PageTitle>Kanban</PageTitle>
+
+<div class="mb-4">
+    <h2>Sales Kanban Board</h2>
+    <p>Gunakan tampilan Kanban ini untuk memonitor dan memindahkan leads antar tahapan proses penjualan. Klik "Add Lead" untuk menambahkan lead baru.</p>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="AddLead">Add Lead</MudButton>
+</div>
+
+<div class="row g-3">
+    @foreach (var stage in Stages)
+    {
+        <div class="col-12 col-md-2">
+            <div class="card shadow-sm h-100">
+                <div class="card-header">
+                    <h5 class="mb-0">@stage</h5>
+                </div>
+                <div class="card-body kanban-column" id="@stage.ToLower().Replace(" ", "-")">
+                    @foreach (var lead in Leads.Where(l => l.Stage == stage))
+                    {
+                        <div class="kanban-item card p-2 mb-2">
+                            <p><strong>@lead.Title</strong></p>
+                            <p>@lead.Company</p>
+                            <MudMenu Label="Move" Color="Color.Info" Variant="Variant.Filled" Dense="true" Class="w-100">
+                                @foreach (var targetStage in Stages.Where(s => s != lead.Stage))
+                                {
+                                    <MudMenuItem OnClick="() => OnMoveLeadClicked(lead, targetStage)">@targetStage</MudMenuItem>
+                                }
+                            </MudMenu>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    string[] Stages = new[] { "Lead", "Qualified", "Survey", "Negotiation", "Won", "Lost" };
+
+    List<LeadItem> Leads = new()
+    {
+        new LeadItem("Lead 1", "Perusahaan A", "Lead"),
+        new LeadItem("Lead 2", "Perusahaan B", "Lead"),
+        new LeadItem("Lead 3", "Perusahaan C", "Qualified"),
+        new LeadItem("Lead 4", "Perusahaan D", "Negotiation"),
+        new LeadItem("Lead 5", "Perusahaan E", "Lost"),
+        new LeadItem("Lead 6", "Perusahaan F", "Survey"),
+        new LeadItem("Lead 7", "Perusahaan G", "Won")
+    };
+
+
+    DotNetObjectReference<Kanban>? objRef;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            objRef = DotNetObjectReference.Create(this);
+            await JS.InvokeVoidAsync("kanbanInterop.initSortable", objRef);
+        }
+    }
+    public void Dispose()
+    {
+        objRef?.Dispose();
+    }
+
+    [JSInvokable]
+    public async Task OnLeadMoved(string title, string newStage)
+    {
+        var lead = Leads.FirstOrDefault(l => l.Title == title);
+        if (lead != null && lead.Stage != newStage)
+        {
+            await OnMoveLeadClicked(lead, newStage);
+            StateHasChanged();
+        }
+    }
+
+    async Task AddLead()
+    {
+        var options = new DialogOptions()
+            {
+                MaxWidth = MaxWidth.False, // atau MaxWidth.Large
+                FullWidth = true,
+                CloseButton = true,
+                BackdropClick = false,
+                FullScreen = true,
+                BackgroundClass = "full-width-dialog"
+            };
+        var parameters = new DialogParameters();
+        var dialog = await DialogService.ShowAsync<ComLeadEntry>("Qualification", parameters, options);
+        var result = await dialog.Result;
+
+        if (result?.Canceled == false)
+        {
+            var newLead = new LeadItem($"Lead {Leads.Count + 1}", "Perusahaan Baru", "Lead");
+            Leads.Add(newLead);
+        }
+    }
+
+    async Task OnMoveLeadClicked(LeadItem lead, string newStage)
+    {
+        if (lead.Stage == "Lead" && newStage == "Qualified")
+        {
+            var options = new DialogOptions()
+                {
+                    MaxWidth = MaxWidth.False, // atau MaxWidth.Large
+                    FullWidth = true,
+                    CloseButton = true,
+                    BackdropClick = false,
+                    FullScreen = true,
+                    BackgroundClass = "full-width-dialog"
+                };
+            var parameters = new DialogParameters { ["Lead"] = lead };
+            var dialog = await DialogService.ShowAsync<ComQualification>("Qualification", parameters, options);
+            var result = await dialog.Result;
+
+            if (result?.Canceled == false)
+            {
+                await MoveLead(lead, newStage, true);
+            }
+        }
+        else if (lead.Stage == "Qualified" && newStage == "Survey")
+        {
+            var options = new DialogOptions()
+                {
+                    MaxWidth = MaxWidth.False, // atau MaxWidth.Large
+                    FullWidth = true,
+                    CloseButton = true,
+                    BackdropClick = false,
+                    FullScreen = true,
+                    BackgroundClass = "full-width-dialog"
+                };
+            var parameters = new DialogParameters { ["Lead"] = lead };
+            var dialog = await DialogService.ShowAsync<ComQualification>("Qualification", parameters, options);
+            var result = await dialog.Result;
+
+            if (result?.Canceled == false)
+            {
+                await MoveLead(lead, newStage, true);
+            }
+        }
+        else
+        {
+            await MoveLead(lead, newStage);
+        }
+    }
+
+    async Task MoveLead(LeadItem lead, string newStage, bool force = false)
+    {
+        if (force)
+        {
+            lead.Stage = newStage;
+        }
+        else
+        {
+            var dialog = await DialogHelper.ShowConfirmation(DialogService, "Confirmation", "Are you sure?");
+            if (dialog.Canceled != true)
+            {
+                lead.Stage = newStage;
+            }
+        }
+    }
+
+}

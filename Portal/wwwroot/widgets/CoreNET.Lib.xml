@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoreNET.Lib</name>
+    </assembly>
+    <members>
+        <member name="T:CoreNET.Lib.Others.IgnorePropertiesResolver">
+            <summary>
+            Short helper class to ignore some properties from serialization.
+            </summary>
+        </member>
+        <member name="T:CoreNET.Lib.Views.Header">
+            <summary>
+            Represents the metadata of a table column, including display settings, input behavior, and validation rules.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.TableName">
+            <summary>
+            Gets or sets the name of the property in the data source that this column represents.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.Name">
+            <summary>
+            Gets or sets the name of the property in the data source. 
+            This is used internally and may differ from the display title.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.Title">
+            <summary>
+            Gets or sets the title of the column that will be displayed in the table header.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.Width">
+            <summary>
+            Gets or sets the width of the column in pixels or percentage.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.WidthUnit">
+            <summary>
+            Gets or sets the unit of width measurement. Default is "%".
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.DataType">
+            <summary>
+            Gets or sets the data type for the column value (e.g., money, int, double).
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.DisplayFormat">
+            <summary>
+            Gets or sets the display format for the column value (e.g., currency, date format).
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.InputFormat">
+            <summary>
+            Gets or sets the input format for the column (e.g., input mask).
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.CssClass">
+            <summary>
+            Gets or sets the CSS class for styling the column.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.HeaderCssStyle">
+            <summary>
+            Gets or sets the css style of the header.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.RowCssStyle">
+            <summary>
+            Gets or sets the css style of the data row.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.IsRequired">
+            <summary>
+            Gets or sets a value indicating whether this column is required for input.
+            Default is false.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.MaxLength">
+            <summary>
+            Gets or sets the maximum length of input allowed for this column.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.MinLength">
+            <summary>
+            Gets or sets the minimum length of input required for this column.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.ValidationRegex">
+            <summary>
+            Gets or sets the regular expression used for validating the input.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.ErrorMessage">
+            <summary>
+            Gets or sets the error message to display if validation fails.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.InputType">
+            <summary>
+            Gets or sets the type of input (e.g., text, number, date).
+            Default is "text".
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.IsEditable">
+            <summary>
+            Gets or sets a value indicating whether the column is editable.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.DialogMode">
+            <summary>
+            Gets or sets the dialog mode for editing the column (e.g., modal, inline).
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.PrefixAdornment">
+            <summary>
+            Gets or sets a prefix adornment for the input, such as a currency symbol.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.SuffixAdornment">
+            <summary>
+            Gets or sets a suffix adornment for the input, such as a unit of measurement.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.Options">
+            <summary>
+            Gets or sets the list of options for dropdowns or radio buttons.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.IsMultiSelect">
+            <summary>
+            Gets or sets a value indicating whether multiple selections are allowed.
+            Default is false.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.OnValueChanged">
+            <summary>
+            Gets or sets a callback that is triggered when the value of the column changes.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.CustomValidation">
+            <summary>
+            Gets or sets a custom validation function that accepts an object as input
+            and returns a boolean indicating whether the value is valid.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.IsVisible">
+            <summary>
+            Gets or sets a value indicating whether the column is visible in the table.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.IsSortable">
+            <summary>
+            Gets or sets a value indicating whether the column is sortable.
+            Default is true.
+            </summary>
+        </member>
+        <member name="P:CoreNET.Lib.Views.Header.Tooltip">
+            <summary>
+            Gets or sets a tooltip text for the column header.
+            </summary>
+        </member>
+        <member name="M:CoreNET.Lib.Views.Header.ConvertToHeaders(System.Collections.Generic.List{System.String})">
+            <summary>
+            Converts a <c>List&lt;string&gt;</c> of default column names into a list of <see cref="T:CoreNET.Lib.Views.Header"/> objects with default values.
+            </summary>
+            <param name="columnNames">The list of column names to be converted.</param>
+            <returns>
+            A list of <see cref="T:CoreNET.Lib.Views.Header"/> objects, where each column name is transformed into a Header 
+            with a default width and title.
+            </returns>
+        </member>
+        <member name="M:CoreNET.Lib.Views.Header.InsertSpacesInPascalCase(System.String)">
+            <summary>
+            Helper function to convert a PascalCase string into a string with spaced words.
+            </summary>
+            <param name="input">The PascalCase string to be converted.</param>
+            <returns>A string with spaces inserted before each uppercase letter, except the first one.</returns>
+        </member>
+    </members>
+</doc>

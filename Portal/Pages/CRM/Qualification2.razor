@@ -1,0 +1,95 @@
+﻿@page "/qualification2"
+@layout WebLayout
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form>
+            <fieldset>
+                <legend>Lead Lookup</legend>
+                <label for="lead-search">Search Lead by Name or ID</label>
+                <input id="lead-search" type="text" placeholder="Type and click lookup">
+                <button class="button" onclick="alert('tes')">Lookup</button>
+            </fieldset>
+
+            <fieldset class="readonly" id="lead-info">
+                <legend>Lead Information</legend>
+                <label>Customer Name</label>
+                <input type="text" value="John Doe" readonly>
+                <label>Contact</label>
+                <input type="text" value="john@example.com" readonly>
+                <label>Industry</label>
+                <input type="text" value="Logistics" readonly>
+                <label>Product Need</label>
+                <input type="text" value="EV Charger 20KW" readonly>
+            </fieldset>
+
+            <fieldset>
+                <h3>BANT Qualification</h3>
+                <label>Budget Availability</label>
+                <select>
+                    <option>Yes</option>
+                    <option>No</option>
+                    <option>Unknown</option>
+                </select>
+                <label>Authority to Decide</label>
+                <select>
+                    <option>Yes</option>
+                    <option>No</option>
+                    <option>Unknown</option>
+                </select>
+                <label>Need Justification</label>
+                <textarea placeholder="Describe the business need"></textarea>
+                <label>Expected Timeline</label>
+                <input type="date">
+            </fieldset>
+
+            <fieldset>
+                <h3>Qualification Criteria</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Criteria</th>
+                            <th>Qualified</th>
+                            <th>Not Qualified</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Project Budget Identified</td>
+                            <td><input type="radio" name="budget-identified" value="yes"></td>
+                            <td><input type="radio" name="budget-identified" value="no"></td>
+                            <td><input type="text" placeholder="Notes..."></td>
+                        </tr>
+                        <tr>
+                            <td>Decision Maker Engaged</td>
+                            <td><input type="radio" name="decision-maker" value="yes"></td>
+                            <td><input type="radio" name="decision-maker" value="no"></td>
+                            <td><input type="text" placeholder="Notes..."></td>
+                        </tr>
+                        <tr>
+                            <td>Clear Product Need</td>
+                            <td><input type="radio" name="clear-need" value="yes"></td>
+                            <td><input type="radio" name="clear-need" value="no"></td>
+                            <td><input type="text" placeholder="Notes..."></td>
+                        </tr>
+                        <tr>
+                            <td>Timeline Matches Offering</td>
+                            <td><input type="radio" name="timeline-match" value="yes"></td>
+                            <td><input type="radio" name="timeline-match" value="no"></td>
+                            <td><input type="text" placeholder="Notes..."></td>
+                        </tr>
+                        <tr>
+                            <td>Customer Expressed Readiness</td>
+                            <td><input type="radio" name="readiness" value="yes"></td>
+                            <td><input type="radio" name="readiness" value="no"></td>
+                            <td><input type="text" placeholder="Notes..."></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+
+            <button class="button">Convert to Opportunity</button>
+        </form>
+    </div>
+</div>

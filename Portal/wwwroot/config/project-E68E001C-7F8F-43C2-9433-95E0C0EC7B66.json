@@ -1,0 +1,100 @@
+{
+	"ProjectName": "teb-crm",
+	"Subdomain": "",
+	"Title": "TEB CRM",
+	"Menus": [
+		{
+			"Name": "kanban",
+			"Title": "Kanban",
+			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
+			"Href": "/kanban"
+		},
+		{
+			"Name": "crm",
+			"Title": "CRM",
+			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/conference-call.png",
+			"Children": [
+				{
+					"Name": "leadentry",
+					"Title": "Lead Entry",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/installation.png",
+					"Href": "/leadentry"
+				},
+				{
+					"Name": "qualification",
+					"Title": "Qualification",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/maintenance.png",
+					"Href": "/qualification"
+				},
+				{
+					"Name": "qualification2",
+					"Title": "Qualification2",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/maintenance.png",
+					"Href": "/qualification2"
+				},
+				{
+					"Name": "activity",
+					"Title": "Activity",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
+					"Href": "/activity"
+				}
+			]
+		},
+		{
+			"Name": "salespipeline",
+			"Title": "Sales Pipeline",
+			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/sales-performance.png",
+			"Children": [
+				{
+					"Name": "opportunity",
+					"Title": "Opportunity",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/troubleshoot.png",
+					"Href": "/opportunity"
+				},
+				{
+					"Name": "closing",
+					"Title": "Closing",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/settings.png",
+					"Href": "/closing"
+				},
+				{
+					"Name": "erpsync",
+					"Title": "Sync with ERP",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/procurement.png",
+					"Href": "/erpsync"
+				}
+			]
+		},
+		{
+			"Name": "reports",
+			"Title": "Laporan & Monitoring",
+			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/report.png",
+			"Children": [
+				{
+					"Name": "salesperformance",
+					"Title": "Sales Performance",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/sales-performance.png",
+					"Href": "/reports/salesperformance"
+				},
+				{
+					"Name": "salesactivity",
+					"Title": "Sales Activity Timeline",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/calendar.png",
+					"Href": "/reports/salesactivity"
+				},
+				{
+					"Name": "salesconversion",
+					"Title": "Conversion Rate",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/combo-chart.png",
+					"Href": "/reports/conversionrate"
+				},
+				{
+					"Name": "topreps",
+					"Title": "Top Sales Reps",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/ranking.png",
+					"Href": "/reports/topreps"
+				}
+			]
+		}
+	]
+}

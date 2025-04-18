@@ -1,0 +1,83 @@
+﻿@page "/reports/salesperformance2"
+@layout WebLayout
+
+@using System.Globalization
+
+<PageTitle>Sales Performance Report</PageTitle>
+
+@* <h3 class="mb-4">📊 Sales Performance Report</h3> *@
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Total Revenue</h5>
+                <h3 class="text-success">Rp @TotalRevenue.ToString("N0", CultureInfo.CurrentCulture)</h3>
+                <p class="text-muted">Akhir Q1 2025</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Target Achievement</h5>
+                <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: @TargetAchieved%"></div>
+                </div>
+                <p class="mt-2">@TargetAchieved.ToString("F0")% dari target Rp @Target.ToString("N0")</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h5 class="card-title">📈 Monthly Sales Performance</h5>
+        <canvas id="salesChart" height="120"></canvas>
+    </div>
+</div>
+
+<table class="table table-striped shadow-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th>Bulan</th>
+            <th>Jumlah Deal</th>
+            <th>Revenue</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in MonthlyData)
+        {
+            <tr>
+                <td>@data.Month</td>
+                <td>@data.Deals</td>
+                <td>Rp @data.Revenue.ToString("N0", CultureInfo.CurrentCulture)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private int TotalRevenue = 895000000;
+    private int Target = 1000000000;
+    private float TargetAchieved => (float)TotalRevenue / Target * 100;
+
+    private List<SalesData> MonthlyData = new()
+    {
+        new SalesData("Jan", 8, 250000000),
+        new SalesData("Feb", 6, 200000000),
+        new SalesData("Mar", 9, 445000000)
+    };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("renderSalesChart", MonthlyData.Select(d => d.Month), MonthlyData.Select(d => d.Revenue));
+        }
+    }
+
+    [Inject] private IJSRuntime JS { get; set; } = default!;
+
+    private record SalesData(string Month, int Deals, int Revenue);
+}

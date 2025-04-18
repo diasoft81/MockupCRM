@@ -1,0 +1,139 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<style>
+    .container-fluid {
+        min-height: 437px; /* need to responsive*/
+    }
+
+    body {
+        color: @SelectedThemeStyle["cl-body"];
+        background: linear-gradient(90deg, @SelectedThemeStyle["bg-body-start"], @SelectedThemeStyle["bg-body-end"] );
+    }
+
+    .bg-header {
+        color: @SelectedThemeStyle["cl-header"];
+        background: linear-gradient(90deg, @SelectedThemeStyle["bg-header-start"], @SelectedThemeStyle["bg-header-end"] );
+    }
+
+        .bg-header .mud-select-input {
+            color: @SelectedThemeStyle["cl-header"];
+        }
+
+    .bg-aside {
+        color: @SelectedThemeStyle["cl-aside"];
+        background: linear-gradient(90deg, @SelectedThemeStyle["bg-aside-start"], @SelectedThemeStyle["bg-aside-end"] );
+    }
+
+    .bg-body {
+        color: @SelectedThemeStyle["cl-body"];
+        background: linear-gradient(90deg, @SelectedThemeStyle["bg-body-start"], @SelectedThemeStyle["bg-body-end"] );
+    }
+
+    .bg-toolbar {
+        color: @SelectedThemeStyle["cl-toolbar"];
+        background: linear-gradient(90deg, @SelectedThemeStyle["bg-toolbar-start"], @SelectedThemeStyle["bg-toolbar-end"] );
+    }
+
+    footer {
+        color: @SelectedThemeStyle["cl-footer"];
+        background: linear-gradient(90deg, @SelectedThemeStyle["bg-footer-start"], @SelectedThemeStyle["bg-footer-end"] );
+    }
+
+    .settings-button {
+        color: @SelectedThemeStyle["cl-btn-setting"] !important; /* Warna emas untuk kontras */
+    }
+
+    .custom_toolbar {
+        background: linear-gradient(90deg, @SelectedThemeStyle["bg-toolbar-start"], @SelectedThemeStyle["bg-toolbar-end"] );
+    }
+
+    .mud-navmenu {
+        color: @SelectedThemeStyle["cl-menu"]; /* Putih untuk kontras maksimal */
+    }
+
+    .mud-nav-link {
+        color: @SelectedThemeStyle["cl-menu-link"]; /* Putih dengan sedikit reduksi intensitas */
+    }
+
+    .language-selector {
+        color: @SelectedThemeStyle["cl-header"];
+    }
+
+        .language-selector .mud-select-input {
+            color: @SelectedThemeStyle["cl-header"] !important; /* Warna teks di dalam select */
+        }
+
+</style>
+
+<MudLayout Class="bg-body">
+    @if (topBar == null || leftMenu == null)
+    {
+        <MudOverlay Visible="true" Class="d-flex justify-content-center align-items-center" FullHeight="true">
+            <MudProgressCircular Color="Color.Success" Size="Size.Small" Indeterminate="true" />
+            <div class="mt-2">Loading page...</div>
+        </MudOverlay>
+    }
+    else
+    {
+        <MudAppBar Elevation="1" Class="header bg-header">
+            @if (AppSettings.IsUsingComponent() && pars != null)
+            {
+                <CoreNET.Blazor.AppBar.Web.TopBar Data="pars" OnChanged="EventCallBack"></CoreNET.Blazor.AppBar.Web.TopBar>
+            }
+            else
+            {
+                @if (topBar != null)
+                {
+                    @topBar
+                }
+                else
+                {
+                    <p>Loading widget...</p>
+                }
+            }
+        </MudAppBar>
+
+        <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2"
+                   Breakpoint="Breakpoint.Sm" Anchor="Anchor.Start"
+                   Class="bg-aside drawer-with-footer">
+
+            @if (leftMenu != null)
+            {
+                @leftMenu
+            }
+            else
+            {
+                <p>Loading widget...</p>
+            }
+        </MudDrawer>
+
+        <MudMainContent Class="bg-body">
+            <CascadingValue Value="IsLayoutReady">
+                @if (IsLayoutLoading)
+                {
+                    <MudOverlay Visible="@IsLayoutLoading" Class="d-flex justify-center align-center">
+                        <MudProgressCircular Color="Color.Success" Size="Size.Small" Indeterminate="true" />
+                    </MudOverlay>
+
+                }
+
+                @if (IsLayoutReady)
+                {
+                    @Body
+                }
+                else
+                {
+                    <p>Loading layout...</p>
+                }
+            </CascadingValue>
+@*             <footer>
+                <p>Copyright © 2025. All rights reserved.</p>
+            </footer> *@
+        </MudMainContent>
+    }
+</MudLayout>

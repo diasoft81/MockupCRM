@@ -1,0 +1,47 @@
+﻿@page "/retention"
+@layout WebLayout
+
+<PageTitle>Retensi Customer</PageTitle>
+
+@* <h3 class="mb-4 text-primary">Retensi Pelanggan untuk Pemeliharaan & Troubleshooting</h3> *@
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="customerName">Nama Pelanggan</label>
+                <input type="text" class="form-control" id="customerName" placeholder="Nama pelanggan" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactPerson">Kontak Person</label>
+                <input type="text" class="form-control" id="contactPerson" placeholder="Kontak person pelanggan" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastContactDate">Tanggal Kontak Terakhir</label>
+                <input type="date" class="form-control" id="lastContactDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="retentionType">Jenis Retensi</label>
+                <select class="form-control" id="retentionType" required>
+                    <option value="maintenance">Pemeliharaan</option>
+                    <option value="troubleshooting">Troubleshooting</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="nextAction">Tindak Lanjut</label>
+                <textarea class="form-control" id="nextAction" rows="3" placeholder="Tindak lanjut yang direncanakan"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="actionDate">Tanggal Tindak Lanjut</label>
+                <input type="date" class="form-control" id="actionDate">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Simpan Retensi</button>
+        </form>
+    </div>
+</div>

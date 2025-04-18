@@ -1,0 +1,39 @@
+﻿@page "/salesperformance"
+@layout WebLayout
+
+<PageTitle>Penilaian Kinerja Penjualan</PageTitle>
+
+@* <h3 class="mb-4 text-primary">Laporan Kinerja Penjualan EV Charging</h3> *@
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="salesRep">Nama Sales Representative</label>
+                <input type="text" class="form-control" id="salesRep" placeholder="Nama Sales Representative" required>
+            </div>
+
+            <div class="form-group">
+                <label for="salesAmount">Jumlah Penjualan</label>
+                <input type="number" class="form-control" id="salesAmount" placeholder="Jumlah total penjualan dalam unit" required>
+            </div>
+
+            <div class="form-group">
+                <label for="totalRevenue">Total Pendapatan</label>
+                <input type="number" class="form-control" id="totalRevenue" placeholder="Total pendapatan dalam IDR" required>
+            </div>
+
+            <div class="form-group">
+                <label for="conversionRate">Tingkat Konversi</label>
+                <input type="number" class="form-control" id="conversionRate" placeholder="Tingkat konversi penjualan (%)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="salesPeriod">Periode Penjualan</label>
+                <input type="month" class="form-control" id="salesPeriod" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Simpan Kinerja Penjualan</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@using System.Net.Http
+@using System.Net.Http.Json
+@using System.Text.Encodings.Web
+@using CoreNET.Blazor.Shared.States
+@using CoreNET.Lib.States
+@using Web.States
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.AspNetCore.Components.WebAssembly.Http
+@using Microsoft.JSInterop
+@using Blazored.LocalStorage
+@using MudBlazor
+@using CoreNET.Lib
+@using CoreNET.Lib.Models
+@using CoreNET.Lib.Services
+@using CoreNET.Lib.Views
+@using CoreNET.Lib.Enums
+@using Portal
+@using Portal.Layout
+@using Portal.Pages
+
+@inject AppSettings AppSettings
+@inject NavigationManager Navigation
+@inject HttpClient Http
+@inject ILocalStorageService LocalStorage
+@inject IJSRuntime JSRuntime
+@inject ISnackbar Snackbar
+@inject IDialogService DialogService
+@inject ThemeStyles ThemeStyles
+@inject WidgetService WidgetService
+@inject AppState AppState
+@inject IUserService UserService
+@inject RefreshTrigger OnRefreshLayout
+
+@inject SessionStates Session
+
+
+
+

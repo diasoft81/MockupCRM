@@ -1,0 +1,50 @@
+﻿@page "/reports"
+@layout WebLayout
+
+<PageTitle>Laporan Penjualan EV Charging</PageTitle>
+
+@* <h3 class="mb-4 text-primary">Laporan Penjualan & Monitoring EV Charging</h3> *@
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="reportPeriod">Periode Laporan</label>
+                <input type="month" class="form-control" id="reportPeriod" required>
+            </div>
+
+            <div class="form-group">
+                <label for="region">Wilayah Penjualan</label>
+                <select class="form-control" id="region" required>
+                    <option value="jakarta">Jakarta</option>
+                    <option value="jabar">Jawa Barat</option>
+                    <option value="jatim">Jawa Timur</option>
+                    <option value="bali">Bali</option>
+                    <option value="lainnya">Lainnya</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="unitSold">Jumlah Unit Terjual</label>
+                <input type="number" class="form-control" id="unitSold" placeholder="Jumlah unit EV charger terjual" required>
+            </div>
+
+            <div class="form-group">
+                <label for="revenue">Total Pendapatan</label>
+                <input type="number" class="form-control" id="revenue" placeholder="Total pendapatan (Rp)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="topProduct">Produk Terlaris</label>
+                <input type="text" class="form-control" id="topProduct" placeholder="Nama produk EV charger terlaris" required>
+            </div>
+
+            <div class="form-group">
+                <label for="reportNotes">Catatan Tambahan</label>
+                <textarea class="form-control" id="reportNotes" rows="3" placeholder="Catatan penjualan, feedback pelanggan, dll."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Simpan Laporan</button>
+        </form>
+    </div>
+</div>

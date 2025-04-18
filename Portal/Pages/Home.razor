@@ -1,0 +1,121 @@
+﻿@page "/home"
+
+@inherits LayoutComponentBase
+@layout WebLayout
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #FFFFFF;
+        background: linear-gradient(90deg, @AppState.SelectedThemeStyle["bg-body-start"], @AppState.SelectedThemeStyle["bg-body-end"] ) !important;
+    }
+
+    .bg-body {
+        color: @AppState.SelectedThemeStyle["cl-body"];
+        background: linear-gradient(90deg, @AppState.SelectedThemeStyle["bg-body-start"], @AppState.SelectedThemeStyle["bg-body-end"] ) !important;
+    }
+
+    .carousel_text {
+        color: navy;
+    }
+
+    .paragraph_text {
+        color: @AppState.SelectedThemeStyle["cl-body"] !important;
+    }
+
+    .btn_project {
+        background-color: darkblue !important;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+@code {
+    [CascadingParameter] public bool IsLayoutReady { get; set; }
+    private bool? isMobile;
+    private LoginStored? loginStored;
+
+    private RenderFragment carousel;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        isMobile = await JSRuntime.InvokeAsync<bool>("isMobile");
+        loginStored = await Session.IsLoginStored(LocalStorage);
+
+        if (OnRefreshLayout != null) OnRefreshLayout.Subscribe(RefreshCurrent);
+
+        carousel = WidgetService.GetWidgetCarousel(null, EventCallback.Factory.Create<object>(this, EventCallBack));
+
+    }
+    public void RefreshCurrent()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+    public void Dispose()
+    {
+        if (OnRefreshLayout != null)
+        {
+            OnRefreshLayout.Unsubscribe(RefreshCurrent);
+        }
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+        await OnInitializedAsync();
+    }
+    private void EventCallBack(object response)
+    {
+
+    }
+}
+
+@if (carousel != null)
+{
+    @carousel
+}
+else
+{
+    <p>Loading widget...</p>
+}
+
+<div class="bg-body">
+    <h3 class="paragraph_text fw-bold text-primary text-center">COTC Designer – An Easy Solution for Building Interactive Dashboards</h3>
+    <p class="paragraph_text text-muted text-center">
+        COTC Designer is an innovative platform that allows you to design and manage interactive dashboards quickly and easily. Without the need for complex coding, you can create custom dashboards tailored to your needs in just a few simple steps.
+    </p>
+    <p class="paragraph_text text-muted text-center">
+        Login to start creating your own dashboard.
+    </p>
+</div>
+
+<script>
+    function visitSubdomain() {
+            var selectedSubdomain = document.getElementById("subdomainSelect").value;
+            window.open("https://" + selectedSubdomain, "_blank");
+        }
+
+        function createProject() {
+            alert("Redirecting to Create Project Page...");
+            // Bisa diganti dengan window.location.href = "URL_create_project";
+        }
+
+        function toggleAccordion(id) {
+        let content = document.getElementById(id + "-content");
+        if (content) {
+            content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+        }
+    }
+    function toggleAccordionByElement(element) {
+        let content = element.nextElementSibling;
+        content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+    }
+</script>
+
+@code {
+}
+

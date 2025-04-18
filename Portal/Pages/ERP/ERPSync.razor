@@ -1,0 +1,57 @@
+﻿@page "/erpsync"
+@layout WebLayout
+
+<PageTitle>Sync with ERP</PageTitle>
+
+@* <h3 class="mb-4">🔄 Sync with ERP System</h3> *@
+
+<div class="alert alert-info">
+    Sinkronisasi data antara CRM dan sistem ERP seperti Work Order, Invoice, Stock dan lainnya.
+</div>
+
+<div class="row">
+    @foreach (var item in erpModules)
+    {
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">@item.Description</p>
+                    <button class="btn btn-success" @onclick="() => Sync(item.Key)">
+                        <i class="fas fa-sync-alt"></i> Sync Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (!string.IsNullOrEmpty(syncResult))
+{
+    <div class="alert alert-success mt-4">@syncResult</div>
+}
+
+@code {
+    private string syncResult = string.Empty;
+
+    private List<ERPModule> erpModules = new()
+    {
+        new ERPModule { Key = "workorders", Title = "Work Orders", Description = "Sinkronisasi data work order untuk instalasi dan perawatan EV charger." },
+        new ERPModule { Key = "invoices", Title = "Invoices", Description = "Mengirim dan menerima informasi tagihan penjualan dan pembayaran pelanggan." },
+        new ERPModule { Key = "stock", Title = "Stock Updates", Description = "Update data stok perangkat EV charger dari gudang pusat dan cabang." },
+        new ERPModule { Key = "customerorders", Title = "Customer Orders", Description = "Sinkronisasi order pelanggan dari CRM ke sistem ERP." }
+    };
+
+    private void Sync(string moduleKey)
+    {
+        // Simulasi proses sinkronisasi
+        syncResult = $"✅ Sinkronisasi berhasil untuk modul: {erpModules.FirstOrDefault(e => e.Key == moduleKey)?.Title}";
+    }
+
+    private class ERPModule
+    {
+        public string Key { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+    }
+}

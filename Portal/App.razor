@@ -1,0 +1,35 @@
+﻿@using System.Reflection
+@using CoreNET.Blazor.Shared.Layout
+
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="@additionalAssemblies">
+        <Found Context="routeData">
+            @if (UserService.IsLoggedIn)
+            {
+                <LayoutSwitcher RouteData="@routeData" />
+            }
+            else
+            {
+                <RouteView RouteData="@routeData" DefaultLayout="@typeof(EmptyLayout)" />
+                <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+            }
+        </Found>
+        <NotFound>
+            <LayoutSwitcher>
+                <PageTitle>Not found</PageTitle>
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutSwitcher>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
+
+@code
+{
+    private readonly Assembly[] additionalAssemblies = new[]{
+        typeof(CoreNET.Blazor.Shared.ServiceContainer).Assembly
+    };
+    protected override void OnInitialized()
+    {
+        AppState.Params.AppTitle = "Portal";
+    }
+}

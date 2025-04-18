@@ -1,0 +1,39 @@
+﻿@page "/stock"
+@layout WebLayout
+
+<PageTitle>Stock</PageTitle>
+
+@* <h3 class="mb-4 text-primary">Stok Unit EV Charging</h3> *@
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="productName">Nama Produk</label>
+                <input type="text" class="form-control" id="productName" placeholder="Nama produk" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sku">SKU (Stock Keeping Unit)</label>
+                <input type="text" class="form-control" id="sku" placeholder="SKU produk" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Jumlah Stok</label>
+                <input type="number" class="form-control" id="quantity" placeholder="Jumlah stok" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Lokasi Stok</label>
+                <input type="text" class="form-control" id="location" placeholder="Lokasi penyimpanan stok" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastStockDate">Tanggal Terakhir Stok Masuk</label>
+                <input type="date" class="form-control" id="lastStockDate" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Perbarui Stok</button>
+        </form>
+    </div>
+</div>

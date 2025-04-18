@@ -1,0 +1,45 @@
+﻿@page "/salespipeline"
+@layout WebLayout
+
+<PageTitle>Sales Pipeline</PageTitle>
+
+@* <h3 class="mb-4 text-primary">Pipeline Penjualan EV Charging</h3> *@
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="leadSource">Sumber Lead</label>
+                <input type="text" class="form-control" id="leadSource" placeholder="Sumber lead" required>
+            </div>
+
+            <div class="form-group">
+                <label for="prospectName">Nama Prospek</label>
+                <input type="text" class="form-control" id="prospectName" placeholder="Nama prospek" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dealStage">Tahap Kesepakatan</label>
+                <select class="form-control" id="dealStage" required>
+                    <option value="prospecting">Prospecting</option>
+                    <option value="qualification">Qualification</option>
+                    <option value="proposal">Proposal</option>
+                    <option value="negotiation">Negosiasi</option>
+                    <option value="closed">Tutup</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="estimatedValue">Nilai Estimasi Kesepakatan</label>
+                <input type="number" class="form-control" id="estimatedValue" placeholder="Nilai estimasi kesepakatan dalam IDR" required>
+            </div>
+
+            <div class="form-group">
+                <label for="closeDate">Tanggal Perkiraan Penutupan</label>
+                <input type="date" class="form-control" id="closeDate" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Tambahkan ke Pipeline</button>
+        </form>
+    </div>
+</div>

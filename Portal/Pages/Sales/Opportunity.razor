@@ -1,0 +1,100 @@
+﻿@page "/opportunity"
+@layout WebLayout
+
+<PageTitle>Opportunity</PageTitle>
+
+@code {
+    private string Stage = "Lead";
+}
+
+<div class="card shadow-sm w-100">
+    <div class="card-body">
+        <form class="w-100">
+            <div class="form-group w-100">
+                <label for="opportunityName">Nama Kesempatan</label>
+                <input type="text" class="form-control" id="opportunityName" placeholder="Nama kesempatan penjualan">
+            </div>
+
+            <div class="form-group w-100">
+                <label for="prospectCompany">Perusahaan Prospek</label>
+                <input type="text" class="form-control" id="prospectCompany" placeholder="Nama perusahaan prospek">
+            </div>
+
+            <div class="form-group w-100">
+                <label for="dealValue">Nilai Kesepakatan</label>
+                <input type="number" class="form-control" id="dealValue" placeholder="Nilai kesepakatan ($)">
+            </div>
+
+            <div class="form-group w-100">
+                <label for="closeDate">Tanggal Penutupan</label>
+                <input type="date" class="form-control" id="closeDate">
+            </div>
+
+            <div class="form-group w-100">
+                <label for="opportunityStage">Tahap Kesempatan</label>
+                <select class="form-control" id="opportunityStage" @onchange="e => Stage = e.Value.ToString()">
+                    <option>Lead</option>
+                    <option>Qualified</option>
+                    <option>Proposal Sent</option>
+                    <option>Negotiation</option>
+                    <option>Closed</option>
+                </select>
+            </div>
+
+            @if (Stage != "Lead")
+            {
+                <div class="form-group w-100">
+                    <label for="leadSource">Sumber Lead</label>
+                    <input type="text" class="form-control" id="leadSource" placeholder="Misal: Website, Referral, Campaign">
+                </div>
+
+                <div class="form-group w-100">
+                    <label for="primaryContact">Kontak Utama</label>
+                    <input type="text" class="form-control" id="primaryContact" placeholder="Nama kontak prospek">
+                </div>
+
+                <div class="form-group w-100">
+                    <label for="contactDetails">Detail Kontak</label>
+                    <input type="text" class="form-control" id="contactDetails" placeholder="Email / No. Telepon">
+                </div>
+
+                <div class="form-group w-100">
+                    <label for="customerNeeds">Kebutuhan Prospek</label>
+                    <textarea class="form-control" id="customerNeeds" rows="2" placeholder="Masalah atau kebutuhan utama yang disampaikan"></textarea>
+                </div>
+
+                <div class="form-group w-100">
+                    <label for="solution">Solusi yang Ditawarkan</label>
+                    <textarea class="form-control" id="solution" rows="2" placeholder="Produk/jasa yang ditawarkan"></textarea>
+                </div>
+
+                <div class="form-group w-100">
+                    <label for="estimatedDuration">Estimasi Durasi Implementasi</label>
+                    <input type="text" class="form-control" id="estimatedDuration" placeholder="Contoh: 2 bulan">
+                </div>
+
+                <div class="form-group w-100">
+                    <label for="competitor">Kompetitor</label>
+                    <input type="text" class="form-control" id="competitor" placeholder="Jika ada, sebutkan kompetitor utama">
+                </div>
+
+                <div class="form-group w-100">
+                    <label for="winProbability">Probabilitas Menang (%)</label>
+                    <input type="number" class="form-control" id="winProbability" placeholder="Contoh: 75">
+                </div>
+
+                <div class="form-group w-100">
+                    <label for="nextActivity">Timeline Aktivitas Lanjutan</label>
+                    <textarea class="form-control" id="nextActivity" rows="2" placeholder="Rencana follow-up, demo, meeting, dll"></textarea>
+                </div>
+            }
+
+            <div class="form-group w-100">
+                <label for="opportunityNotes">Catatan</label>
+                <textarea class="form-control" id="opportunityNotes" rows="3" placeholder="Catatan tambahan untuk kesempatan ini"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Simpan Kesempatan</button>
+        </form>
+    </div>
+</div>

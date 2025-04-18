@@ -1,0 +1,98 @@
+﻿@page "/reports/topreps"
+@layout WebLayout
+
+<PageTitle>Top Sales Representatives</PageTitle>
+
+@* <h3 class="mb-4">Top Sales Representatives</h3> *@
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <label>From Date</label>
+        <input type="date" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label>To Date</label>
+        <input type="date" class="form-control" />
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <canvas id="topRepsChart" width="100%" height="40"></canvas>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Rank</th>
+            <th>Sales Rep</th>
+            <th>Total Leads</th>
+            <th>Deals Closed</th>
+            <th>Total Revenue</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Rep A</td>
+            <td>120</td>
+            <td>50</td>
+            <td>$200,000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Rep B</td>
+            <td>100</td>
+            <td>45</td>
+            <td>$180,000</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Rep C</td>
+            <td>90</td>
+            <td>40</td>
+            <td>$150,000</td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("eval", @"(function() {
+                var ctx = document.getElementById('topRepsChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Rep A', 'Rep B', 'Rep C'],
+                        datasets: [{
+                            label: 'Revenue ($)',
+                            data: [200000, 180000, 150000],
+                            backgroundColor: ['#4e73df', '#1cc88a', '#f6c23e']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { display: false },
+                            title: {
+                                display: true,
+                                text: 'Revenue by Top Sales Reps'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })();");
+        }
+    }
+
+    [Inject] IJSRuntime JS { get; set; }
+}

@@ -1,0 +1,56 @@
+[
+    {
+        "Name": "dashboard",
+        "Title": "Dashboard",
+        "IconUrl": "https://img.icons8.com/ios-filled/50/40916c/dashboard.png",
+        "Href": "/dashboard"
+    },
+    {
+        "Name": "installation",
+        "Title": "Instalasi",
+        "IconUrl": "https://img.icons8.com/ios-filled/50/40916c/installation.png",
+        "Href": "/installation"
+    },
+    {
+        "Name": "maintenance",
+        "Title": "Pemeliharaan",
+        "IconUrl": "https://img.icons8.com/ios-filled/50/40916c/maintenance.png",
+        "Href": "/maintenance"
+    },
+    {
+        "Name": "troubleshooting",
+        "Title": "Troubleshooting",
+        "IconUrl": "https://img.icons8.com/ios-filled/50/40916c/troubleshoot.png",
+        "Href": "/troubleshooting"
+    },
+    {
+        "Name": "sparepart",
+        "Title": "Manajemen Sparepart",
+        "IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
+        "Href": "/sparepart"
+    },
+    {
+        "Name": "work-order",
+        "Title": "Work Order",
+        "IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
+        "Href": "/work-order"
+    },
+    {
+        "Name": "procurement",
+        "Title": "Perencanaan Pengadaan",
+        "IconUrl": "https://img.icons8.com/ios-filled/50/40916c/procurement.png",
+        "Href": "/procurement"
+    },
+    {
+        "Name": "reports",
+        "Title": "Laporan",
+        "IconUrl": "https://img.icons8.com/ios-filled/50/40916c/report.png",
+        "Href": "/reports"
+    },
+    {
+        "Name": "settings",
+        "Title": "Pengaturan",
+        "IconUrl": "https://img.icons8.com/ios-filled/50/40916c/settings.png",
+        "Href": "/settings"
+    }
+]

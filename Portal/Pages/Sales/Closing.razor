@@ -1,0 +1,58 @@
+﻿@page "/closing"
+@layout WebLayout
+
+@using System.Globalization
+
+<PageTitle>Closing Deals</PageTitle>
+
+@* <h3 class="mb-4">🧾 Closed Deals</h3> *@
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>No</th>
+                <th>Customer</th>
+                <th>Sales Rep</th>
+                <th>Product</th>
+                <th>Deal Value</th>
+                <th>Closed Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var deal in closedDeals)
+            {
+                <tr>
+                    <td>@deal.No</td>
+                    <td>@deal.CustomerName</td>
+                    <td>@deal.SalesRep</td>
+                    <td>@deal.Product</td>
+                    <td>@deal.DealValue.ToString("C", CultureInfo.GetCultureInfo("id-ID"))</td>
+                    <td>@deal.ClosedDate.ToString("dd MMM yyyy")</td>
+                    <td>
+                        <span class="badge badge-success">Closed - Won</span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private List<ClosedDeal> closedDeals = new()
+    {
+        new ClosedDeal { No = 1, CustomerName = "PT. Energi Hijau", SalesRep = "Budi Santoso", Product = "EV Charger Tipe 2", DealValue = 150_000_000, ClosedDate = DateTime.Now.AddDays(-10) },
+        new ClosedDeal { No = 2, CustomerName = "CV. Listrik Maju", SalesRep = "Sari Dewi", Product = "Wallbox Pro", DealValue = 85_000_000, ClosedDate = DateTime.Now.AddDays(-5) },
+    };
+
+    public class ClosedDeal
+    {
+        public int No { get; set; }
+        public string CustomerName { get; set; } = "";
+        public string SalesRep { get; set; } = "";
+        public string Product { get; set; } = "";
+        public decimal DealValue { get; set; }
+        public DateTime ClosedDate { get; set; }
+    }
+}

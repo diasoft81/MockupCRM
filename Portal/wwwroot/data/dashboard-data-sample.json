@@ -1,0 +1,177 @@
+{
+	"filters": {
+		"month": "April",
+		"sales": "Sales A",
+		"region": "West",
+		"channel": "Online",
+		"product": "EV Charger A",
+		"stacked": true
+	},
+	"summary": {
+		"lead": 120,
+		"target": 150,
+		"qualified": 80,
+		"dealClosed": 45,
+		"activityToday": 17
+	},
+	"leadStages": {
+		"Lead": 40,
+		"Qualified": 20,
+		"Survey": 15,
+		"Negotiation": 10,
+		"Win": 8,
+		"Lost": 7
+	},
+	"leadTrend8Weeks": [
+		{
+			"week": "W1",
+			"Lead": 10,
+			"Qualified": 6,
+			"Survey": 4,
+			"Negotiation": 2,
+			"Win": 1,
+			"Lost": 0
+		},
+		{
+			"week": "W2",
+			"Lead": 11,
+			"Qualified": 7,
+			"Survey": 5,
+			"Negotiation": 3,
+			"Win": 2,
+			"Lost": 1
+		},
+		{
+			"week": "W3",
+			"Lead": 12,
+			"Qualified": 8,
+			"Survey": 6,
+			"Negotiation": 4,
+			"Win": 3,
+			"Lost": 2
+		},
+		{
+			"week": "W4",
+			"Lead": 13,
+			"Qualified": 9,
+			"Survey": 7,
+			"Negotiation": 5,
+			"Win": 4,
+			"Lost": 3
+		},
+		{
+			"week": "W5",
+			"Lead": 14,
+			"Qualified": 10,
+			"Survey": 8,
+			"Negotiation": 6,
+			"Win": 5,
+			"Lost": 4
+		},
+		{
+			"week": "W6",
+			"Lead": 15,
+			"Qualified": 11,
+			"Survey": 9,
+			"Negotiation": 7,
+			"Win": 6,
+			"Lost": 5
+		},
+		{
+			"week": "W7",
+			"Lead": 16,
+			"Qualified": 12,
+			"Survey": 10,
+			"Negotiation": 8,
+			"Win": 7,
+			"Lost": 6
+		},
+		{
+			"week": "W8",
+			"Lead": 17,
+			"Qualified": 13,
+			"Survey": 11,
+			"Negotiation": 9,
+			"Win": 8,
+			"Lost": 7
+		}
+	],
+	"activityWeeklyBySales": [
+		{
+			"sales": "Sales A",
+			"region": "West",
+			"product": "EV Charger A",
+			"weeks": {
+				"W1": 10,
+				"W2": 11,
+				"W3": 12,
+				"W4": 13
+			}
+		},
+		{
+			"sales": "Sales B",
+			"region": "West",
+			"product": "EV Charger B",
+			"weeks": {
+				"W1": 11,
+				"W2": 12,
+				"W3": 13,
+				"W4": 14
+			}
+		},
+		{
+			"sales": "Sales C",
+			"region": "West",
+			"product": "EV Charger A",
+			"weeks": {
+				"W1": 12,
+				"W2": 13,
+				"W3": 14,
+				"W4": 15
+			}
+		}
+	],
+	"activityThisWeekPie": {
+		"Sales A": 20,
+		"Sales B": 18,
+		"Sales C": 21,
+		"Sales D": 15,
+		"Sales E": 12
+	},
+	"activityPlan": {
+		"total": 120,
+		"meeting": 50,
+		"call": 40,
+		"email": 20,
+		"proposal": 10
+	},
+	"taskDetails": [
+		{
+			"title": "Meeting with ABC Corp",
+			"dueDate": "2025-04-18",
+			"status": "Pending",
+			"assignedTo": "Sales A",
+			"channel": "Online",
+			"region": "West",
+			"product": "EV Charger A"
+		},
+		{
+			"title": "Send proposal to XYZ",
+			"dueDate": "2025-04-18",
+			"status": "Completed",
+			"assignedTo": "Sales B",
+			"channel": "Online",
+			"region": "West",
+			"product": "EV Charger A"
+		},
+		{
+			"title": "Follow up distributor",
+			"dueDate": "2025-04-18",
+			"status": "In Progress",
+			"assignedTo": "Sales C",
+			"channel": "Retail",
+			"region": "West",
+			"product": "EV Charger B"
+		}
+	]
+}

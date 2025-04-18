@@ -1,0 +1,277 @@
+﻿@page "/"
+@using System.Text.Json
+@using Portal.Helper
+@using Portal.Model
+@layout WebLayout
+@inject IJSRuntime JS
+
+<div class="row mb-3">
+    <div class="col-md-2">
+        <label>Bulan:</label>
+        <select class="form-control" Value="@selectedMonth" @onchange="OnFilterChanged">
+            @foreach (var month in months)
+            {
+                <option value="@month">@month</option>
+            }
+        </select>
+
+    </div>
+    <div class="col-md-2">
+        <label>Sales Person:</label>
+        <select class="form-control" Value="selectedSales" @onchange="OnFilterChanged">
+            @foreach (var sales in salesPersons)
+            {
+                <option value="@sales">@sales</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label>Region:</label>
+        <select class="form-control" Value="selectedRegion" @onchange="OnFilterChanged">
+            @foreach (var region in regions)
+            {
+                <option value="@region">@region</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label>Channel:</label>
+        <select class="form-control" Value="selectedChannel" @onchange="OnFilterChanged">
+            @foreach (var channel in channels)
+            {
+                <option value="@channel">@channel</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label>Product:</label>
+        <select class="form-control" Value="selectedProduct" @onchange="OnFilterChanged">
+            @foreach (var product in products)
+            {
+                <option value="@product">@product</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="stackToggle" Value="isStacked" @onchange="OnFilterChanged">
+            <label class="form-check-label" for="stackToggle">
+                Stack by Region/Product
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <button class="btn btn-secondary me-2" @onclick="ResetFilters">Reset</button>
+        <button class="btn btn-primary" @onclick="ExportChart">Export Chart</button>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <!-- Row 1: Summary Cards -->
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Lead / Target (This Month)</h5>
+                    <p class="card-text display-4">120 / 150</p>
+                    <button class="btn btn-light btn-sm">More</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Qualified / Lead (This Month)</h5>
+                    <p class="card-text display-4">80 / 120</p>
+                    <button class="btn btn-light btn-sm">More</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-info h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Closed / Target (This Month)</h5>
+                    <p class="card-text display-4">60 / 150</p>
+                    <button class="btn btn-light btn-sm">More</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Activity Today</h5>
+                    <p class="card-text display-4">35</p>
+                    <button class="btn btn-light btn-sm">More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 2: Pie and Line Chart -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Lead Stage Distribution</h5>
+                    <canvas id="leadPieChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Weekly Lead Movement (8 weeks)</h5>
+                    <canvas id="weeklyLineChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 3: Activity per Sales -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Activity This Week per Sales</h5>
+                    <canvas id="salesPieChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Monthly Activity by Sales (Stacked)</h5>
+                    <canvas id="stackedBarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 4: Activity Plan Overview -->
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Activity Plan Overview</h5>
+                    <div class="row">
+                        <div class="col">Total Plan: <strong>50</strong></div>
+                        <div class="col">Meetings: <strong>20</strong></div>
+                        <div class="col">Calls: <strong>15</strong></div>
+                        <div class="col">Emails: <strong>10</strong></div>
+                        <div class="col">Proposals: <strong>5</strong></div>
+                    </div>
+                    <div class="mt-3 overflow-auto" style="white-space: nowrap;">
+                        <!-- Task Cards -->
+                        <div class="d-inline-block card p-2 mr-2" style="width: 200px;">
+                            <h6>Meeting with Client A</h6>
+                            <p class="mb-0">10:00 AM</p>
+                        </div>
+                        <div class="d-inline-block card p-2 mr-2" style="width: 200px;">
+                            <h6>Follow-up Call: Client B</h6>
+                            <p class="mb-0">11:30 AM</p>
+                        </div>
+                        <div class="d-inline-block card p-2 mr-2" style="width: 200px;">
+                            <h6>Email Proposal to Client C</h6>
+                            <p class="mb-0">1:00 PM</p>
+                        </div>
+                        <!-- Add more task cards as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool _firstRender = true;
+    private DashboardData dashboardData;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var jsonString = await Http.GetStringAsync($"{Navigation.BaseUri}/data/dashboard-data.json");
+        dashboardData = JsonSerializer.Deserialize<DashboardData>(jsonString); ;
+
+        var processedData = await JS.InvokeAsync<object>("prepareDashboardChartData", dashboardData);
+        await JS.InvokeVoidAsync("renderDashboardCharts", processedData);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        if (_firstRender)
+        {
+            _firstRender = false;
+            //await JSRuntime.InvokeVoidAsync("renderDashboardCharts", dashboardData);
+        }
+    }
+
+    private async Task LoadUpdatedData()
+    {
+        var updatedJson = await Http.GetStringAsync("dashboard-total-new.json");
+        var updatedData = JsonDocument.Parse(updatedJson).RootElement;
+
+        await JSRuntime.InvokeVoidAsync("updateDashboardCharts", updatedData);
+    }
+
+    // Filter values
+    string selectedMonth = "January";
+    string selectedSales = "All";
+    string selectedRegion = "All";
+    string selectedChannel = "All";
+    string selectedProduct = "All";
+    bool isStacked = true;
+
+    // Options
+    List<string> months = new() { "January", "February", "March", "April", "May" };
+    List<string> salesPersons = new() { "All", "Sales A", "Sales B", "Sales C" };
+    List<string> regions = new() { "All", "West", "East", "Central" };
+    List<string> channels = new() { "All", "Online", "Retail", "Partner" };
+    List<string> products = new() { "All", "EV Charger A", "EV Charger B", "EV Adapter" };
+
+    async Task OnFilterChanged(ChangeEventArgs? e)
+    {
+        string url = $"data/dashboard-{selectedMonth.ToLower()}-{selectedSales.ToLower().Replace(" ", "")}.json";
+
+        try
+        {
+            var json = await Http.GetStringAsync(url);
+            var updatedData = JsonDocument.Parse(json).RootElement;
+
+            await JSRuntime.InvokeVoidAsync("updateDashboardCharts", updatedData);
+            await JSRuntime.InvokeVoidAsync("toggleStackedBar", isStacked);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Data not found: {url}");
+        }
+
+        // string endpoint = $"/api/dashboard-data?month={selectedMonth}&sales={selectedSales}&region={selectedRegion}&channel={selectedChannel}&product={selectedProduct}&stacked={isStacked}";
+
+        // var response = await Http.GetStringAsync(endpoint);
+        // var json = JsonDocument.Parse(response).RootElement;
+
+        // await JS.InvokeVoidAsync("updateDashboardCharts", json);
+
+    }
+
+    void ResetFilters()
+    {
+        selectedMonth = "January";
+        selectedSales = "All";
+        selectedRegion = "All";
+        selectedChannel = "All";
+        selectedProduct = "All";
+        isStacked = true;
+
+        _ = OnFilterChanged(null); // reload default
+    }
+
+    async Task ExportChart()
+    {
+        await JSRuntime.InvokeVoidAsync("exportDashboardCharts");
+    }
+
+}

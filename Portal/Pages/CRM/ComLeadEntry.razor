@@ -1,0 +1,97 @@
+﻿@using MudBlazor
+
+@inject IDialogService DialogService
+
+<MudPaper Class="pa-4 full-screen">
+    <MudForm>
+        <MudText Typo="Typo.h5" Class="mb-4">Customer Information</MudText>
+
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudTextField Label="Customer Name" @bind-Value="CustomerName" />
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudTextField Label="Contact Person" @bind-Value="ContactPerson" />
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudTextField Label="Email" @bind-Value="Email" />
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudTextField Label="Phone" @bind-Value="Phone" />
+            </MudItem>
+        </MudGrid>
+
+        <MudDivider Class="my-4" />
+
+        <MudText Typo="Typo.h6">Lead Details</MudText>
+
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudSelect T="string" Label="Lead Status" @bind-Value="LeadStatus">
+                    <MudSelectItem Value=@("New")>New</MudSelectItem>
+                    <MudSelectItem Value=@("Contacted")>Contacted</MudSelectItem>
+                    <MudSelectItem Value=@("Qualified")>Qualified</MudSelectItem>
+                    <MudSelectItem Value=@("Disqualified")>Disqualified</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudSelect T="string" Label="Lead Source" @bind-Value="LeadSource">
+                    <MudSelectItem Value=@("Visit")>Visit</MudSelectItem>
+                    <MudSelectItem Value=@("Pameran")>Pameran</MudSelectItem>
+                    <MudSelectItem Value=@("Website")>Website</MudSelectItem>
+                    <MudSelectItem Value=@("Telepon Masuk")>Telepon Masuk</MudSelectItem>
+                    <MudSelectItem Value=@("Referensi")>Referensi</MudSelectItem>
+                    <MudSelectItem Value=@("Cold Call")>Cold Call</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+        </MudGrid>
+
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudSelect T="string" Label="Industry Segment" @bind-Value="IndustrySegment">
+                    <MudSelectItem Value=@("EV Fleet")>EV Fleet</MudSelectItem>
+                    <MudSelectItem Value=@("EV Retail")>EV Retail</MudSelectItem>
+                    <MudSelectItem Value=@("Logistics")>Logistics</MudSelectItem>
+                    <MudSelectItem Value=@("Home Charging")>Home Charging</MudSelectItem>
+                    <MudSelectItem Value=@("Other")>Other</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudSelect T="string" Label="Customer Category" @bind-Value="CustomerCategory">
+                    <MudSelectItem Value=@("Government")>Government</MudSelectItem>
+                    <MudSelectItem Value=@("Corporate")>Corporate</MudSelectItem>
+                    <MudSelectItem Value=@("Retail")>Retail</MudSelectItem>
+                    <MudSelectItem Value=@("Dealer")>Dealer</MudSelectItem>
+                    <MudSelectItem Value=@("Other")>Other</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+        </MudGrid>
+
+        <MudTextField T="string" Label="Product Needs" @bind-Value="ProductNeeds" Lines="3" Class="mt-3" />
+        <MudTextField T="string" Label="Additional Notes" @bind-Value="AdditionalNotes" Lines="3" Class="mt-3" />
+
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveLead" Class="mt-4">Save Lead</MudButton>
+    </MudForm>
+</MudPaper>
+
+@code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+    private string CustomerName;
+    private string ContactPerson;
+    private string Email;
+    private string Phone;
+    private string LeadStatus;
+    private string LeadSource;
+    private string IndustrySegment;
+    private string CustomerCategory;
+    private string ProductNeeds;
+    private string AdditionalNotes;
+
+
+    private void SaveLead()
+    {
+        // Logic to save the lead goes here
+
+        MudDialog.Close(DialogResult.Ok(true));
+    }
+}

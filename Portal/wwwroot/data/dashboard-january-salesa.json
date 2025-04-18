@@ -1,0 +1,136 @@
+{
+	"filters": {
+		"month": "January",
+		"sales": "Sales A",
+		"region": "West",
+		"channel": "Online",
+		"product": "EV Charger A",
+		"stacked": true
+	},
+	"summary": {
+		"lead": 130,
+		"target": 150,
+		"qualified": 90,
+		"dealClosed": 50,
+		"activityToday": 18
+	},
+	"leadStages": {
+		"Lead": 50,
+		"Qualified": 25,
+		"Survey": 20,
+		"Negotiation": 15,
+		"Win": 10,
+		"Lost": 5
+	},
+	"leadTrend8Weeks": [
+		{
+			"week": "W1",
+			"Lead": 5,
+			"Qualified": 2,
+			"Survey": 3,
+			"Negotiation": 1,
+			"Win": 0,
+			"Lost": 1
+		},
+		{
+			"week": "W2",
+			"Lead": 6,
+			"Qualified": 3,
+			"Survey": 2,
+			"Negotiation": 2,
+			"Win": 1,
+			"Lost": 1
+		},
+		{
+			"week": "W3",
+			"Lead": 7,
+			"Qualified": 4,
+			"Survey": 3,
+			"Negotiation": 2,
+			"Win": 1,
+			"Lost": 1
+		},
+		{
+			"week": "W4",
+			"Lead": 8,
+			"Qualified": 5,
+			"Survey": 4,
+			"Negotiation": 3,
+			"Win": 2,
+			"Lost": 2
+		},
+		{
+			"week": "W5",
+			"Lead": 9,
+			"Qualified": 6,
+			"Survey": 5,
+			"Negotiation": 4,
+			"Win": 3,
+			"Lost": 2
+		},
+		{
+			"week": "W6",
+			"Lead": 10,
+			"Qualified": 7,
+			"Survey": 6,
+			"Negotiation": 5,
+			"Win": 4,
+			"Lost": 3
+		},
+		{
+			"week": "W7",
+			"Lead": 11,
+			"Qualified": 8,
+			"Survey": 7,
+			"Negotiation": 6,
+			"Win": 5,
+			"Lost": 4
+		},
+		{
+			"week": "W8",
+			"Lead": 12,
+			"Qualified": 9,
+			"Survey": 8,
+			"Negotiation": 7,
+			"Win": 6,
+			"Lost": 5
+		}
+	],
+	"activityWeeklyBySales": [
+		{
+			"sales": "Sales A",
+			"region": "West",
+			"product": "EV Charger A",
+			"weeks": {
+				"W1": 10,
+				"W2": 12,
+				"W3": 14,
+				"W4": 16
+			}
+		}
+	],
+	"activityThisWeekPie": {
+		"Sales A": 40,
+		"Sales B": 30,
+		"Sales C": 20,
+		"Sales D": 10
+	},
+	"activityPlan": {
+		"total": 110,
+		"meeting": 60,
+		"call": 30,
+		"email": 15,
+		"proposal": 5
+	},
+	"taskDetails": [
+		{
+			"title": "Client Meeting",
+			"dueDate": "2025-01-15",
+			"status": "Completed",
+			"assignedTo": "Sales A",
+			"channel": "Online",
+			"region": "West",
+			"product": "EV Charger A"
+		}
+	]
+}

@@ -1,0 +1,88 @@
+﻿@page "/sales2"
+@layout WebLayout
+
+@using MudBlazor
+
+<MudContainer>
+    <MudPaper Class="pa-4">
+        <MudStepper Elevation="1" Linear="false">
+            
+            <!-- Step 1: Lead Generation -->
+            <MudStep Label="Lead Generation">
+                <MudCard>
+                    <MudCardContent>
+                        <MudText>Tolong isi detail lead:</MudText>
+                        <MudTextField Label="Nama Prospek" @bind-Value="_leadName" />
+                        <MudTextField Label="Email" @bind-Value="_leadEmail" />
+                        <MudTextField Label="No. Telepon" @bind-Value="_leadPhone" />
+                        <MudButton OnClick="()=>NextStep()">Simpan & Lanjut</MudButton>
+                    </MudCardContent>
+                </MudCard>
+            </MudStep>
+            
+            <!-- Step 2: Qualification -->
+            <MudStep Label="Qualification">
+                <MudCard>
+                    <MudCardContent>
+                        <MudText>Checklist untuk menilai lead:</MudText>
+                        <MudCheckBox T="bool" Label="Memiliki kebutuhan sesuai" @bind-Value="_isQualified" />
+                        <MudCheckBox T="bool" Label="Anggaran mencukupi" @bind-Value="_hasBudget" />
+                        <MudButton OnClick="()=>NextStep()">Simpan & Lanjut</MudButton>
+                    </MudCardContent>
+                </MudCard>
+            </MudStep>
+            
+            <!-- Step 3: Proposal -->
+            <MudStep Label="Proposal">
+                <MudCard>
+                    <MudCardContent>
+                        <MudText>Upload dokumen proposal:</MudText>
+                        <MudFileUpload T="IBrowserFile" Label="Upload Proposal" />
+                        <MudButton OnClick="()=>NextStep()">Simpan & Lanjut</MudButton>
+                    </MudCardContent>
+                </MudCard>
+            </MudStep>
+            
+            <!-- Step 4: Negotiation -->
+            <MudStep Label="Negotiation">
+                <MudCard>
+                    <MudCardContent>
+                        <MudText>Masukkan hasil negosiasi:</MudText>
+                        <MudTextField Label="Harga Akhir" @bind-Value="_negotiatedPrice" />
+                        <MudTextField Label="Catatan Negosiasi" @bind-Value="_negotiationNotes" />
+                        <MudButton OnClick="()=>NextStep()">Simpan & Lanjut</MudButton>
+                    </MudCardContent>
+                </MudCard>
+            </MudStep>
+            
+            <!-- Step 5: Closing -->
+            <MudStep Label="Closing">
+                <MudCard>
+                    <MudCardContent>
+                        <MudText>Pelanggan menyetujui kesepakatan?</MudText>
+                        <MudRadioGroup T="string" @bind-Value="_closingStatus">
+                            <MudRadio T="string" Option="Deal Closed" Label="Ya, closing berhasil" />
+                            <MudRadio T="string" Option="Deal Lost" Label="Tidak, closing gagal" />
+                        </MudRadioGroup>
+                        <MudButton OnClick="()=>CompletePipeline()">Simpan & Selesai</MudButton>
+                    </MudCardContent>
+                </MudCard>
+            </MudStep>
+            
+        </MudStepper>
+    </MudPaper>
+</MudContainer>
+
+@code {
+    private string _leadName, _leadEmail, _leadPhone;
+    private bool _isQualified, _hasBudget;
+    private string _negotiatedPrice, _negotiationNotes, _closingStatus;
+
+    private void NextStep() {
+        // Simpan data atau panggil API jika diperlukan
+    }
+
+    private void CompletePipeline() {
+        // Finalisasi pipeline, bisa menyimpan data atau memberi notifikasi
+    }
+}

@@ -1,0 +1,55 @@
+﻿@page "/order"
+@layout WebLayout
+
+<PageTitle>Order Pelanggan</PageTitle>
+
+@* <h3 class="mb-4 text-primary">Order Pemeliharaan & Penggantian Sparepart</h3> *@
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="orderNumber">Nomor Order</label>
+                <input type="text" class="form-control" id="orderNumber" placeholder="Nomor order" required>
+            </div>
+
+            <div class="form-group">
+                <label for="customerName">Nama Pelanggan</label>
+                <input type="text" class="form-control" id="customerName" placeholder="Nama pelanggan" required>
+            </div>
+
+            <div class="form-group">
+                <label for="orderDate">Tanggal Order</label>
+                <input type="date" class="form-control" id="orderDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="orderType">Jenis Order</label>
+                <select class="form-control" id="orderType" required>
+                    <option value="maintenance">Pemeliharaan</option>
+                    <option value="sparepart">Penggantian Sparepart</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="spareParts">Sparepart yang Dipesan</label>
+                <input type="text" class="form-control" id="spareParts" placeholder="Sparepart yang dipesan" required>
+            </div>
+
+            <div class="form-group">
+                <label for="orderAmount">Jumlah Order</label>
+                <input type="number" class="form-control" id="orderAmount" placeholder="Jumlah order" required>
+            </div>
+
+            <div class="form-group">
+                <label for="orderStatus">Status Order</label>
+                <select class="form-control" id="orderStatus" required>
+                    <option value="pending">Tertunda</option>
+                    <option value="completed">Selesai</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Proses Order</button>
+        </form>
+    </div>
+</div>

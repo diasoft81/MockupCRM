@@ -1,0 +1,19 @@
+﻿@inject IJSRuntime JSRuntime
+@code {
+    private bool? isMobile;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // JavaScript interop untuk mendeteksi apakah browser adalah mobile
+        isMobile = await JSRuntime.InvokeAsync<bool>("isMobile");
+        await LocalStorage.SetItemAsync("isMobile", isMobile);
+    }
+}
+
+<RouteView RouteData="@routeData" DefaultLayout="@typeof(WebLayout)" />
+<FocusOnNavigate RouteData="@routeData" Selector="h1" />
+
+@code {
+    //[Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public RouteData? routeData { get; set; }
+}
