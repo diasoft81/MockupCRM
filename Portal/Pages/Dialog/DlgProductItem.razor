@@ -1,0 +1,52 @@
+﻿@using MudBlazor
+@using Portal.Model
+@inject IDialogService DialogService
+
+<style>
+    .mydialog {
+        width: 500px;
+        height: 400px;
+    }
+</style>
+
+<MudDialog @ref="_dlg" Class="mydialog">
+    <DialogContent>
+        <MudForm @ref="_form">
+            <MudText Typo="Typo.h6">Product Details</MudText>
+
+            <MudTextField @bind-Value="Product.ProductType" Label="Product Type" Required="true" />
+            <MudTextField @bind-Value="Product.ProductMerk" Label="Product Merk" />
+            <MudTextField @bind-Value="Product.ProductModel" Label="Product Model" />
+            <MudTextField @bind-Value="Product.ProductDescription" Label="Description" />
+            <MudNumericField @bind-Value="Product.Quantity" Label="Quantity" Min="1" />
+            <MudTextField @bind-Value="Product.Unit" Label="Unit (e.g., pcs, set)" />
+
+        </MudForm>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="Color.Primary" OnClick="Save" Disabled="@(!_form.IsValid)">Save</MudButton>
+        <MudButton Color="Color.Secondary" OnClick="Cancel">Cancel</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] IMudDialogInstance? Dialog { get; set; }
+
+    [Parameter] public ProductItem Product { get; set; } = new(); // New or Edited
+
+    private MudDialog? _dlg;
+
+    private MudForm _form = new();
+
+    private async Task Save()
+    {
+        await _form.Validate();
+        if (_form.IsValid)
+            Dialog?.Close(DialogResult.Ok(Product));
+    }
+
+    private void Cancel()
+    {
+        Dialog?.Cancel();
+    }
+}

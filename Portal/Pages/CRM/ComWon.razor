@@ -1,0 +1,12 @@
+﻿@using Portal.Model
+<MudText Typo="Typo.h6">Move to Won</MudText>
+<MudSelect T="string" Label="Move to Won" @bind-Value="MoveToWon">
+    <MudSelectItem Value=@("Yes")>Yes</MudSelectItem>
+    <MudSelectItem Value=@("No")>No</MudSelectItem>
+    <MudSelectItem Value=@("Unknown")>Unknown</MudSelectItem>
+</MudSelect>
+
+@code {
+    [Parameter] public LeadItem Lead { get; set; }
+    string MoveToWon { get; set; }
+}

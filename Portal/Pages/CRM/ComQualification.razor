@@ -4,82 +4,46 @@
 
 <MudPaper Class="pa-4 full-screen">
     <MudForm>
-        <MudText Typo="Typo.h5" Class="mb-4">Lead Lookup</MudText>
+        @if (Lead == null)
+        {
+            <MudText Typo="Typo.h5" Class="mb-4">Lead Lookup</MudText>
 
-        <MudTextField T="string" Label="Search Lead by Name or ID" @bind-Value="LeadSearch" />
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="LookupLead">Lookup</MudButton>
-
+            <MudTextField T="string" Label="Search Lead by Name or ID" @bind-Value="LeadSearch" />
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="LookupLead">Lookup</MudButton>
+        }
+        else
+        {
+            <MudButton OnClick="OnExpandCollapseClick">@((_expanded ? "Collapse" : "Expand") + " Customer Information")</MudButton>
+            <MudDivider />
+            <MudCollapse Expanded="_expanded">
+                <ComLeadEntry Lead="@Lead" />
+            </MudCollapse>
+        }
         <MudDivider Class="my-4" />
 
-        <MudText Typo="Typo.h6">Lead Information</MudText>
-        <MudTextField T="string" Label="Customer Name" Value=@("John Doe") ReadOnly="true" />
-        <MudTextField T="string" Label="Contact" Value=@("john@example.com") ReadOnly="true" />
-        <MudTextField T="string" Label="Industry" Value=@("Logistics") ReadOnly="true" />
-        <MudTextField T="string" Label="Product Need" Value=@("EV Charger 20KW") ReadOnly="true" />
-
+        @if (TargetStage == "Qualified")
+        {
+            <ComBant Lead="@Lead" />
+        }
+        else if (TargetStage == "Survey")
+        {
+            <ComSurvey Lead="@Lead" />
+        }
+        else if (TargetStage == "Negotiation")
+        {
+            <ComNegotiation Lead="@Lead" />
+        }
+        else if (TargetStage == "Won")
+        {
+            <ComWon Lead="@Lead" />
+        }
+        else if (TargetStage == "Lost")
+        {
+            <ComLose Lead="@Lead" />
+        }
         <MudDivider Class="my-4" />
 
-        <MudText Typo="Typo.h6">BANT Qualification</MudText>
-        <MudSelect T="string" Label="Budget Availability" @bind-Value="BudgetAvailability">
-            <MudSelectItem Value=@("Yes")>Yes</MudSelectItem>
-            <MudSelectItem Value=@("No")>No</MudSelectItem>
-            <MudSelectItem Value=@("Unknown")>Unknown</MudSelectItem>
-        </MudSelect>
-        <MudSelect T="string" Label="Authority to Decide" @bind-Value="AuthorityToDecide">
-            <MudSelectItem Value=@("Yes")>Yes</MudSelectItem>
-            <MudSelectItem Value=@("No")>No</MudSelectItem>
-            <MudSelectItem Value=@("Unknown")>Unknown</MudSelectItem>
-        </MudSelect>
-        <MudTextField T="string" Label="Need Justification" Lines="3" />
-        <MudDatePicker T="DateTime" Label="Expected Timeline" />
-
-        <MudDivider Class="my-4" />
-
-        <MudText T="string" Typo="Typo.h6">Qualification Criteria</MudText>
-        <MudTable T="object" Hover="true">
-            <HeaderContent>
-                <MudTh>Criteria</MudTh>
-                <MudTh>Qualified</MudTh>
-                <MudTh>Not Qualified</MudTh>
-                <MudTh>Remarks</MudTh>
-            </HeaderContent>
-            <RowTemplate>
-                <MudTr>
-                    <MudTd>Project Budget Identified</MudTd>
-                    <MudTd><MudRadioGroup T="string" @bind-SelectedOption="ProjectBudgetIdentified"><MudRadio T="string" Option="yes">Yes</MudRadio></MudRadioGroup></MudTd>
-                    <MudTd><MudRadioGroup T="string" @bind-SelectedOption="ProjectBudgetIdentified"><MudRadio T="string" Option="no">No</MudRadio></MudRadioGroup></MudTd>
-                    <MudTd><MudTextField T="string" /></MudTd>
-                </MudTr>
-                <MudTr>
-                    <MudTd>Decision Maker Engaged</MudTd>
-                    <MudTd><MudRadioGroup T="string" @bind-SelectedOption="DecisionMaker"><MudRadio T="string" Option="yes">Yes</MudRadio></MudRadioGroup></MudTd>
-                    <MudTd><MudRadioGroup T="string" @bind-SelectedOption="DecisionMaker"><MudRadio T="string" Option="no">No</MudRadio></MudRadioGroup></MudTd>
-                    <MudTd><MudTextField T="string" /></MudTd>
-                </MudTr>
-                <MudTr>
-                    <MudTd>Clear Product Need</MudTd>
-                    <MudTd><MudRadioGroup T="string" @bind-SelectedOption="ClearNeed"><MudRadio T="string" Option="yes">Yes</MudRadio></MudRadioGroup></MudTd>
-                    <MudTd><MudRadioGroup T="string" @bind-SelectedOption="ClearNeed"><MudRadio T="string" Option="no">No</MudRadio></MudRadioGroup></MudTd>
-                    <MudTd><MudTextField T="string" /></MudTd>
-                </MudTr>
-                <MudTr>
-                    <MudTd>Timeline Matches Offering</MudTd>
-                    <MudTd><MudRadioGroup T="string" @bind-SelectedOption="TimelineMatch"><MudRadio T="string" Option="yes">Yes</MudRadio></MudRadioGroup></MudTd>
-                    <MudTd><MudRadioGroup T="string" @bind-SelectedOption="TimelineMatch"><MudRadio T="string" Option="no">No</MudRadio></MudRadioGroup></MudTd>
-                    <MudTd><MudTextField T="string" /></MudTd>
-                </MudTr>
-                <MudTr>
-                    <MudTd>Customer Expressed Readiness</MudTd>
-                    <MudTd><MudRadioGroup T="string" @bind-SelectedOption="Readiness"><MudRadio T="string" Option="yes">Yes</MudRadio></MudRadioGroup></MudTd>
-                    <MudTd><MudRadioGroup T="string" @bind-SelectedOption="Readiness"><MudRadio T="string" Option="no">No</MudRadio></MudRadioGroup></MudTd>
-                    <MudTd><MudTextField T="string" /></MudTd>
-                </MudTr>
-            </RowTemplate>
-        </MudTable>
-
-        <MudDivider Class="my-4" />
-
-        <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="Submit">Convert to Opportunity</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="Submit">@($"Convert to {TargetStage}")</MudButton>
         <MudButton Variant="Variant.Text" Color="Color.Default" OnClick="Cancel">Cancel</MudButton>
     </MudForm>
 </MudPaper>
@@ -87,15 +51,15 @@
 @code {
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
     [Parameter] public LeadItem Lead { get; set; }
-    private string LeadSearch;
-    private string BudgetAvailability;
-    private string AuthorityToDecide;
-    private string ProjectBudgetIdentified;
-    private string DecisionMaker;
-    private string ClearNeed;
-    private string TimelineMatch;
-    private string Readiness;
+    [Parameter] public string TargetStage { get; set; } = "Qualified";
 
+    private string LeadSearch;
+    bool _expanded = false;
+
+    private void OnExpandCollapseClick()
+    {
+        _expanded = !_expanded;
+    }
     void LookupLead()
     {
         // Lookup logic here

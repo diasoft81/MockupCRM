@@ -1,0 +1,12 @@
+﻿@using Portal.Model
+<MudText Typo="Typo.h6">Plan for Negotiation</MudText>
+<MudSelect T="string" Label="Ready for Negotiation" @bind-Value="ReadyForNego">
+    <MudSelectItem Value=@("Yes")>Yes</MudSelectItem>
+    <MudSelectItem Value=@("No")>No</MudSelectItem>
+    <MudSelectItem Value=@("Unknown")>Unknown</MudSelectItem>
+</MudSelect>
+
+@code {
+    [Parameter] public LeadItem Lead { get; set; }
+    string ReadyForNego { get; set; }
+}

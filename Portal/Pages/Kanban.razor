@@ -95,7 +95,7 @@
                 BackgroundClass = "full-width-dialog"
             };
         var parameters = new DialogParameters();
-        var dialog = await DialogService.ShowAsync<ComLeadEntry>("Qualification", parameters, options);
+        var dialog = await DialogService.ShowAsync<ComLeadEntry>("Update Stage", parameters, options);
         var result = await dialog.Result;
 
         if (result?.Canceled == false)
@@ -107,49 +107,22 @@
 
     async Task OnMoveLeadClicked(LeadItem lead, string newStage)
     {
-        if (lead.Stage == "Lead" && newStage == "Qualified")
-        {
-            var options = new DialogOptions()
-                {
-                    MaxWidth = MaxWidth.False, // atau MaxWidth.Large
-                    FullWidth = true,
-                    CloseButton = true,
-                    BackdropClick = false,
-                    FullScreen = true,
-                    BackgroundClass = "full-width-dialog"
-                };
-            var parameters = new DialogParameters { ["Lead"] = lead };
-            var dialog = await DialogService.ShowAsync<ComQualification>("Qualification", parameters, options);
-            var result = await dialog.Result;
-
-            if (result?.Canceled == false)
+        var options = new DialogOptions()
             {
-                await MoveLead(lead, newStage, true);
-            }
-        }
-        else if (lead.Stage == "Qualified" && newStage == "Survey")
-        {
-            var options = new DialogOptions()
-                {
-                    MaxWidth = MaxWidth.False, // atau MaxWidth.Large
-                    FullWidth = true,
-                    CloseButton = true,
-                    BackdropClick = false,
-                    FullScreen = true,
-                    BackgroundClass = "full-width-dialog"
-                };
-            var parameters = new DialogParameters { ["Lead"] = lead };
-            var dialog = await DialogService.ShowAsync<ComQualification>("Qualification", parameters, options);
-            var result = await dialog.Result;
+                MaxWidth = MaxWidth.False, // atau MaxWidth.Large
+                FullWidth = true,
+                CloseButton = true,
+                BackdropClick = false,
+                FullScreen = true,
+                BackgroundClass = "full-width-dialog"
+            };
+        var parameters = new DialogParameters { ["Lead"] = lead, ["TargetStage"] = newStage };
+        var dialog = await DialogService.ShowAsync<ComQualification>("Qualification", parameters, options);
+        var result = await dialog.Result;
 
-            if (result?.Canceled == false)
-            {
-                await MoveLead(lead, newStage, true);
-            }
-        }
-        else
+        if ((result?.Canceled ?? true) == false)
         {
-            await MoveLead(lead, newStage);
+            await MoveLead(lead, newStage, true);
         }
     }
 

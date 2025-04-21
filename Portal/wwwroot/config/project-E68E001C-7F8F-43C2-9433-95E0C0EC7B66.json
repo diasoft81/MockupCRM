@@ -4,15 +4,58 @@
 	"Title": "TEB CRM",
 	"Menus": [
 		{
+			"Name": "dashboard_activity_performance",
+			"Title": "Sales Activity Performance",
+			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
+			"Href": "/"
+		},
+		{
 			"Name": "kanban",
 			"Title": "Kanban",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
 			"Href": "/kanban"
 		},
 		{
-			"Name": "crm",
-			"Title": "CRM",
+			"Name": "dashboard_sales_performance",
+			"Title": "Sales Performance",
+			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
+			"Href": "/reports/salesperformance"
+		},
+		{
+			"Name": "project",
+			"Title": "Project",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/conference-call.png",
+			"Children": [
+				{
+					"Name": "customer",
+					"Title": "Customer",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/installation.png",
+					"Href": "/customer"
+				},
+				{
+					"Name": "installation",
+					"Title": "Installation",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/maintenance.png",
+					"Href": "/installation"
+				},
+				{
+					"Name": "troubleshooting",
+					"Title": "Troubleshooting",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/maintenance.png",
+					"Href": "/troubleshooting"
+				},
+				{
+					"Name": "sparepart",
+					"Title": "Sparepart",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
+					"Href": "/sparepart"
+				}
+			]
+		},
+		{
+			"Name": "salespipeline",
+			"Title": "Sales Pipeline",
+			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/sales-performance.png",
 			"Children": [
 				{
 					"Name": "leadentry",
@@ -37,14 +80,7 @@
 					"Title": "Activity",
 					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
 					"Href": "/activity"
-				}
-			]
-		},
-		{
-			"Name": "salespipeline",
-			"Title": "Sales Pipeline",
-			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/sales-performance.png",
-			"Children": [
+				},
 				{
 					"Name": "opportunity",
 					"Title": "Opportunity",
