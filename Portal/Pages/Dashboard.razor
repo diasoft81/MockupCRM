@@ -5,6 +5,36 @@
 @layout WebLayout
 @inject IJSRuntime JS
 
+<style>
+    .dashboard-chart {
+        height: 320px !important; /* kamu bisa atur sesuai kebutuhan */
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .dashboard-chart canvas {
+        flex-grow: 1;
+    }
+
+    .chart-container {
+        height: 350px; /* kamu bisa sesuaikan */
+        position: relative;
+    }
+
+        .chart-container canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+</style>
+
 <div class="row mb-3">
     <div class="col-md-2">
         <label>Bulan:</label>
@@ -112,19 +142,23 @@
 
     <!-- Row 2: Pie and Line Chart -->
     <div class="row mb-3">
-        <div class="col-md-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Lead Stage Distribution</h5>
-                    <canvas id="leadPieChart"></canvas>
+        <div class="col-md-3">
+            <div class="card h-100 dashboard-chart">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title mb-3">Lead Stage Distribution</h5>
+                    <div class="flex-fill position-relative">
+                        <canvas id="leadPieChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Weekly Lead Movement (8 weeks)</h5>
-                    <canvas id="weeklyLineChart"></canvas>
+        <div class="col-md-9">
+            <div class="card h-100 dashboard-chart">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title mb-3">Weekly Lead Movement (8 weeks)</h5>
+                    <div class="flex-fill position-relative">
+                        <canvas id="weeklyLineChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,19 +166,23 @@
 
     <!-- Row 3: Activity per Sales -->
     <div class="row mb-3">
-        <div class="col-md-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Activity This Week per Sales</h5>
-                    <canvas id="salesPieChart"></canvas>
+        <div class="col-md-3">
+            <div class="card h-100 dashboard-chart">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title mb-3">Activity This Week per Sales</h5>
+                    <div class="flex-fill position-relative">
+                        <canvas id="salesPieChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Monthly Activity by Sales (Stacked)</h5>
-                    <canvas id="stackedBarChart"></canvas>
+        <div class="col-md-9">
+            <div class="card h-100 dashboard-chart">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title mb-3">Monthly Activity by Sales (Stacked)</h5>
+                    <div class="flex-fill position-relative">
+                        <canvas id="stackedBarChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>

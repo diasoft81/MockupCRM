@@ -26,8 +26,48 @@ window.renderDashboardCharts = (data) => {
                 borderColor: ds.color,
                 tension: 0.1
             }))
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        boxWidth: 12,
+                        padding: 10
+                    }
+                },
+                title: {
+                    display: false,
+                    text: 'Your Chart Title Here',
+                    padding: {
+                        top: 20,
+                        bottom: 10
+                    }
+                }
+            },
+            layout: {
+                padding: {
+                    top: 30  // Tambahan ruang di atas canvas (bukan cuma title)
+                }
+            },
+            scales: {
+                x: {
+                    stacked: false
+                },
+                y: {
+                    stacked: false,
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0 // pastikan hanya angka bulat
+                    }
+                }
+            }
         }
+
     });
+
 
     window.dashboardCharts.salesPie = new Chart(document.getElementById("salesPieChart"), {
         type: 'pie',
@@ -52,7 +92,29 @@ window.renderDashboardCharts = (data) => {
         },
         options: {
             responsive: true,
-            plugins: { legend: { position: 'top' } },
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        boxWidth: 12,
+                        padding: 10
+                    }
+                },
+                title: {
+                    display: false,
+                    text: 'Your Chart Title Here',
+                    padding: {
+                        top: 20,
+                        bottom: 10
+                    }
+                }
+            },
+            layout: {
+                padding: {
+                    top: 30  // Tambahan ruang di atas canvas (bukan cuma title)
+                }
+            },
             scales: {
                 x: { stacked: true },
                 y: { stacked: true }
@@ -134,37 +196,43 @@ window.prepareDashboardChartData = (jsonData) => {
         labels: (jsonData.leadTrend8Weeks || []).map(w => w.week),
         datasets: [
             {
+                label: 'Total',
+                data: (jsonData.leadTrend8Weeks || []).map(w => w.Total),
+                color: '#343a40' // Abu-abu gelap
+            },
+            {
                 label: 'Lead',
                 data: (jsonData.leadTrend8Weeks || []).map(w => w.Lead),
-                color: '#007bff'
+                color: '#007bff' // Biru
             },
             {
                 label: 'Qualified',
                 data: (jsonData.leadTrend8Weeks || []).map(w => w.Qualified),
-                color: '#28a745'
+                color: '#28a745' // Hijau
             },
             {
                 label: 'Survey',
                 data: (jsonData.leadTrend8Weeks || []).map(w => w.Survey),
-                color: '#ffc107'
+                color: '#ffc107' // Kuning
             },
             {
                 label: 'Negotiation',
                 data: (jsonData.leadTrend8Weeks || []).map(w => w.Negotiation),
-                color: '#17a2b8'
+                color: '#17a2b8' // Biru muda
             },
             {
                 label: 'Win',
                 data: (jsonData.leadTrend8Weeks || []).map(w => w.Win),
-                color: '#6f42c1'
+                color: '#6f42c1' // Ungu
             },
             {
                 label: 'Lost',
                 data: (jsonData.leadTrend8Weeks || []).map(w => w.Lost),
-                color: '#dc3545'
+                color: '#dc3545' // Merah
             }
         ]
     };
+
 
     const activityThisWeek = {
         labels: Object.keys(jsonData.activityThisWeekPie || {}),

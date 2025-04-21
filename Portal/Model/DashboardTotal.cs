@@ -75,6 +75,8 @@
         [JsonPropertyName("week")]
         public string Week { get; set; }
 
+        [JsonPropertyName("Total")]
+        public int Total { get; set; }
         [JsonPropertyName("Lead")]
         public int Lead { get; set; }
 

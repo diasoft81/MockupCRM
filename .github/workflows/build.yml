@@ -1,0 +1,75 @@
+﻿name: Build and Deploy Sales Performance Monitoring
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DOTNET_VERSION: '8.0'
+  CS_PROJ_PATH: 'Portal/Portal.csproj'
+  OUTPUT_PATH: './output/poc-crm.diasoft.web.id'
+  FTP_SERVER: 'diasoft.web.id'
+  FTP_USERNAME: 'ofpxdhwd'
+  FTP_PASSWORD: 'm10dK54dTy'
+  FTP_REMOTE_DIR: '/poc-crm.diasoft.web.id/'  # Hapus './' di depan agar aman
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Set Environment Variable
+        run: echo "DOTNET_ENVIRONMENT=Production" >> $GITHUB_ENV
+
+      - name: Set version string
+        run: echo "VERSION=1.0.${{ github.run_number }}" >> $GITHUB_ENV
+
+      - name: Restore dependencies
+        run: dotnet restore ${{ env.CS_PROJ_PATH }}
+
+      - name: Build the project with stamped version
+        run: |
+          dotnet build ${{ env.CS_PROJ_PATH }} --configuration Release \
+            /p:Version=${{ env.VERSION }} \
+            /p:AssemblyVersion=${{ env.VERSION }}.0 \
+            /p:FileVersion=${{ env.VERSION }}.0
+
+      - name: Publish the project
+        run: dotnet publish ${{ env.CS_PROJ_PATH }} -c Release -o ${{ env.OUTPUT_PATH }}
+
+      - name: Create version.txt
+        run: |
+          mkdir -p ${{ env.OUTPUT_PATH }}/wwwroot
+          echo "Version: ${{ env.VERSION }}" > ${{ env.OUTPUT_PATH }}/wwwroot/version.txt
+
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ env.FTP_SERVER }}
+          username: ${{ env.FTP_USERNAME }}
+          password: ${{ env.FTP_PASSWORD }}
+          local-dir: ${{ env.OUTPUT_PATH }}/wwwroot/
+          git-ftp-args: --insecure --delete
+          server-dir: ${{ env.FTP_REMOTE_DIR }}
+
+      - name: Validate WebApp Availability
+        run: |
+          for url in https://poc-crm.diasoft.web.id; do
+            echo "Checking $url ..."
+            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" $url)
+            if [ "$STATUS_CODE" -ne 200 ]; then
+              echo "❌ ERROR: $url returned $STATUS_CODE"
+              exit 1
+            else
+              echo "✅ $url is OK"
+            fi
+          done

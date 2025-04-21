@@ -1,0 +1,522 @@
+[
+	{
+		"week": "W1",
+		"Total": 0,
+		"Lead": 0,
+		"Qualified": 0,
+		"Survey": 0,
+		"Negotiation": 0,
+		"Win": 0,
+		"Lost": 0
+	},
+	{
+		"week": "W2",
+		"Total": 4,
+		"Lead": 3,
+		"Qualified": 1,
+		"Survey": 0,
+		"Negotiation": 0,
+		"Win": 0,
+		"Lost": 0
+	},
+	{
+		"week": "W3",
+		"Total": 10,
+		"Lead": 5,
+		"Qualified": 2,
+		"Survey": 1,
+		"Negotiation": 0,
+		"Win": 1,
+		"Lost": 1
+	},
+	{
+		"week": "W4",
+		"Total": 17,
+		"Lead": 6,
+		"Qualified": 2,
+		"Survey": 2,
+		"Negotiation": 1,
+		"Win": 2,
+		"Lost": 2
+	},
+	{
+		"week": "W5",
+		"Total": 25,
+		"Lead": 7,
+		"Qualified": 3,
+		"Survey": 2,
+		"Negotiation": 2,
+		"Win": 3,
+		"Lost": 3
+	},
+	{
+		"week": "W6",
+		"Total": 34,
+		"Lead": 8,
+		"Qualified": 4,
+		"Survey": 2,
+		"Negotiation": 2,
+		"Win": 5,
+		"Lost": 4
+	},
+	{
+		"week": "W7",
+		"Total": 44,
+		"Lead": 9,
+		"Qualified": 4,
+		"Survey": 3,
+		"Negotiation": 2,
+		"Win": 8,
+		"Lost": 4
+	},
+	{
+		"week": "W8",
+		"Total": 54,
+		"Lead": 9,
+		"Qualified": 5,
+		"Survey": 4,
+		"Negotiation": 3,
+		"Win": 11,
+		"Lost": 5
+	},
+	{
+		"week": "W9",
+		"Total": 64,
+		"Lead": 8,
+		"Qualified": 6,
+		"Survey": 4,
+		"Negotiation": 3,
+		"Win": 15,
+		"Lost": 6
+	},
+	{
+		"week": "W10",
+		"Total": 74,
+		"Lead": 8,
+		"Qualified": 6,
+		"Survey": 5,
+		"Negotiation": 4,
+		"Win": 20,
+		"Lost": 7
+	},
+	{
+		"week": "W11",
+		"Total": 85,
+		"Lead": 8,
+		"Qualified": 7,
+		"Survey": 5,
+		"Negotiation": 5,
+		"Win": 25,
+		"Lost": 8
+	},
+	{
+		"week": "W12",
+		"Total": 95,
+		"Lead": 7,
+		"Qualified": 8,
+		"Survey": 5,
+		"Negotiation": 5,
+		"Win": 32,
+		"Lost": 10
+	},
+	{
+		"week": "W13",
+		"Total": 105,
+		"Lead": 7,
+		"Qualified": 9,
+		"Survey": 5,
+		"Negotiation": 6,
+		"Win": 39,
+		"Lost": 12
+	},
+	{
+		"week": "W14",
+		"Total": 113,
+		"Lead": 6,
+		"Qualified": 9,
+		"Survey": 6,
+		"Negotiation": 6,
+		"Win": 46,
+		"Lost": 15
+	},
+	{
+		"week": "W15",
+		"Total": 120,
+		"Lead": 7,
+		"Qualified": 10,
+		"Survey": 6,
+		"Negotiation": 6,
+		"Win": 54,
+		"Lost": 30
+	},
+	{
+		"week": "W16",
+		"Total": 129,
+		"Lead": 8,
+		"Qualified": 9,
+		"Survey": 6,
+		"Negotiation": 6,
+		"Win": 60,
+		"Lost": 34
+	},
+	{
+		"week": "W17",
+		"Total": 138,
+		"Lead": 7,
+		"Qualified": 9,
+		"Survey": 6,
+		"Negotiation": 6,
+		"Win": 66,
+		"Lost": 38
+	},
+	{
+		"week": "W18",
+		"Total": 147,
+		"Lead": 7,
+		"Qualified": 9,
+		"Survey": 7,
+		"Negotiation": 6,
+		"Win": 72,
+		"Lost": 42
+	},
+	{
+		"week": "W19",
+		"Total": 157,
+		"Lead": 6,
+		"Qualified": 10,
+		"Survey": 7,
+		"Negotiation": 6,
+		"Win": 78,
+		"Lost": 46
+	},
+	{
+		"week": "W20",
+		"Total": 167,
+		"Lead": 6,
+		"Qualified": 10,
+		"Survey": 7,
+		"Negotiation": 7,
+		"Win": 84,
+		"Lost": 50
+	},
+	{
+		"week": "W21",
+		"Total": 176,
+		"Lead": 6,
+		"Qualified": 9,
+		"Survey": 7,
+		"Negotiation": 7,
+		"Win": 90,
+		"Lost": 54
+	},
+	{
+		"week": "W22",
+		"Total": 184,
+		"Lead": 5,
+		"Qualified": 9,
+		"Survey": 7,
+		"Negotiation": 7,
+		"Win": 96,
+		"Lost": 58
+	},
+	{
+		"week": "W23",
+		"Total": 192,
+		"Lead": 5,
+		"Qualified": 8,
+		"Survey": 7,
+		"Negotiation": 7,
+		"Win": 102,
+		"Lost": 62
+	},
+	{
+		"week": "W24",
+		"Total": 200,
+		"Lead": 5,
+		"Qualified": 8,
+		"Survey": 8,
+		"Negotiation": 7,
+		"Win": 108,
+		"Lost": 66
+	},
+	{
+		"week": "W25",
+		"Total": 208,
+		"Lead": 5,
+		"Qualified": 8,
+		"Survey": 7,
+		"Negotiation": 7,
+		"Win": 114,
+		"Lost": 70
+	},
+	{
+		"week": "W26",
+		"Total": 216,
+		"Lead": 5,
+		"Qualified": 8,
+		"Survey": 7,
+		"Negotiation": 7,
+		"Win": 120,
+		"Lost": 74
+	},
+	{
+		"week": "W27",
+		"Total": 224,
+		"Lead": 5,
+		"Qualified": 7,
+		"Survey": 7,
+		"Negotiation": 7,
+		"Win": 126,
+		"Lost": 78
+	},
+	{
+		"week": "W28",
+		"Total": 232,
+		"Lead": 5,
+		"Qualified": 7,
+		"Survey": 7,
+		"Negotiation": 7,
+		"Win": 132,
+		"Lost": 82
+	},
+	{
+		"week": "W29",
+		"Total": 240,
+		"Lead": 5,
+		"Qualified": 7,
+		"Survey": 6,
+		"Negotiation": 7,
+		"Win": 138,
+		"Lost": 86
+	},
+	{
+		"week": "W30",
+		"Total": 248,
+		"Lead": 5,
+		"Qualified": 7,
+		"Survey": 6,
+		"Negotiation": 7,
+		"Win": 144,
+		"Lost": 90
+	},
+	{
+		"week": "W31",
+		"Total": 256,
+		"Lead": 5,
+		"Qualified": 6,
+		"Survey": 6,
+		"Negotiation": 7,
+		"Win": 150,
+		"Lost": 94
+	},
+	{
+		"week": "W32",
+		"Total": 264,
+		"Lead": 4,
+		"Qualified": 6,
+		"Survey": 6,
+		"Negotiation": 7,
+		"Win": 156,
+		"Lost": 98
+	},
+	{
+		"week": "W33",
+		"Total": 272,
+		"Lead": 4,
+		"Qualified": 6,
+		"Survey": 6,
+		"Negotiation": 7,
+		"Win": 162,
+		"Lost": 102
+	},
+	{
+		"week": "W34",
+		"Total": 280,
+		"Lead": 4,
+		"Qualified": 6,
+		"Survey": 6,
+		"Negotiation": 6,
+		"Win": 168,
+		"Lost": 106
+	},
+	{
+		"week": "W35",
+		"Total": 288,
+		"Lead": 4,
+		"Qualified": 6,
+		"Survey": 6,
+		"Negotiation": 6,
+		"Win": 174,
+		"Lost": 110
+	},
+	{
+		"week": "W36",
+		"Total": 296,
+		"Lead": 4,
+		"Qualified": 5,
+		"Survey": 6,
+		"Negotiation": 6,
+		"Win": 180,
+		"Lost": 114
+	},
+	{
+		"week": "W37",
+		"Total": 304,
+		"Lead": 4,
+		"Qualified": 5,
+		"Survey": 6,
+		"Negotiation": 6,
+		"Win": 186,
+		"Lost": 118
+	},
+	{
+		"week": "W38",
+		"Total": 312,
+		"Lead": 3,
+		"Qualified": 5,
+		"Survey": 6,
+		"Negotiation": 6,
+		"Win": 192,
+		"Lost": 122
+	},
+	{
+		"week": "W39",
+		"Total": 320,
+		"Lead": 3,
+		"Qualified": 5,
+		"Survey": 6,
+		"Negotiation": 6,
+		"Win": 198,
+		"Lost": 126
+	},
+	{
+		"week": "W40",
+		"Total": 328,
+		"Lead": 3,
+		"Qualified": 5,
+		"Survey": 5,
+		"Negotiation": 6,
+		"Win": 204,
+		"Lost": 130
+	},
+	{
+		"week": "W41",
+		"Total": 336,
+		"Lead": 3,
+		"Qualified": 5,
+		"Survey": 5,
+		"Negotiation": 6,
+		"Win": 210,
+		"Lost": 134
+	},
+	{
+		"week": "W42",
+		"Total": 344,
+		"Lead": 3,
+		"Qualified": 4,
+		"Survey": 5,
+		"Negotiation": 6,
+		"Win": 216,
+		"Lost": 138
+	},
+	{
+		"week": "W43",
+		"Total": 352,
+		"Lead": 3,
+		"Qualified": 4,
+		"Survey": 5,
+		"Negotiation": 6,
+		"Win": 222,
+		"Lost": 142
+	},
+	{
+		"week": "W44",
+		"Total": 360,
+		"Lead": 3,
+		"Qualified": 4,
+		"Survey": 5,
+		"Negotiation": 5,
+		"Win": 228,
+		"Lost": 146
+	},
+	{
+		"week": "W45",
+		"Total": 368,
+		"Lead": 3,
+		"Qualified": 4,
+		"Survey": 4,
+		"Negotiation": 5,
+		"Win": 234,
+		"Lost": 150
+	},
+	{
+		"week": "W46",
+		"Total": 376,
+		"Lead": 2,
+		"Qualified": 4,
+		"Survey": 4,
+		"Negotiation": 5,
+		"Win": 240,
+		"Lost": 154
+	},
+	{
+		"week": "W47",
+		"Total": 384,
+		"Lead": 2,
+		"Qualified": 4,
+		"Survey": 4,
+		"Negotiation": 5,
+		"Win": 246,
+		"Lost": 158
+	},
+	{
+		"week": "W48",
+		"Total": 392,
+		"Lead": 2,
+		"Qualified": 3,
+		"Survey": 4,
+		"Negotiation": 5,
+		"Win": 252,
+		"Lost": 162
+	},
+	{
+		"week": "W49",
+		"Total": 400,
+		"Lead": 2,
+		"Qualified": 3,
+		"Survey": 4,
+		"Negotiation": 5,
+		"Win": 258,
+		"Lost": 166
+	},
+	{
+		"week": "W50",
+		"Total": 408,
+		"Lead": 2,
+		"Qualified": 3,
+		"Survey": 3,
+		"Negotiation": 4,
+		"Win": 264,
+		"Lost": 170
+	},
+	{
+		"week": "W51",
+		"Total": 416,
+		"Lead": 1,
+		"Qualified": 3,
+		"Survey": 3,
+		"Negotiation": 4,
+		"Win": 270,
+		"Lost": 174
+	},
+	{
+		"week": "W52",
+		"Total": 424,
+		"Lead": 1,
+		"Qualified": 3,
+		"Survey": 3,
+		"Negotiation": 4,
+		"Win": 276,
+		"Lost": 178
+	}
+]

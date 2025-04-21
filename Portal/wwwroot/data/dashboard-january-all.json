@@ -25,112 +25,102 @@
 	"leadTrend8Weeks": [
 		{
 			"week": "W1",
-			"Lead": 10,
-			"Qualified": 5,
-			"Survey": 4,
-			"Negotiation": 3,
-			"Win": 2,
-			"Lost": 1
+			"Lead": 20,
+			"Qualified": 0,
+			"Survey": 0,
+			"Negotiation": 0,
+			"Win": 0,
+			"Lost": 0
 		},
 		{
 			"week": "W2",
-			"Lead": 12,
-			"Qualified": 6,
-			"Survey": 5,
-			"Negotiation": 4,
-			"Win": 3,
-			"Lost": 2
+			"Lead": 18,
+			"Qualified": 2,
+			"Survey": 0,
+			"Negotiation": 0,
+			"Win": 0,
+			"Lost": 0
 		},
 		{
 			"week": "W3",
-			"Lead": 14,
-			"Qualified": 8,
-			"Survey": 6,
-			"Negotiation": 5,
-			"Win": 4,
-			"Lost": 3
+			"Lead": 15,
+			"Qualified": 4,
+			"Survey": 1,
+			"Negotiation": 0,
+			"Win": 0,
+			"Lost": 0
 		},
 		{
 			"week": "W4",
-			"Lead": 16,
-			"Qualified": 10,
-			"Survey": 7,
-			"Negotiation": 6,
-			"Win": 5,
-			"Lost": 4
+			"Lead": 17,
+			"Qualified": 3,
+			"Survey": 2,
+			"Negotiation": 0,
+			"Win": 0,
+			"Lost": 0
 		},
 		{
 			"week": "W5",
-			"Lead": 18,
-			"Qualified": 12,
-			"Survey": 9,
-			"Negotiation": 7,
-			"Win": 6,
-			"Lost": 5
+			"Lead": 14,
+			"Qualified": 4,
+			"Survey": 3,
+			"Negotiation": 1,
+			"Win": 0,
+			"Lost": 0
 		},
 		{
 			"week": "W6",
-			"Lead": 20,
-			"Qualified": 14,
-			"Survey": 11,
-			"Negotiation": 8,
-			"Win": 7,
-			"Lost": 6
+			"Lead": 13,
+			"Qualified": 4,
+			"Survey": 3,
+			"Negotiation": 2,
+			"Win": 0.5,
+			"Lost": 1.5
 		},
 		{
 			"week": "W7",
-			"Lead": 22,
-			"Qualified": 16,
-			"Survey": 13,
-			"Negotiation": 9,
-			"Win": 8,
-			"Lost": 7
-		},
-		{
-			"week": "W8",
-			"Lead": 24,
-			"Qualified": 18,
-			"Survey": 15,
-			"Negotiation": 10,
-			"Win": 9,
-			"Lost": 8
+			"Lead": 11,
+			"Qualified": 5,
+			"Survey": 2,
+			"Negotiation": 3,
+			"Win": 1.25,
+			"Lost": 3.75,
+
+			"activityWeeklyBySales": [
+				{
+					"sales": "Sales A",
+					"region": "East",
+					"product": "EV Charger B",
+					"weeks": {
+						"W1": 12,
+						"W2": 14,
+						"W3": 16,
+						"W4": 18
+					}
+				}
+			],
+			"activityThisWeekPie": {
+				"Sales A": 50,
+				"Sales B": 25,
+				"Sales C": 15,
+				"Sales D": 10
+			},
+			"activityPlan": {
+				"total": 180,
+				"meeting": 90,
+				"call": 60,
+				"email": 20,
+				"proposal": 10
+			},
+			"taskDetails": [
+				{
+					"title": "Follow-up with Client XYZ",
+					"dueDate": "2025-02-10",
+					"status": "In Progress",
+					"assignedTo": "Sales B",
+					"channel": "Offline",
+					"region": "East",
+					"product": "EV Charger B"
+				}
+			]
 		}
-	],
-	"activityWeeklyBySales": [
-		{
-			"sales": "Sales A",
-			"region": "East",
-			"product": "EV Charger B",
-			"weeks": {
-				"W1": 12,
-				"W2": 14,
-				"W3": 16,
-				"W4": 18
-			}
-		}
-	],
-	"activityThisWeekPie": {
-		"Sales A": 50,
-		"Sales B": 25,
-		"Sales C": 15,
-		"Sales D": 10
-	},
-	"activityPlan": {
-		"total": 180,
-		"meeting": 90,
-		"call": 60,
-		"email": 20,
-		"proposal": 10
-	},
-	"taskDetails": [
-		{
-			"title": "Follow-up with Client XYZ",
-			"dueDate": "2025-02-10",
-			"status": "In Progress",
-			"assignedTo": "Sales B",
-			"channel": "Offline",
-			"region": "East",
-			"product": "EV Charger B"
-		}
-	]
-}
