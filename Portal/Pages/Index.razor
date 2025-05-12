@@ -1,0 +1,49 @@
+﻿@page "/"
+
+@layout WebLayout
+
+@inject NavigationManager Navigation
+
+<div class="container">
+    <div class="task-form">
+        <h1 style="color:#004080;">Welcome to TEB CRM</h1>
+        <p>
+            <strong>TEB CRM</strong> is a modern platform to monitor <strong>Sales Performance</strong> in real time.
+            It empowers your team to track, measure, and optimize sales processes effectively.
+        </p>
+
+        <div class="form-section">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Real-time sales performance dashboard</li>
+                <li>Customizable sales pipeline and stages</li>
+                <li>Role-based access for Admin, Sales Leader, and Sales Executive</li>
+                <li>Integrated activity logs and productivity tracking</li>
+            </ul>
+        </div>
+
+        <div class="form-section">
+            <h2>User Roles</h2>
+            <ul>
+                <li><strong>Admin</strong> – Manages users, roles, and configurations</li>
+                <li><strong>Sales Leader</strong> – Oversees team performance and assigns targets</li>
+                <li><strong>Sales Executive</strong> – Updates progress and follows up tasks</li>
+            </ul>
+        </div>
+
+        <div class="form-section">
+            <h2>Login Instructions</h2>
+            <p>
+                Please login using your <strong>Google account</strong> to access the dashboard and start managing your sales pipeline.
+            </p>
+            @* <button class="button" @onclick="TriggerLogin">Login with Google</button> *@
+        </div>
+    </div>
+</div>
+
+@code {
+    private void TriggerLogin()
+    {
+        Navigation.NavigateTo("login", true);
+    }
+}

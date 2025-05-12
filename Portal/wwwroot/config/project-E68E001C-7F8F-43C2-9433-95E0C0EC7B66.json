@@ -4,10 +4,10 @@
 	"Title": "TEB CRM",
 	"Menus": [
 		{
-			"Name": "dashboard_activity_performance",
-			"Title": "Sales Activity Performance",
+			"Name": "sales_team_performance",
+			"Title": "Sales Team Performance",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
-			"Href": "/"
+			"Href": "/sales_team"
 		},
 		{
 			"Name": "kanban",
@@ -16,7 +16,7 @@
 			"Href": "/kanban"
 		},
 		{
-			"Name": "dashboard_sales_performance",
+			"Name": "sales_performance",
 			"Title": "Sales Performance",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
 			"Href": "/reports/salesperformance"

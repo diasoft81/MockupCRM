@@ -40,6 +40,7 @@ namespace Portal.Layout
 
         private bool _isDarkMode = false;
         private string currentRoute;
+        private LoginStored loginStored;
 
         private MudTheme? _theme = null;
 
@@ -67,6 +68,9 @@ namespace Portal.Layout
 
             currentRoute = Navigation.Uri; // Mendapatkan URL lengkap
             currentRoute = Navigation.ToBaseRelativePath(Navigation.Uri); // Mendapatkan hanya path relatif
+
+            loginStored = await Session.IsLoginStored(LocalStorage);
+            if (pars != null) pars.VisibleDrawerButton = loginStored.IsLoggedIn == true;
 
             IsLayoutReady = true;
 #if DEBUG

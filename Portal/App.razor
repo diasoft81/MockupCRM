@@ -10,7 +10,14 @@
             }
             else
             {
-                <RouteView RouteData="@routeData" DefaultLayout="@typeof(EmptyLayout)" />
+                <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(EmptyLayout)">
+                    <NotAuthorized>
+                        <p class="text-danger">You are not authorized to access this page. <a href="/">Back to Home</a></p>
+                    </NotAuthorized>
+                    <Authorizing>
+                        <p>Authorizing...</p>
+                    </Authorizing>
+                </AuthorizeRouteView>
                 <FocusOnNavigate RouteData="@routeData" Selector="h1" />
             }
         </Found>
