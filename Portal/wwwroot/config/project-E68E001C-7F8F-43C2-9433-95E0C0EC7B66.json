@@ -28,43 +28,6 @@
 			"Href": "/reports/salesperformance"
 		},
 		{
-			"Name": "reference",
-			"Title": "Reference",
-			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/conference-call.png",
-			"Children": [
-				{
-					"Name": "customer",
-					"Title": "Customer",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/installation.png",
-					"Href": "/customer"
-				},
-				{
-					"Name": "installation",
-					"Title": "Installation",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/maintenance.png",
-					"Href": "/installation"
-				},
-				{
-					"Name": "troubleshooting",
-					"Title": "Troubleshooting",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/maintenance.png",
-					"Href": "/troubleshooting"
-				},
-				{
-					"Name": "sparepart",
-					"Title": "Sparepart",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
-					"Href": "/sparepart"
-				},
-				{
-					"Name": "erpsync",
-					"Title": "Sync with ERP",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/procurement.png",
-					"Href": "/erpsync"
-				}
-			]
-		},
-		{
 			"Name": "reports",
 			"Title": "Laporan & Monitoring",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/report.png",
