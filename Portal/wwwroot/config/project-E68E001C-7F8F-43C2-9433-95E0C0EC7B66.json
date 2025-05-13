@@ -4,14 +4,20 @@
 	"Title": "TEB CRM",
 	"Menus": [
 		{
-			"Name": "sales_team_performance",
-			"Title": "Sales Team Performance",
+			"Name": "sales_activity",
+			"Title": "Sales Activity",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
 			"Href": "/sales_team"
 		},
 		{
-			"Name": "kanban",
-			"Title": "Kanban",
+			"Name": "pipeline_sales",
+			"Title": "Pipeline Sales",
+			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
+			"Href": "/kanban"
+		},
+		{
+			"Name": "pipeline_delivery",
+			"Title": "Pipeline Delivery",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
 			"Href": "/kanban"
 		},
@@ -22,8 +28,8 @@
 			"Href": "/reports/salesperformance"
 		},
 		{
-			"Name": "project",
-			"Title": "Project",
+			"Name": "reference",
+			"Title": "Reference",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/conference-call.png",
 			"Children": [
 				{
@@ -49,49 +55,6 @@
 					"Title": "Sparepart",
 					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
 					"Href": "/sparepart"
-				}
-			]
-		},
-		{
-			"Name": "salespipeline",
-			"Title": "Sales Pipeline",
-			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/sales-performance.png",
-			"Children": [
-				{
-					"Name": "leadentry",
-					"Title": "Lead Entry",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/installation.png",
-					"Href": "/leadentry"
-				},
-				{
-					"Name": "qualification",
-					"Title": "Qualification",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/maintenance.png",
-					"Href": "/qualification"
-				},
-				{
-					"Name": "qualification2",
-					"Title": "Qualification2",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/maintenance.png",
-					"Href": "/qualification2"
-				},
-				{
-					"Name": "activity",
-					"Title": "Activity",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
-					"Href": "/activity"
-				},
-				{
-					"Name": "opportunity",
-					"Title": "Opportunity",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/troubleshoot.png",
-					"Href": "/opportunity"
-				},
-				{
-					"Name": "closing",
-					"Title": "Closing",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/settings.png",
-					"Href": "/closing"
 				},
 				{
 					"Name": "erpsync",
@@ -106,6 +69,18 @@
 			"Title": "Laporan & Monitoring",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/report.png",
 			"Children": [
+				{
+					"Name": "activity",
+					"Title": "Activity",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
+					"Href": "/activity"
+				},
+				{
+					"Name": "closing",
+					"Title": "Closing",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/settings.png",
+					"Href": "/closing"
+				},
 				{
 					"Name": "salesperformance",
 					"Title": "Sales Performance",

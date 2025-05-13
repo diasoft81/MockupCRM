@@ -36,71 +36,63 @@
 
 </style>
 
-<div class="row mb-3">
-    <div class="col-md-2">
-        <label>Bulan:</label>
-        <select class="form-control" Value="@selectedMonth" @onchange="OnFilterChanged">
-            @foreach (var month in months)
-            {
-                <option value="@month">@month</option>
-            }
-        </select>
+<div class="container-fluid">
+    <div class="row ml-3 mt-3 mb-3">
+        <div class="col-md-2">
+            <label>Bulan:</label>
+            <select class="form-control" Value="@selectedMonth" @onchange="OnFilterChanged">
+                @foreach (var month in months)
+                {
+                    <option value="@month">@month</option>
+                }
+            </select>
 
-    </div>
-    <div class="col-md-2">
-        <label>Sales Person:</label>
-        <select class="form-control" Value="selectedSales" @onchange="OnFilterChanged">
-            @foreach (var sales in salesPersons)
-            {
-                <option value="@sales">@sales</option>
-            }
-        </select>
-    </div>
-    <div class="col-md-2">
-        <label>Region:</label>
-        <select class="form-control" Value="selectedRegion" @onchange="OnFilterChanged">
-            @foreach (var region in regions)
-            {
-                <option value="@region">@region</option>
-            }
-        </select>
-    </div>
-    <div class="col-md-2">
-        <label>Channel:</label>
-        <select class="form-control" Value="selectedChannel" @onchange="OnFilterChanged">
-            @foreach (var channel in channels)
-            {
-                <option value="@channel">@channel</option>
-            }
-        </select>
-    </div>
-    <div class="col-md-2">
-        <label>Product:</label>
-        <select class="form-control" Value="selectedProduct" @onchange="OnFilterChanged">
-            @foreach (var product in products)
-            {
-                <option value="@product">@product</option>
-            }
-        </select>
-    </div>
-    <div class="col-md-2 d-flex align-items-end">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="stackToggle" Value="isStacked" @onchange="OnFilterChanged">
-            <label class="form-check-label" for="stackToggle">
-                Stack by Region/Product
-            </label>
+        </div>
+        <div class="col-md-2">
+            <label>Sales Person:</label>
+            <select class="form-control" Value="selectedSales" @onchange="OnFilterChanged">
+                @foreach (var sales in salesPersons)
+                {
+                    <option value="@sales">@sales</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label>Region:</label>
+            <select class="form-control" Value="selectedRegion" @onchange="OnFilterChanged">
+                @foreach (var region in regions)
+                {
+                    <option value="@region">@region</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label>Channel:</label>
+            <select class="form-control" Value="selectedChannel" @onchange="OnFilterChanged">
+                @foreach (var channel in channels)
+                {
+                    <option value="@channel">@channel</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label>Product:</label>
+            <select class="form-control" Value="selectedProduct" @onchange="OnFilterChanged">
+                @foreach (var product in products)
+                {
+                    <option value="@product">@product</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2">
+            <div class="row mb-3">
+                <div class="col">
+                    <button class="btn btn-secondary me-2" @onclick="ResetFilters">Reset</button>
+                    <button class="btn btn-primary" @onclick="ExportChart">Export Chart</button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="row mb-3">
-    <div class="col">
-        <button class="btn btn-secondary me-2" @onclick="ResetFilters">Reset</button>
-        <button class="btn btn-primary" @onclick="ExportChart">Export Chart</button>
-    </div>
-</div>
-
-<div class="container-fluid">
     <!-- Row 1: Summary Cards -->
     <div class="row mb-3">
         <div class="col-md-3">
@@ -216,7 +208,30 @@
                             <h6>Email Proposal to Client C</h6>
                             <p class="mb-0">1:00 PM</p>
                         </div>
-                        <!-- Add more task cards as needed -->
+                        <div class="d-inline-block card p-2 mr-2" style="width: 200px;">
+                            <h6>Meeting with Client D</h6>
+                            <p class="mb-0">10:00 AM</p>
+                        </div>
+                        <div class="d-inline-block card p-2 mr-2" style="width: 200px;">
+                            <h6>Follow-up Call: Client E</h6>
+                            <p class="mb-0">11:30 AM</p>
+                        </div>
+                        <div class="d-inline-block card p-2 mr-2" style="width: 200px;">
+                            <h6>Email Proposal to Client F</h6>
+                            <p class="mb-0">1:00 PM</p>
+                        </div>
+                        <div class="d-inline-block card p-2 mr-2" style="width: 200px;">
+                            <h6>Meeting with Client G</h6>
+                            <p class="mb-0">10:00 AM</p>
+                        </div>
+                        <div class="d-inline-block card p-2 mr-2" style="width: 200px;">
+                            <h6>Follow-up Call: Client H</h6>
+                            <p class="mb-0">11:30 AM</p>
+                        </div>
+                        <div class="d-inline-block card p-2 mr-2" style="width: 200px;">
+                            <h6>Email Proposal to Client I</h6>
+                            <p class="mb-0">1:00 PM</p>
+                        </div>
                     </div>
                 </div>
             </div>
