@@ -13,13 +13,13 @@
 			"Name": "pipeline_sales",
 			"Title": "Pipeline Sales",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
-			"Href": "/kanban"
+			"Href": "/kanban/sales"
 		},
 		{
 			"Name": "pipeline_delivery",
 			"Title": "Pipeline Delivery",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
-			"Href": "/kanban"
+			"Href": "/kanban/delivery"
 		},
 		{
 			"Name": "sales_performance",

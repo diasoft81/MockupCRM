@@ -1,4 +1,4 @@
-﻿@page "/kanban"
+﻿@page "/kanban/{pipeline?}"
 @using CoreNET.Blazor.Shared.Helper
 @using Portal.Model
 @using Portal.Pages.CRM
@@ -11,7 +11,7 @@
 <div class="container">
     <div class="mb-4">
         <h2>Sales Kanban Board</h2>
-        <p>Gunakan tampilan Kanban ini untuk memonitor dan memindahkan leads antar tahapan proses penjualan.</p>
+        <p>Gunakan tampilan Kanban ini untuk memonitor dan memindahkan @((pipeline == "sales") ? "leads" : "customer") antar tahapan proses penjualan.</p>
         <button class="button" @onclick="AddLead"><i class="fas fa-plus"></i> Add Lead</button>
     </div>
 
@@ -39,18 +39,55 @@
 </div>
 
 @code {
-    string[] Stages = new[] { "Lead", "Qualified", "Survey", "Negotiation", "Won", "Lost" };
-
-    List<LeadItem> Leads = new()
+    [Parameter] public string pipeline { get; set; }
+    private string[] Stages
     {
-        new LeadItem("Lead 1", "Perusahaan A", "Lead"),
-        new LeadItem("Lead 2", "Perusahaan B", "Lead"),
-        new LeadItem("Lead 3", "Perusahaan C", "Qualified"),
-        new LeadItem("Lead 4", "Perusahaan D", "Negotiation"),
-        new LeadItem("Lead 5", "Perusahaan E", "Lost"),
-        new LeadItem("Lead 6", "Perusahaan F", "Survey"),
-        new LeadItem("Lead 7", "Perusahaan G", "Won")
-    };
+        get
+        {
+            if (pipeline == "sales")
+            {
+                return new[] { "Lead", "Qualified", "Survey", "Negotiation", "Won", "Lost" };
+            }
+            else
+            {
+                return new[] { "Work Order", "Preparation", "Ready to Go", "In Progress", "Testing", "Done" };
+            }
+        }
+    }
+
+    List<LeadItem> Leads
+    {
+        get
+        {
+            if (pipeline == "sales")
+            {
+                return new()
+                    {
+                        new LeadItem("Lead 1", "Perusahaan A", "Lead"),
+                        new LeadItem("Lead 2", "Perusahaan B", "Lead"),
+                        new LeadItem("Lead 3", "Perusahaan C", "Qualified"),
+                        new LeadItem("Lead 4", "Perusahaan D", "Negotiation"),
+                        new LeadItem("Lead 5", "Perusahaan E", "Lost"),
+                        new LeadItem("Lead 6", "Perusahaan F", "Survey"),
+                        new LeadItem("Lead 7", "Perusahaan G", "Won")
+                    };
+            }
+            else
+            {
+                return new()
+                    {
+                        new LeadItem("Lead 1", "Perusahaan A", "Work Order"),
+                        new LeadItem("Lead 2", "Perusahaan B", "In Progress"),
+                        new LeadItem("Lead 3", "Perusahaan C", "Preparation"),
+                        new LeadItem("Lead 4", "Perusahaan D", "Ready to Go"),
+                        new LeadItem("Lead 5", "Perusahaan E", "In Progress"),
+                        new LeadItem("Lead 6", "Perusahaan F", "Testing"),
+                        new LeadItem("Lead 7", "Perusahaan G", "Done")
+                    };
+            }
+
+        }
+    }
 
     string GetStatusClass(LeadItem lead) =>
         lead.Status == "Done" ? "done" :
