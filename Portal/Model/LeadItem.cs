@@ -12,18 +12,19 @@
         public string CustomerCategory;
         public List<ProductItem> ProductNeeds = new();
         public string AdditionalNotes;
-        public string Title { get; set; }
+        public string Name { get; set; }
         public string Company { get; set; }
         public string Stage { get; set; }
-
+        public string Status { get; set; }
         public LeadItem()
         {
         }
-        public LeadItem(string title, string company, string stage)
+        public LeadItem(string name, string company, string stage, string status = "")
         {
-            Title = title;
+            Name = name;
             Company = company;
             Stage = stage;
+            Status = status;
         }
     }
 }

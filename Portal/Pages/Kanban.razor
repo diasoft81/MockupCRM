@@ -8,38 +8,34 @@
 
 <PageTitle>Kanban</PageTitle>
 
-<div class="mb-4">
-    <h2>Sales Kanban Board</h2>
-    <p>Gunakan tampilan Kanban ini untuk memonitor dan memindahkan leads antar tahapan proses penjualan. Klik "Add Lead" untuk menambahkan lead baru.</p>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="AddLead">Add Lead</MudButton>
-</div>
+<div class="container">
+    <div class="mb-4">
+        <h2>Sales Kanban Board</h2>
+        <p>Gunakan tampilan Kanban ini untuk memonitor dan memindahkan leads antar tahapan proses penjualan.</p>
+        <button class="button" @onclick="AddLead"><i class="fas fa-plus"></i> Add Lead</button>
+    </div>
 
-<div class="row g-3">
-    @foreach (var stage in Stages)
-    {
-        <div class="col-12 col-md-2">
-            <div class="card shadow-sm h-100">
-                <div class="card-header">
-                    <h5 class="mb-0">@stage</h5>
-                </div>
-                <div class="card-body kanban-column" id="@stage.ToLower().Replace(" ", "-")">
+    <div class="row g-3">
+        @foreach (var stage in Stages)
+        {
+            <div class="col-12 col-md-2">
+                <div class="kanban-column" id="@stage.ToLower().Replace(" ", "-")">
+                    <h5 class="text-center mb-3">@stage</h5>
+
                     @foreach (var lead in Leads.Where(l => l.Stage == stage))
                     {
-                        <div class="kanban-item card p-2 mb-2">
-                            <p><strong>@lead.Title</strong></p>
-                            <p>@lead.Company</p>
-                            <MudMenu Label="Move" Color="Color.Info" Variant="Variant.Filled" Dense="true" Class="w-100">
-                                @foreach (var targetStage in Stages.Where(s => s != lead.Stage))
-                                {
-                                    <MudMenuItem OnClick="() => OnMoveLeadClicked(lead, targetStage)">@targetStage</MudMenuItem>
-                                }
-                            </MudMenu>
+                        <div class="task-card @GetStatusClass(lead)">
+                            <strong>@lead.Name</strong>
+                            <div class="task-meta mt-2">
+                                <span>@lead.Company</span>
+                                <span>@lead.Status</span>
+                            </div>
                         </div>
                     }
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>
 
 @code {
@@ -56,6 +52,9 @@
         new LeadItem("Lead 7", "Perusahaan G", "Won")
     };
 
+    string GetStatusClass(LeadItem lead) =>
+        lead.Status == "Done" ? "done" :
+        lead.Status == "Overdue" ? "overdue" : "";
 
     DotNetObjectReference<Kanban>? objRef;
 
@@ -75,7 +74,7 @@
     [JSInvokable]
     public async Task OnLeadMoved(string title, string newStage)
     {
-        var lead = Leads.FirstOrDefault(l => l.Title == title);
+        var lead = Leads.FirstOrDefault(l => l.Name == title);
         if (lead != null && lead.Stage != newStage)
         {
             await OnMoveLeadClicked(lead, newStage);
