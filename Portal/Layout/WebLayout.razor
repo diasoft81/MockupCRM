@@ -71,7 +71,7 @@
 </style>
 
 <MudLayout Class="bg-body">
-    @if (topBar == null || leftMenu == null)
+    @if (!AppSettings.IsUsingComponent() && (topBar == null || leftMenu == null))
     {
         <MudOverlay Visible="true" Class="d-flex justify-content-center align-items-center" FullHeight="true">
             <MudProgressCircular Color="Color.Success" Size="Size.Small" Indeterminate="true" />

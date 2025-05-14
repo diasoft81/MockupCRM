@@ -4,7 +4,7 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>Development</ActiveDebugProfile>
+    <ActiveDebugProfile>Components</ActiveDebugProfile>
     <NameOfLastUsedPublishProfile>D:\diasoft81\MockupCRM\Portal\Properties\PublishProfiles\poc-crm.diasoft.web.id.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

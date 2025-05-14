@@ -59,9 +59,9 @@ namespace Portal.Layout
             _isDarkMode = await LocalStorage.IsDarkMode();
             _theme = ThemesHelper.GetTheme();
 
+            pars = new WidgetMainParams() { FixedProject = true };
             if (WidgetService != null && WidgetService.WidgetList != null && WidgetService.WidgetList.Count > 0)
             {
-                pars = new WidgetMainParams() { FixedProject = true };
                 topBar = WidgetService.GetWidgetAppBar(pars, EventCallback.Factory.Create<object>(this, EventCallBack));
                 leftMenu = WidgetService.GetWidgetAppDraw(pars, EventCallback.Factory.Create<object>(this, EventCallBack));
             }
