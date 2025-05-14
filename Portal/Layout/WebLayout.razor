@@ -102,13 +102,20 @@
                    Breakpoint="Breakpoint.Sm" Anchor="Anchor.Start"
                    Class="bg-aside drawer-with-footer">
 
-            @if (leftMenu != null)
+            @if (AppSettings.IsUsingComponent() && pars != null)
             {
-                @leftMenu
+                <CoreNET.Blazor.AppDrawer.Web.LeftMenu Data="pars" OnChanged="EventCallBack"></CoreNET.Blazor.AppDrawer.Web.LeftMenu>
             }
             else
             {
-                <p>Loading widget...</p>
+                @if (leftMenu != null)
+                {
+                    @leftMenu
+                }
+                else
+                {
+                    <p>Loading widget...</p>
+                }
             }
         </MudDrawer>
 
@@ -131,7 +138,7 @@
                     <p>Loading layout...</p>
                 }
             </CascadingValue>
-@*             <footer>
+            @*             <footer>
                 <p>Copyright © 2025. All rights reserved.</p>
             </footer> *@
         </MudMainContent>
