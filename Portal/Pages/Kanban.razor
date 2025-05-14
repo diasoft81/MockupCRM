@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="mb-4">
-        <h2>Sales Kanban Board</h2>
+        <h2>@((pipeline == "sales") ? "Sales" : "Delivery") Kanban Board</h2>
         <p>Gunakan tampilan Kanban ini untuk memonitor dan memindahkan @((pipeline == "sales") ? "leads" : "customer") antar tahapan proses penjualan.</p>
         <button class="button" @onclick="AddLead"><i class="fas fa-plus"></i> Add Lead</button>
     </div>

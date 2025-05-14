@@ -4,10 +4,16 @@
 	"Title": "TEB CRM",
 	"Menus": [
 		{
-			"Name": "sales_activity",
-			"Title": "Sales Activity",
+			"Name": "sales_performance",
+			"Title": "Sales Performance",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
 			"Href": "/sales_team"
+		},
+		{
+			"Name": "revenue_performance",
+			"Title": "Revenue Performance",
+			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
+			"Href": "/reports/revenueperformance"
 		},
 		{
 			"Name": "pipeline_sales",
@@ -22,22 +28,16 @@
 			"Href": "/kanban/delivery"
 		},
 		{
-			"Name": "sales_performance",
-			"Title": "Sales Performance",
-			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/task.png",
-			"Href": "/reports/salesperformance"
+			"Name": "activity",
+			"Title": "Activity",
+			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
+			"Href": "/activity"
 		},
 		{
 			"Name": "reports",
-			"Title": "Laporan & Monitoring",
+			"Title": "Reports & Monitoring",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/report.png",
 			"Children": [
-				{
-					"Name": "activity",
-					"Title": "Activity",
-					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
-					"Href": "/activity"
-				},
 				{
 					"Name": "closing",
 					"Title": "Closing",
@@ -48,7 +48,7 @@
 					"Name": "salesperformance",
 					"Title": "Sales Performance",
 					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/sales-performance.png",
-					"Href": "/reports/salesperformance"
+					"Href": "/reports/revenueperformance2"
 				},
 				{
 					"Name": "salesactivity",

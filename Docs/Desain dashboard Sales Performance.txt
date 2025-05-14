@@ -1,0 +1,49 @@
+Desain dashboard Sales Performance Monitoring: 
+-@page "/"
+-@layout WebLayout
+-https://res.bankdata.web.id/css/bootstrap4custom.css
+-https://cdn.jsdelivr.net/npm/chart.js
+-UI+css: DashboardTotal.razor
+-JS: dashboard-total.js
+-sampledata: dashboard-total.json
+ 
+mengandung fitur:
+   Filters: Bulan, Sales Person, Region, Channel, Product/Service, Customer Type
+   Row 1
+   - Jumlah Lead terhadap Target (Lead/Target) this Month dan tombol More
+   - Total Qualified terhadap Lead (Qualified/Lead) this Month dan Tombol More
+   - Deal Closed terhadap Target (DealClosed/Target) this Month dan tombol More
+   - Jumlah Activity Today dan tombol More
+   Row 2
+   - Pie Chart: Lead, Qualified, Survey, Negotiation, Win, Loss
+   - Line Chart: pergerakan jumlah lead, qualified, survey, negotiation, win,los 8 minggu terakhir 
+   Row 4
+   - Pie Chart: Activity this week per sales
+   - Bar Chat: Total activity this Month Sales A, Sales B, Sales C, Sales D, Sales E
+     - Group by week W1,W2,W3,W4
+     - Stack W1,W2,W3,W4
+   Row 5
+   - Activity plan overview (total plan, meeting, call, email, proposal)
+   - Horizontal scroll bar (task detail card) --> ubah jadi cards dan load more
+	
+mengandung fitur:
+   Filters: Month, Sales Person, Region, Channel, Product/Service, Customer Type
+   Row 1
+   - Omzet this Month dan tombol More
+   - Omzet Cumulative this Month dan tombol More
+   - Total Omzet this Month dan Tombol More
+   - Ratio Omzet/Target this Month dan tombol More
+   Row 2
+   - Line Chart: pergerakan omzet, cumulative ozet, target, 8 minggu terakhir 
+   Row 3
+   - Pie Chart Total Win: Preparation, In Progress, Done, bar chart
+   Row 4
+   - Daftar deal, status, omset (tombol more), tombol pencarian
+
+Leaderboard:   
+    Filter: Lead/Omzet
+   - Row 1: Pie Chart Total Sales, bar chart
+   - Row 2: Pie Chart Total Region, bar chart
+   - Row 3: Pie Chart Total Channel, bar chart
+   - Row 4: Pie Chart Total Product, bar chart
+	
