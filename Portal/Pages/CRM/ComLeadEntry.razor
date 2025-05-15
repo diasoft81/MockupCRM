@@ -4,108 +4,124 @@
 
 @inject IDialogService DialogService
 
-<MudPaper Class="pa-4 full-screen">
-    <MudForm>
-        <MudText Typo="Typo.h5" Class="mb-4">Customer Information</MudText>
+<MudPaper Class="p-4">
+    <MudGrid>
+        <MudItem xs="12" sm="6">
+            <MudTextField Label="Company Name" @bind-Value="Lead.CompanyName" />
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudTextField Label="Company Short Name" @bind-Value="Lead.CompanyShortName" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Search" OnClick="LookupCompany">Lookup</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" OnClick="EditCompany">Add/Edit</MudButton>
+        </MudItem>
+        <MudItem xs="12">
+            <MudExpansionPanels>
+                <MudExpansionPanel Text="Company Details">
+                    <MudTextField T="string" Label="Company Email" />
+                    <MudTextField T="string" Label="Address" />
+                    <MudTextField T="string" Label="Region" />
+                    <MudTextField T="string" Label="City" />
+                    <MudTextField T="string" Label="Phone" />
+                    <MudTextField T="string" Label="Tax ID" />
+                    <MudSelect T="string" Label="Consumer Segment" @bind-Value="Lead.IndustrySegment">
+                        <MudSelectItem Value=@("EV Fleet")>EV Fleet</MudSelectItem>
+                        <MudSelectItem Value=@("EV Retail")>EV Retail</MudSelectItem>
+                        <MudSelectItem Value=@("Logistics")>Logistics</MudSelectItem>
+                        <MudSelectItem Value=@("Home Charging")>Home Charging</MudSelectItem>
+                        <MudSelectItem Value=@("Other")>Other</MudSelectItem>
+                    </MudSelect>                    
+                    <MudSelect T="string" Label="Customer Category" @bind-Value="Lead.CustomerCategory">
+                        <MudSelectItem Value=@("Government")>Government</MudSelectItem>
+                        <MudSelectItem Value=@("Corporate")>Corporate</MudSelectItem>
+                        <MudSelectItem Value=@("Retail")>Retail</MudSelectItem>
+                        <MudSelectItem Value=@("Dealer")>Dealer</MudSelectItem>
+                        <MudSelectItem Value=@("Other")>Other</MudSelectItem>
+                    </MudSelect>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+        </MudItem>
 
-        <MudGrid>
-            <MudItem xs="12" md="6">
-                <MudTextField Label="Customer Name" @bind-Value="Lead.CustomerName" />
-            </MudItem>
-            <MudItem xs="12" md="6">
-                <MudTextField Label="Contact Person" @bind-Value="Lead.ContactPerson" />
-            </MudItem>
-            <MudItem xs="12" md="6">
-                <MudTextField Label="Email" @bind-Value="Lead.Email" />
-            </MudItem>
-            <MudItem xs="12" md="6">
-                <MudTextField Label="Phone" @bind-Value="Lead.Phone" />
-            </MudItem>
-        </MudGrid>
+        <MudItem xs="12" sm="6">
+            <MudTextField T="string" Label="Contact Person" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Search" OnClick="LookupContact">Lookup</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" OnClick="EditContact">Add/Edit</MudButton>
+        </MudItem>
 
-        <MudDivider Class="my-4" />
+        <MudItem xs="12" sm="6">
+            <MudSelect Label="Lead Status" @bind-Value="Lead.LeadStatus" Disabled="true">
+                <MudSelectItem Value=@("New")>New</MudSelectItem>
+                <MudSelectItem Value=@("Qualified")>Qualified</MudSelectItem>
+                <MudSelectItem Value=@("Survey")>Survey</MudSelectItem>
+                <MudSelectItem Value=@("Negotiation")>Negotiation</MudSelectItem>
+                <MudSelectItem Value=@("Won")>Won</MudSelectItem>
+                <MudSelectItem Value=@("Lost")>Lost</MudSelectItem>
+            </MudSelect>
+        </MudItem>
 
-        <MudText Typo="Typo.h6">Lead Details</MudText>
+        <MudItem xs="12" sm="6">
+            <MudDatePicker Label="Target Close Date" @bind-Date="Lead.ExpectedCloseDate" />
+        </MudItem>
 
-        <MudGrid>
-            <MudItem xs="12" md="6">
-                <MudSelect T="string" Label="Lead Status" @bind-Value="Lead.LeadStatus">
-                    <MudSelectItem Value=@("New")>New</MudSelectItem>
-                    <MudSelectItem Value=@("Contacted")>Contacted</MudSelectItem>
-                    <MudSelectItem Value=@("Qualified")>Qualified</MudSelectItem>
-                    <MudSelectItem Value=@("Disqualified")>Disqualified</MudSelectItem>
-                </MudSelect>
-            </MudItem>
-            <MudItem xs="12" md="6">
-                <MudSelect T="string" Label="Lead Source" @bind-Value="Lead.LeadSource">
-                    <MudSelectItem Value=@("Visit")>Visit</MudSelectItem>
-                    <MudSelectItem Value=@("Pameran")>Pameran</MudSelectItem>
-                    <MudSelectItem Value=@("Website")>Website</MudSelectItem>
-                    <MudSelectItem Value=@("Telepon Masuk")>Telepon Masuk</MudSelectItem>
-                    <MudSelectItem Value=@("Referensi")>Referensi</MudSelectItem>
-                    <MudSelectItem Value=@("Cold Call")>Cold Call</MudSelectItem>
-                </MudSelect>
-            </MudItem>
-        </MudGrid>
+        <MudItem xs="12" sm="6">
+            <MudSelect T="string" Label="Lead Source" @bind-Value="Lead.LeadSource">
+                <MudSelectItem Value=@("Visit")>Visit</MudSelectItem>
+                <MudSelectItem Value=@("Pameran")>Pameran</MudSelectItem>
+                <MudSelectItem Value=@("Website")>Website</MudSelectItem>
+                <MudSelectItem Value=@("Telepon Masuk")>Telepon Masuk</MudSelectItem>
+                <MudSelectItem Value=@("Referensi")>Referensi</MudSelectItem>
+                <MudSelectItem Value=@("Cold Call")>Cold Call</MudSelectItem>
+            </MudSelect>
+        </MudItem>
 
-        <MudGrid>
-            <MudItem xs="12" md="6">
-                <MudSelect T="string" Label="Industry Segment" @bind-Value="Lead.IndustrySegment">
-                    <MudSelectItem Value=@("EV Fleet")>EV Fleet</MudSelectItem>
-                    <MudSelectItem Value=@("EV Retail")>EV Retail</MudSelectItem>
-                    <MudSelectItem Value=@("Logistics")>Logistics</MudSelectItem>
-                    <MudSelectItem Value=@("Home Charging")>Home Charging</MudSelectItem>
-                    <MudSelectItem Value=@("Other")>Other</MudSelectItem>
-                </MudSelect>
-            </MudItem>
-            <MudItem xs="12" md="6">
-                <MudSelect T="string" Label="Customer Category" @bind-Value="Lead.CustomerCategory">
-                    <MudSelectItem Value=@("Government")>Government</MudSelectItem>
-                    <MudSelectItem Value=@("Corporate")>Corporate</MudSelectItem>
-                    <MudSelectItem Value=@("Retail")>Retail</MudSelectItem>
-                    <MudSelectItem Value=@("Dealer")>Dealer</MudSelectItem>
-                    <MudSelectItem Value=@("Other")>Other</MudSelectItem>
-                </MudSelect>
-            </MudItem>
-        </MudGrid>
+        <MudItem xs="12">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="LookupProduct">Lookup Product</MudButton>
+        </MudItem>
 
-        <MudDivider Class="my-4" />
-        <MudText Typo="Typo.h6" Class="mb-2">Product Needs</MudText>
+        <MudItem xs="12">
+            <MudTable Items="SelectedProducts" Hover="true">
+                <HeaderContent>
+                    <MudTh>Product</MudTh>
+                    <MudTh>Quantity</MudTh>
+                    <MudTh>Unit Price</MudTh>
+                    <MudTh>Total Price</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>@context.ProductName</MudTd>
+                    <MudTd><MudNumericField T="int" @bind-Value="@context.Quantity" /></MudTd>
+                    <MudTd><MudNumericField T="decimal" @bind-Value="@context.UnitPrice" /></MudTd>
+                    <MudTd>@(context.Quantity * context.UnitPrice)</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudItem>
 
-        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="AddProduct" StartIcon="@Icons.Material.Filled.Add">Add Product</MudButton>
+        <MudItem xs="12" class="mt-4">
+            <MudText Typo="Typo.h6">Sub Total: @SelectedProducts.Sum(x => x.Quantity * x.UnitPrice)</MudText>
+        </MudItem>
 
-        <MudTable T="ProductItem" Items="Lead.ProductNeeds" Hover="true" Class="mt-2">
-            <HeaderContent>
-                <MudTh>Type</MudTh>
-                <MudTh>Merk</MudTh>
-                <MudTh>Model</MudTh>
-                <MudTh>Quantity</MudTh>
-                <MudTh>Unit</MudTh>
-                <MudTh></MudTh>
-            </HeaderContent>
-            <RowTemplate>
-                <MudTd>@context.ProductType</MudTd>
-                <MudTd>@context.ProductMerk</MudTd>
-                <MudTd>@context.ProductModel</MudTd>
-                <MudTd>@context.Quantity</MudTd>
-                <MudTd>@context.Unit</MudTd>
-                <MudTd>
-                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" OnClick="@(() => EditProduct(context))" />
-                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="@(() => RemoveProduct(context))" />
-                </MudTd>
-            </RowTemplate>
-        </MudTable>
+        <MudItem xs="12" sm="6">
+            <MudTextField Label="Reviewed By" @bind-Value="Lead.ReviewedBy" />
+            <MudDatePicker Label="Reviewed Date" @bind-Date="Lead.ReviewedDate" />
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudTextField Label="Approved By" @bind-Value="Lead.ApprovedBy" />
+            <MudDatePicker Label="Approved Date" @bind-Date="Lead.ApprovedDate" />
+        </MudItem>
 
         <MudTextField T="string" Label="Additional Notes" @bind-Value="Lead.AdditionalNotes" Lines="3" Class="mt-3" />
 
         <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveLead" Class="mt-4">Save Lead</MudButton>
-    </MudForm>
+
+    </MudGrid>
 </MudPaper>
 
 @code {
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
     [Parameter] public LeadItem Lead { get; set; } = new();
-
+    private List<ProductModel> SelectedProducts = new();
 
     private void SaveLead()
     {
@@ -158,5 +174,49 @@
     private void RemoveProduct(ProductItem item)
     {
         Lead.ProductNeeds.Remove(item);
+    }
+    private void LookupCompany()
+    {
+        // Open company lookup dialog
+    }
+
+    private void EditCompany()
+    {
+        //DialogService.Show<DialogCompanyEntry>("Company Entry");
+    }
+
+    private void LookupContact()
+    {
+        // Open contact lookup dialog
+    }
+
+    private void EditContact()
+    {
+        // DialogService.Show<DialogContactEntry>("Contact Entry");
+    }
+
+    private void LookupProduct()
+    {
+        // Open product lookup and add to SelectedProducts
+    }
+
+    public class ProductModel
+    {
+        public string ProductName { get; set; }
+        public int Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+    }
+
+    public class LeadModel
+    {
+        public string CompanyName { get; set; }
+        public string CompanyShortName { get; set; }
+        public string LeadStatus { get; set; } = "New";
+        public DateTime? ExpectedCloseDate { get; set; }
+        public string LeadSource { get; set; }
+        public string ReviewedBy { get; set; }
+        public DateTime? ReviewedDate { get; set; }
+        public string ApprovedBy { get; set; }
+        public DateTime? ApprovedDate { get; set; }
     }
 }

@@ -1,0 +1,162 @@
+﻿@using MudBlazor
+@using Portal.Model
+@using Portal.Pages.Dialog
+
+@inject IDialogService DialogService
+
+<MudPaper Class="pa-4 full-screen">
+    <MudForm>
+        <MudText Typo="Typo.h5" Class="mb-4">Customer Information</MudText>
+
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudTextField Label="Customer Name" @bind-Value="Lead.CustomerName" />
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudTextField Label="Contact Person" @bind-Value="Lead.ContactPerson" />
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudTextField Label="Email" @bind-Value="Lead.Email" />
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudTextField Label="Phone" @bind-Value="Lead.Phone" />
+            </MudItem>
+        </MudGrid>
+
+        <MudDivider Class="my-4" />
+
+        <MudText Typo="Typo.h6">Lead Details</MudText>
+
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudSelect T="string" Label="Lead Status" @bind-Value="Lead.LeadStatus">
+                    <MudSelectItem Value=@("New")>New</MudSelectItem>
+                    <MudSelectItem Value=@("Contacted")>Contacted</MudSelectItem>
+                    <MudSelectItem Value=@("Qualified")>Qualified</MudSelectItem>
+                    <MudSelectItem Value=@("Disqualified")>Disqualified</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudSelect T="string" Label="Lead Source" @bind-Value="Lead.LeadSource">
+                    <MudSelectItem Value=@("Visit")>Visit</MudSelectItem>
+                    <MudSelectItem Value=@("Pameran")>Pameran</MudSelectItem>
+                    <MudSelectItem Value=@("Website")>Website</MudSelectItem>
+                    <MudSelectItem Value=@("Telepon Masuk")>Telepon Masuk</MudSelectItem>
+                    <MudSelectItem Value=@("Referensi")>Referensi</MudSelectItem>
+                    <MudSelectItem Value=@("Cold Call")>Cold Call</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+        </MudGrid>
+
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudSelect T="string" Label="Industry Segment" @bind-Value="Lead.IndustrySegment">
+                    <MudSelectItem Value=@("EV Fleet")>EV Fleet</MudSelectItem>
+                    <MudSelectItem Value=@("EV Retail")>EV Retail</MudSelectItem>
+                    <MudSelectItem Value=@("Logistics")>Logistics</MudSelectItem>
+                    <MudSelectItem Value=@("Home Charging")>Home Charging</MudSelectItem>
+                    <MudSelectItem Value=@("Other")>Other</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudSelect T="string" Label="Customer Category" @bind-Value="Lead.CustomerCategory">
+                    <MudSelectItem Value=@("Government")>Government</MudSelectItem>
+                    <MudSelectItem Value=@("Corporate")>Corporate</MudSelectItem>
+                    <MudSelectItem Value=@("Retail")>Retail</MudSelectItem>
+                    <MudSelectItem Value=@("Dealer")>Dealer</MudSelectItem>
+                    <MudSelectItem Value=@("Other")>Other</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+        </MudGrid>
+
+        <MudDivider Class="my-4" />
+        <MudText Typo="Typo.h6" Class="mb-2">Product Needs</MudText>
+
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="AddProduct" StartIcon="@Icons.Material.Filled.Add">Add Product</MudButton>
+
+        <MudTable T="ProductItem" Items="Lead.ProductNeeds" Hover="true" Class="mt-2">
+            <HeaderContent>
+                <MudTh>Type</MudTh>
+                <MudTh>Merk</MudTh>
+                <MudTh>Model</MudTh>
+                <MudTh>Quantity</MudTh>
+                <MudTh>Unit</MudTh>
+                <MudTh></MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd>@context.ProductType</MudTd>
+                <MudTd>@context.ProductMerk</MudTd>
+                <MudTd>@context.ProductModel</MudTd>
+                <MudTd>@context.Quantity</MudTd>
+                <MudTd>@context.Unit</MudTd>
+                <MudTd>
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" OnClick="@(() => EditProduct(context))" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="@(() => RemoveProduct(context))" />
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+
+        <MudTextField T="string" Label="Additional Notes" @bind-Value="Lead.AdditionalNotes" Lines="3" Class="mt-3" />
+
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveLead" Class="mt-4">Save Lead</MudButton>
+    </MudForm>
+</MudPaper>
+
+@code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+    [Parameter] public LeadItem Lead { get; set; } = new();
+
+
+    private void SaveLead()
+    {
+        // Save logic
+        Snackbar.Add("Lead successfully saved", Severity.Success);
+        MudDialog.Close(DialogResult.Ok(true));
+    }
+
+
+    private async Task AddProduct()
+    {
+        var parameters = new DialogParameters { ["Product"] = new ProductItem() };
+        var dialog = await DialogService.ShowAsync<DlgProductItem>("Add Product", parameters);
+        var result = await dialog.Result;
+
+        if (!result.Canceled && result.Data is ProductItem newItem)
+        {
+            newItem.ProductId = Guid.NewGuid().ToString(); // generate ID
+            Lead.ProductNeeds.Add(newItem);
+        }
+    }
+
+    private async Task EditProduct(ProductItem item)
+    {
+        var clone = new ProductItem
+            {
+                ProductId = item.ProductId,
+                ProductType = item.ProductType,
+                ProductMerk = item.ProductMerk,
+                ProductModel = item.ProductModel,
+                ProductDescription = item.ProductDescription,
+                Quantity = item.Quantity,
+                Unit = item.Unit
+            };
+
+        var parameters = new DialogParameters { ["Product"] = clone };
+        var dialog = await DialogService.ShowAsync<DlgProductItem>("Edit Product", parameters);
+        var result = await dialog.Result;
+
+        if (!result.Canceled && result.Data is ProductItem updated)
+        {
+            var index = Lead.ProductNeeds.FindIndex(p => p.ProductId == updated.ProductId);
+            if (index >= 0)
+            {
+                Lead.ProductNeeds[index] = updated;
+            }
+        }
+    }
+
+    private void RemoveProduct(ProductItem item)
+    {
+        Lead.ProductNeeds.Remove(item);
+    }
+}

@@ -46,11 +46,11 @@
         {
             if (pipeline == "sales")
             {
-                return new[] { "Lead", "Qualified", "Survey", "Negotiation", "Won", "Lost" };
+                return new[] { "New", "Qualified", "Survey", "Negotiation", "Won", "Lost" };
             }
             else
             {
-                return new[] { "Work Order", "Preparation", "Ready to Go", "In Progress", "Testing", "Done" };
+                return new[] { "New", "Preparation", "Ready to Go", "In Progress", "Testing", "Done" };
             }
         }
     }
@@ -63,8 +63,8 @@
             {
                 return new()
                     {
-                        new LeadItem("Lead 1", "Perusahaan A", "Lead"),
-                        new LeadItem("Lead 2", "Perusahaan B", "Lead"),
+                        new LeadItem("Lead 1", "Perusahaan A", "New"),
+                        new LeadItem("Lead 2", "Perusahaan B", "New"),
                         new LeadItem("Lead 3", "Perusahaan C", "Qualified"),
                         new LeadItem("Lead 4", "Perusahaan D", "Negotiation"),
                         new LeadItem("Lead 5", "Perusahaan E", "Lost"),
@@ -76,7 +76,7 @@
             {
                 return new()
                     {
-                        new LeadItem("Lead 1", "Perusahaan A", "Work Order"),
+                        new LeadItem("Lead 1", "Perusahaan A", "New"),
                         new LeadItem("Lead 2", "Perusahaan B", "In Progress"),
                         new LeadItem("Lead 3", "Perusahaan C", "Preparation"),
                         new LeadItem("Lead 4", "Perusahaan D", "Ready to Go"),
