@@ -11,11 +11,10 @@
         color: #1976d2; /* Biru khas MudBlazor Primary */
         padding: 16px 24px;
         border-bottom: 1px solid #e0e0e0;
-        background-color: #f5f5f5;
     }
 
 </style>
-<MudDialog TitleClass="dialog-title">
+<MudDialog TitleClass="dialog-title bg-header" ActionsClass="bg-footer">
     <TitleContent>
         <MudIcon Icon="@Icons.Material.Filled.Info" Class="mr-2" />
         Update Stage
@@ -148,7 +147,7 @@
     </DialogContent>
     <DialogActions>
         <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveLead" Class="mt-4">Save Lead</MudButton>
-        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Cancel">Cancel</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Cancel" Class="mt-4">Cancel</MudButton>
     </DialogActions>
 </MudDialog>
 
