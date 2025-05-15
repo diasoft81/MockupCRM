@@ -1,7 +1,43 @@
-﻿namespace Portal.Model
+﻿using System.ComponentModel;
+using System.Text.Json.Serialization;
+
+namespace Portal.Model
 {
-    public class LeadItem
+    public class LeadItem : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        [JsonIgnore]
+        public Action StateHasChanged { get; set; }
+        private bool _IsExistingCustomer = false;
+        public bool IsExistingCustomer
+        {
+            get
+            {
+                return _IsExistingCustomer;
+            }
+            set
+            {
+                if (_IsExistingCustomer != value)
+                {
+                    _IsExistingCustomer = value;
+                    if (_IsExistingCustomer)
+                    {
+                        LeadStatus = "Opportunity";
+                        LeadSource = "Existing Customer";
+                    }
+                    else
+                    {
+                        LeadStatus = "New";
+                    }
+                    StateHasChanged?.Invoke();
+                    OnPropertyChanged(nameof(IsExistingCustomer));
+                }
+            }
+        }
         public string CompanyName { get; set; }
         public string CompanyShortName { get; set; }
         public string CompanyPhone { get; set; }

@@ -1,5 +1,6 @@
 ﻿/* app.css */
 
+/* MAY BE DEPRECATED */
 .tab-container {
     margin: 20px;
 }
@@ -89,6 +90,8 @@ legend {
 .readonly select {
     background-color: #eee;
 }
+
+/* END MAY BE DEPRECATED */
 
 .pipeline-stage {
     display: flex;
@@ -236,3 +239,4 @@ body {
     max-height: 80vh; /* Tentukan tinggi maksimal konten dalam dialog */
     overflow-y: auto; /* Membuat konten scrollable */
 }
+
