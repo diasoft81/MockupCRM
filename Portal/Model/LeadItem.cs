@@ -50,34 +50,49 @@ namespace Portal.Model
         public string CompanyTaxID { get; set; }
         public string CompanyBank { get; set; }
         public string CompanyBankAccount { get; set; }
+        public string IndustrySegment;
+        public string CustomerCategory;
+
         public string LeadStatus { get; set; } = "New";
+        [JsonIgnore]
+        public string Stage => LeadStatus;
+        [JsonIgnore]
+        public string Status
+        {
+            get
+            {
+                return Stage == "Won" || Stage == "Lost" || Stage == "Done" ? "Done" :
+                    DateTime.Now > ExpectedCloseDate ? "Overdue" : "";
+            }
+        }
         public DateTime? ExpectedCloseDate { get; set; }
         public string LeadSource { get; set; }
         public string ReviewedBy { get; set; }
         public DateTime? ReviewedDate { get; set; }
         public string ApprovedBy { get; set; }
         public DateTime? ApprovedDate { get; set; }
+        public string AdditionalNotes;
 
         public string CustomerName;
+
+        public string ContactName;
         public string ContactMobile { get; set; }
-        public string ContactPerson;
-        public string Email;
-        public string Phone;
-        public string IndustrySegment;
-        public string CustomerCategory;
+        public string ContactPhone { get; set; }
+        public string ContactEmail { get; set; }
+        public string ContactAddress { get; set; }
+        public string ContactRegion { get; set; }
+        public string ContactCity { get; set; }
+        public string ContactLatitude { get; set; }
+        public string ContactLongitude { get; set; }
         public List<ProductItem> ProductNeeds = new();
-        public string AdditionalNotes;
-        public string Stage { get; set; }
-        public string Status { get; set; }
         public LeadItem()
         {
         }
-        public LeadItem(string name, string company, string stage, string status = "")
+        public LeadItem(string name, string company, string stage)
         {
             ContactMobile = name;
             CompanyName = company;
-            Stage = stage;
-            Status = status;
+            LeadStatus = stage;
         }
     }
 }

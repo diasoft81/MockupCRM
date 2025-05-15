@@ -166,14 +166,14 @@
     {
         if (force)
         {
-            lead.Stage = newStage;
+            lead.LeadStatus = newStage;
         }
         else
         {
             var dialog = await DialogHelper.ShowConfirmation(DialogService, "Confirmation", "Are you sure?");
             if (dialog.Canceled != true)
             {
-                lead.Stage = newStage;
+                lead.LeadStatus = newStage;
             }
         }
     }

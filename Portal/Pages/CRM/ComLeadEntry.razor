@@ -51,7 +51,7 @@
                 </MudItem>
 
                 <MudItem xs="12" sm="6">
-                    <MudSelect Label="Stage" @bind-Value="Lead.LeadStatus" Class="mr-3" Disabled="@Lead.IsExistingCustomer">
+                    <MudSelect Label="Stage" Class="mr-3" @bind-Value="Lead.LeadStatus" Disabled="@Lead.IsExistingCustomer">
                         <MudSelectItem Value=@("New")>New</MudSelectItem>
                         <MudSelectItem Value=@("Opportunity")>Opportunity</MudSelectItem>
                         <MudSelectItem Value=@("Survey")>Survey</MudSelectItem>
@@ -62,7 +62,7 @@
                 </MudItem>
 
                 <MudItem xs="12" sm="6">
-                    <MudSelect T="string" Label="Source" @bind-Value="Lead.LeadSource" Class="mr-3" Disabled="@Lead.IsExistingCustomer">
+                    <MudSelect T="string" Label="Source" Class="mr-3" @bind-Value="Lead.LeadSource" Disabled="@Lead.IsExistingCustomer">
                         <MudSelectItem Value=@("Visit")>Visit</MudSelectItem>
                         <MudSelectItem Value=@("Pameran")>Pameran</MudSelectItem>
                         <MudSelectItem Value=@("Website")>Website</MudSelectItem>
@@ -74,7 +74,7 @@
                 </MudItem>
 
                 <MudItem xs="12" sm="6" Class="mb-3">
-                    <MudDatePicker Label="Target Close Date" @bind-Date="Lead.ExpectedCloseDate" Class="mr-3" />
+                    <MudDatePicker Label="Target Close Date" Class="mr-3" @bind-Date="Lead.ExpectedCloseDate" />
                 </MudItem>
 
             </MudGrid>
@@ -156,7 +156,8 @@
                     <MudText Typo="Typo.h5" Class="">Contact Person</MudText>
                 </MudItem>
                 <MudItem xs="12" md="6">
-                    <MudTextField T="string" Label="Contact Person" Class="mr-3" @bind-Value="Lead.ContactMobile" />
+                    <MudTextField T="string" Label="Name" Class="mr-3" @bind-Value="Lead.ContactName" />
+                    <MudTextField T="string" Label="Mobile Phone" Class="mr-3" @bind-Value="Lead.ContactMobile" />
                 </MudItem>
                 <MudItem xs="12">
                     <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Search" OnClick="LookupContact">Lookup</MudButton>
@@ -167,40 +168,25 @@
                         <MudExpansionPanel Text="Contact Details" Class="expansion-panel">
                             <MudGrid>
                                 <MudItem xs="12" md="6">
-                                    <MudTextField T="string" Label="Email" Class="mr-3" />
+                                    <MudTextField T="string" Label="Phone" Class="mr-3" @bind-Value="Lead.ContactPhone" />
                                 </MudItem>
                                 <MudItem xs="12" md="6">
-                                    <MudTextField T="string" Label="Address" Class="mr-3" />
+                                    <MudTextField T="string" Label="Email" Class="mr-3" @bind-Value="Lead.ContactEmail"/>
+                                </MudItem>
+                                <MudItem xs="12" md="12">
+                                    <MudTextField T="string" Label="Address" Class="mr-3" Lines="3" @bind-Value="Lead.ContactAddress"/>
                                 </MudItem>
                                 <MudItem xs="12" md="6">
-                                    <MudTextField T="string" Label="Region" Class="mr-3" />
+                                    <MudTextField T="string" Label="Region" Class="mr-3" @bind-Value="Lead.ContactRegion" />
                                 </MudItem>
                                 <MudItem xs="12" md="6">
-                                    <MudTextField T="string" Label="City" Class="mr-3" />
+                                    <MudTextField T="string" Label="City" Class="mr-3" @bind-Value="Lead.ContactCity" />
                                 </MudItem>
                                 <MudItem xs="12" md="6">
-                                    <MudTextField T="string" Label="Phone" Class="mr-3" />
+                                    <MudTextField T="string" Label="Latitude" Class="mr-3" @bind-Value="Lead.ContactLatitude" />
                                 </MudItem>
                                 <MudItem xs="12" md="6">
-                                    <MudTextField T="string" Label="Tax ID" Class="mr-3" />
-                                </MudItem>
-                                <MudItem xs="12" md="6">
-                                    <MudSelect T="string" Label="Consumer Segment" Class="mr-3" @bind-Value="Lead.IndustrySegment">
-                                        <MudSelectItem Value=@("EV Fleet")>EV Fleet</MudSelectItem>
-                                        <MudSelectItem Value=@("EV Retail")>EV Retail</MudSelectItem>
-                                        <MudSelectItem Value=@("Logistics")>Logistics</MudSelectItem>
-                                        <MudSelectItem Value=@("Home Charging")>Home Charging</MudSelectItem>
-                                        <MudSelectItem Value=@("Other")>Other</MudSelectItem>
-                                    </MudSelect>
-                                </MudItem>
-                                <MudItem xs="12" md="6">
-                                    <MudSelect T="string" Label="Customer Category" Class="mr-3" @bind-Value="Lead.CustomerCategory">
-                                        <MudSelectItem Value=@("Government")>Government</MudSelectItem>
-                                        <MudSelectItem Value=@("Corporate")>Corporate</MudSelectItem>
-                                        <MudSelectItem Value=@("Retail")>Retail</MudSelectItem>
-                                        <MudSelectItem Value=@("Dealer")>Dealer</MudSelectItem>
-                                        <MudSelectItem Value=@("Other")>Other</MudSelectItem>
-                                    </MudSelect>
+                                    <MudTextField T="string" Label="Latitude" Class="mr-3" @bind-Value="Lead.ContactLongitude" />
                                 </MudItem>
                             </MudGrid>
                         </MudExpansionPanel>
