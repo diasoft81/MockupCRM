@@ -5,6 +5,14 @@
 @inject IDialogService DialogService
 
 <style>
+    .expansion {
+        font-size: 2rem; /* Lebih besar dari Typo.h5 */
+        font-weight: 600; /* Teks tebal (semi-bold) */
+        text-decoration: underline; /* Garis bawah */
+        color: blue; /* Warna biru */
+        border: 1px solid #1976d2; /* Border biru */
+    }
+
     .dialog-title {
         font-size: 1.5rem; /* Lebih besar dari Typo.h5 */
         font-weight: 600;
@@ -35,27 +43,57 @@
                 </MudItem>
                 <MudItem xs="12">
                     <MudExpansionPanels>
-                        <MudExpansionPanel Text="Company Details">
-                            <MudTextField T="string" Label="Company Email" />
-                            <MudTextField T="string" Label="Address" />
-                            <MudTextField T="string" Label="Region" />
-                            <MudTextField T="string" Label="City" />
-                            <MudTextField T="string" Label="Phone" />
-                            <MudTextField T="string" Label="Tax ID" />
-                            <MudSelect T="string" Label="Consumer Segment" @bind-Value="Lead.IndustrySegment">
-                                <MudSelectItem Value=@("EV Fleet")>EV Fleet</MudSelectItem>
-                                <MudSelectItem Value=@("EV Retail")>EV Retail</MudSelectItem>
-                                <MudSelectItem Value=@("Logistics")>Logistics</MudSelectItem>
-                                <MudSelectItem Value=@("Home Charging")>Home Charging</MudSelectItem>
-                                <MudSelectItem Value=@("Other")>Other</MudSelectItem>
-                            </MudSelect>
-                            <MudSelect T="string" Label="Customer Category" @bind-Value="Lead.CustomerCategory">
-                                <MudSelectItem Value=@("Government")>Government</MudSelectItem>
-                                <MudSelectItem Value=@("Corporate")>Corporate</MudSelectItem>
-                                <MudSelectItem Value=@("Retail")>Retail</MudSelectItem>
-                                <MudSelectItem Value=@("Dealer")>Dealer</MudSelectItem>
-                                <MudSelectItem Value=@("Other")>Other</MudSelectItem>
-                            </MudSelect>
+                        <MudExpansionPanel Text="Company Details" class="expansion">
+                            <MudGrid>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="Phone" @bind-Value="Lead.CompanyPhone" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="Company Email" @bind-Value="Lead.CompanyEmail" />
+                                </MudItem>
+                                <MudItem xs="12" md="12">
+                                    <MudTextField T="string" Label="Address" @bind-Value="Lead.CompanyAddress" Lines="3" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="Region" @bind-Value="Lead.CompanyRegion" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="City" @bind-Value="Lead.CompanyCity" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="Region" @bind-Value="Lead.CompanyLatitude" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="City" @bind-Value="Lead.CompanyLongitude" />
+                                </MudItem>
+                                <MudItem xs="12" md="12">
+                                    <MudTextField T="string" Label="Tax ID" @bind-Value="Lead.CompanyTaxID" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="Region" @bind-Value="Lead.CompanyBank" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="City" @bind-Value="Lead.CompanyBankAccount" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudSelect T="string" Label="Consumer Segment" @bind-Value="Lead.IndustrySegment">
+                                        <MudSelectItem Value=@("EV Fleet")>EV Fleet</MudSelectItem>
+                                        <MudSelectItem Value=@("EV Retail")>EV Retail</MudSelectItem>
+                                        <MudSelectItem Value=@("Logistics")>Logistics</MudSelectItem>
+                                        <MudSelectItem Value=@("Home Charging")>Home Charging</MudSelectItem>
+                                        <MudSelectItem Value=@("Other")>Other</MudSelectItem>
+                                    </MudSelect>
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudSelect T="string" Label="Customer Category" @bind-Value="Lead.CustomerCategory">
+                                        <MudSelectItem Value=@("Government")>Government</MudSelectItem>
+                                        <MudSelectItem Value=@("Corporate")>Corporate</MudSelectItem>
+                                        <MudSelectItem Value=@("Retail")>Retail</MudSelectItem>
+                                        <MudSelectItem Value=@("Dealer")>Dealer</MudSelectItem>
+                                        <MudSelectItem Value=@("Other")>Other</MudSelectItem>
+                                    </MudSelect>
+                                </MudItem>
+                            </MudGrid>
                         </MudExpansionPanel>
                     </MudExpansionPanels>
                 </MudItem>
@@ -64,11 +102,55 @@
             <MudText Typo="Typo.h5" Class="mb-4">Contact Person</MudText>
             <MudGrid>
                 <MudItem xs="12" md="6">
-                    <MudTextField T="string" Label="Contact Person" />
+                    <MudTextField T="string" Label="Contact Person" @bind-Value="Lead.ContactMobile" />
                 </MudItem>
                 <MudItem xs="12">
                     <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Search" OnClick="LookupContact">Lookup</MudButton>
                     <MudButton Variant="Variant.Filled" Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" OnClick="EditContact">Add/Edit</MudButton>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudExpansionPanels>
+                        <MudExpansionPanel Text="Contact Details">
+                            <MudGrid>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="Email" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="Address" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="Region" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="City" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="Phone" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudTextField T="string" Label="Tax ID" />
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudSelect T="string" Label="Consumer Segment" @bind-Value="Lead.IndustrySegment">
+                                        <MudSelectItem Value=@("EV Fleet")>EV Fleet</MudSelectItem>
+                                        <MudSelectItem Value=@("EV Retail")>EV Retail</MudSelectItem>
+                                        <MudSelectItem Value=@("Logistics")>Logistics</MudSelectItem>
+                                        <MudSelectItem Value=@("Home Charging")>Home Charging</MudSelectItem>
+                                        <MudSelectItem Value=@("Other")>Other</MudSelectItem>
+                                    </MudSelect>
+                                </MudItem>
+                                <MudItem xs="12" md="6">
+                                    <MudSelect T="string" Label="Customer Category" @bind-Value="Lead.CustomerCategory">
+                                        <MudSelectItem Value=@("Government")>Government</MudSelectItem>
+                                        <MudSelectItem Value=@("Corporate")>Corporate</MudSelectItem>
+                                        <MudSelectItem Value=@("Retail")>Retail</MudSelectItem>
+                                        <MudSelectItem Value=@("Dealer")>Dealer</MudSelectItem>
+                                        <MudSelectItem Value=@("Other")>Other</MudSelectItem>
+                                    </MudSelect>
+                                </MudItem>
+                            </MudGrid>
+                        </MudExpansionPanel>
+                    </MudExpansionPanels>
                 </MudItem>
             </MudGrid>
             <MudDivider Class="my-4" />
@@ -105,10 +187,7 @@
             <MudDivider Class="my-4" />
             <MudText Typo="Typo.h6" Class="mb-2">Product Needs</MudText>
 
-            <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="AddProduct" StartIcon="@Icons.Material.Filled.Add">Add Product</MudButton>
-            <MudItem xs="12">
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="LookupProduct">Lookup Product</MudButton>
-            </MudItem>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="AddProduct" StartIcon="@Icons.Material.Filled.Add">Add Product</MudButton>
 
             <MudItem xs="12">
                 <MudTable Items="SelectedProducts" Hover="true">
@@ -131,16 +210,23 @@
                 <MudText Typo="Typo.h6">Sub Total: @SelectedProducts.Sum(x => x.Quantity * x.UnitPrice)</MudText>
             </MudItem>
 
-            <MudItem xs="12" sm="6">
-                <MudTextField Label="Reviewed By" @bind-Value="Lead.ReviewedBy" />
-                <MudDatePicker Label="Reviewed Date" @bind-Date="Lead.ReviewedDate" />
-            </MudItem>
-            <MudItem xs="12" sm="6">
-                <MudTextField Label="Approved By" @bind-Value="Lead.ApprovedBy" />
-                <MudDatePicker Label="Approved Date" @bind-Date="Lead.ApprovedDate" />
-            </MudItem>
-
-            <MudTextField T="string" Label="Additional Notes" @bind-Value="Lead.AdditionalNotes" Lines="3" Class="mt-3" />
+            <MudGrid>
+                <MudItem xs="12" md="6">
+                    <MudTextField Label="Reviewed By" @bind-Value="Lead.ReviewedBy" />
+                </MudItem>
+                <MudItem xs="12" md="6">
+                    <MudDatePicker Label="Reviewed Date" @bind-Date="Lead.ReviewedDate" />
+                </MudItem>
+                <MudItem xs="12" md="6">
+                    <MudTextField Label="Approved By" @bind-Value="Lead.ApprovedBy" />
+                </MudItem>
+                <MudItem xs="12" md="6">
+                    <MudDatePicker Label="Approved Date" @bind-Date="Lead.ApprovedDate" />
+                </MudItem>
+                <MudItem xs="12" md="12">
+                    <MudTextField T="string" Label="Additional Notes" @bind-Value="Lead.AdditionalNotes" Lines="3" Class="mt-3" />
+                </MudItem>
+            </MudGrid>
 
 
         </MudForm>

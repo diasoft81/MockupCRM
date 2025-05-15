@@ -9,7 +9,7 @@
 <PageTitle>Kanban</PageTitle>
 
 <div class="container">
-    <div class="mb-4">
+    <div class="mb-4 mt-3">
         <h2>@((pipeline == "sales") ? "Sales" : "Delivery") Kanban Board</h2>
         <p>Gunakan tampilan Kanban ini untuk memonitor dan memindahkan @((pipeline == "sales") ? "leads" : "customer") antar tahapan proses penjualan.</p>
         <button class="button" @onclick="AddLead"><i class="fas fa-plus"></i> Add Lead</button>
@@ -25,9 +25,9 @@
                     @foreach (var lead in Leads.Where(l => l.Stage == stage))
                     {
                         <div class="task-card @GetStatusClass(lead)">
-                            <strong>@lead.Name</strong>
+                            <strong>@lead.ContactMobile</strong>
                             <div class="task-meta mt-2">
-                                <span>@lead.Company</span>
+                                <span>@lead.CompanyName</span>
                                 <span>@lead.Status</span>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
     [JSInvokable]
     public async Task OnLeadMoved(string title, string newStage)
     {
-        var lead = Leads.FirstOrDefault(l => l.Name == title);
+        var lead = Leads.FirstOrDefault(l => l.ContactMobile == title);
         if (lead != null && lead.Stage != newStage)
         {
             await OnMoveLeadClicked(lead, newStage);
