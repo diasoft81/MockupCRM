@@ -1,10 +1,20 @@
 ﻿@page "/reports/salesactivity"
 @layout WebLayout
 
-<PageTitle>Sales Activity Timeline</PageTitle>
+<MudToolBar Class="mud-toolbar mud-toolbar-gutters custom_toolbar custom_toolbar2">
+    <MudText Typo="Typo.h5" Style="color:white; cursor: pointer;" @onclick="@(() => Navigation.NavigateTo("/"))">
+        Sales Activity Timeline
+    </MudText>
 
-@* <h3 class="mb-4">Sales Activity Timeline</h3> *@
+    <MudSpacer /> <!-- Ini akan mendorong elemen berikut ke kanan -->
 
+    @*     <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mx-2" OnClick="@ResetFilters">
+        Reset
+    </MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@ExportChart">
+        Export
+    </MudButton> *@
+</MudToolBar>
 <div class="row mb-4">
     <div class="col-md-4">
         <label for="dateRange" class="form-label">Date Range</label>

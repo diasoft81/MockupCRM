@@ -1,10 +1,20 @@
 ﻿@page "/reports/conversionrate"
 @layout WebLayout
 
-<PageTitle>Conversion Rate Report</PageTitle>
+<MudToolBar Class="mud-toolbar mud-toolbar-gutters custom_toolbar custom_toolbar2">
+    <MudText Typo="Typo.h5" Style="color:white; cursor: pointer;" @onclick="@(() => Navigation.NavigateTo("/"))">
+        Conversion Rate Report
+    </MudText>
 
-@* <h3 class="mb-4">Conversion Rate Report</h3> *@
+    <MudSpacer /> <!-- Ini akan mendorong elemen berikut ke kanan -->
 
+    @*     <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mx-2" OnClick="@ResetFilters">
+        Reset
+    </MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@ExportChart">
+        Export
+    </MudButton> *@
+</MudToolBar>
 <div class="row mb-4">
     <div class="col-md-3">
         <label>From Date</label>

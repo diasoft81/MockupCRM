@@ -1,10 +1,20 @@
 ﻿@page "/reports/topreps"
 @layout WebLayout
 
-<PageTitle>Top Sales Representatives</PageTitle>
+<MudToolBar Class="mud-toolbar mud-toolbar-gutters custom_toolbar custom_toolbar2">
+    <MudText Typo="Typo.h5" Style="color:white; cursor: pointer;" @onclick="@(() => Navigation.NavigateTo("/"))">
+        Tol Sales Representation
+    </MudText>
 
-@* <h3 class="mb-4">Top Sales Representatives</h3> *@
+    <MudSpacer /> <!-- Ini akan mendorong elemen berikut ke kanan -->
 
+    @*     <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mx-2" OnClick="@ResetFilters">
+        Reset
+    </MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@ExportChart">
+        Export
+    </MudButton> *@
+</MudToolBar>
 <div class="row mb-4">
     <div class="col-md-3">
         <label>From Date</label>
