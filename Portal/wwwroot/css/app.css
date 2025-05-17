@@ -239,9 +239,6 @@ body {
     overflow-y: auto; /* Membuat konten scrollable */
 }
 
-
-
-
 .full-width-dialog {
     width: 100vw !important;
     height: 100vh !important;
