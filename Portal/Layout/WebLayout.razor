@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using Portal.Components
+@inherits LayoutComponentBase
 
 <MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode" />
 <MudPopoverProvider />
@@ -12,12 +13,12 @@
 
     body {
         color: @SelectedThemeStyle["cl-body"];
-        background: linear-gradient(@SelectedThemeStyle["bg-body-degree"], @SelectedThemeStyle["bg-body-start"], @SelectedThemeStyle["bg-body-end"] );
+        background: linear-gradient( @SelectedThemeStyle["bg-body-degree"], @SelectedThemeStyle["bg-body-start"], @SelectedThemeStyle["bg-body-end"] );
     }
 
     .bg-header {
         color: @SelectedThemeStyle["cl-header"];
-        background: linear-gradient(@SelectedThemeStyle["bg-header-degree"], @SelectedThemeStyle["bg-header-start"], @SelectedThemeStyle["bg-header-end"] );
+        background: linear-gradient( @SelectedThemeStyle["bg-header-degree"], @SelectedThemeStyle["bg-header-start"], @SelectedThemeStyle["bg-header-end"] );
     }
 
         .bg-header .mud-select-input {
@@ -153,5 +154,10 @@
             </CascadingValue>
 
         </MudMainContent>
+    }
+
+    @if (AppState.LoginStored.IsLoggedIn == true)
+    {
+        <ChatBubble />
     }
 </MudLayout>

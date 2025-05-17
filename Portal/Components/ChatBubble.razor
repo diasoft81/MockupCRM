@@ -1,0 +1,149 @@
+﻿@using System.Net.Http.Json
+@using System.Text.Json
+@using System.Text
+@implements IDisposable
+
+<div @onclick="ToggleChat" class="chat-bubble-button">
+    💬
+</div>
+
+@if (isOpen)
+{
+    <div class="chat-widget-box">
+        <div class="chat-header">AI Assistant</div>
+        <div class="chat-messages" @ref="chatBox">
+            @foreach (var msg in messages)
+            {
+                <div class="chat-message @(msg.Role == "user" ? "user" : "bot")">
+                    @msg.Content
+                </div>
+            }
+        </div>
+        <div class="chat-input">
+            <input @bind="userInput" @bind:event="oninput" @onkeydown="@HandleKeyPress" placeholder="Type a message..." />
+            <button @onclick="SendMessage">Send</button>
+        </div>
+    </div>
+}
+
+@code {
+    private bool isOpen = false;
+    private string userInput = "";
+    private ElementReference chatBox;
+
+    private List<Message> messages = new();
+
+    private void ToggleChat()
+    {
+        isOpen = !isOpen;
+        StateHasChanged();
+    }
+
+    private async Task SendMessage()
+    {
+        if (string.IsNullOrWhiteSpace(userInput)) return;
+
+        messages.Add(new Message("user", userInput));
+        var prompt = userInput;
+        userInput = "";
+
+        await ScrollToBottom();
+
+        var content = await SendToGPT(prompt);
+        if (!string.IsNullOrWhiteSpace(content))
+        {
+            messages.Add(new Message("assistant", content.Trim()));
+            await ScrollToBottom();
+        }
+
+        // var client = new HttpClient { };
+        // client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("");
+
+        // var response = await client.PostAsJsonAsync("https://api.openai.com/v1/chat/completions", new
+        // {
+        //     model = "gpt-3.5-turbo",
+        //     messages = messages.Select(m => new { role = m.Role, content = m.Content }),
+        //     temperature = 0.7
+        // }, new JsonSerializerOptions { PropertyNamingPolicy = null });
+
+        // if (response.IsSuccessStatusCode)
+        // {
+        //     var json = await response.Content.ReadFromJsonAsync<GptResponse>();
+        //     var content = json?.choices?.FirstOrDefault()?.message?.content;
+        //     if (!string.IsNullOrWhiteSpace(content))
+        //     {
+        //         messages.Add(new Message("assistant", content.Trim()));
+        //         await ScrollToBottom();
+        //     }
+        // }
+    }
+
+    private async Task<string> SendToGPT(string input)
+    {
+        string responseText = string.Empty;
+        var payload = new
+        {
+            messages = new[] {
+                new { role = "user", content = input }
+            }
+        };
+
+        var jsonContent = new StringContent(
+            JsonSerializer.Serialize(payload),
+            Encoding.UTF8,
+            "application/json");
+
+        try
+        {
+            var result = await Http.PostAsync("https://api-user.bankdata.web.id/openai_proxy.php", jsonContent);
+            result.EnsureSuccessStatusCode();
+            var json = await result.Content.ReadAsStringAsync();
+
+            using var doc = JsonDocument.Parse(json);
+            responseText = doc.RootElement
+                .GetProperty("choices")[0]
+                .GetProperty("message")
+                .GetProperty("content")
+                .GetString();
+        }
+        catch (Exception ex)
+        {
+            responseText = "Error: " + ex.Message;
+        }
+
+        return responseText;
+    }
+
+    private async Task HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter") await SendMessage();
+    }
+
+    private async Task ScrollToBottom()
+    {
+        await Task.Delay(100);
+        await chatBox.FocusAsync(); // Optional: Ensure focus
+    }
+
+    public void Dispose() => messages.Clear();
+
+    public class Message(string role, string content)
+    {
+        public string Role { get; set; } = role;
+        public string Content { get; set; } = content;
+    }
+
+    public class GptResponse
+    {
+        public List<Choice> choices { get; set; }
+        public class Choice
+        {
+            public Message message { get; set; }
+        }
+        public class Message
+        {
+            public string role { get; set; }
+            public string content { get; set; }
+        }
+    }
+}

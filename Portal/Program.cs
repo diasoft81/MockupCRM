@@ -28,6 +28,7 @@ catch (Exception ex)
 
 builder.Services.AddSingleton<SessionStatesPortal>();
 
+
 //Log.Logger = new LoggerConfiguration()
 //    .MinimumLevel.Verbose()
 //    .WriteTo.BrowserConsole()
