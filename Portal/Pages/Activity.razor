@@ -6,8 +6,23 @@
 
 @inject IJSRuntime JS
 
+<MudToolBar Class="mud-toolbar mud-toolbar-gutters custom_toolbar custom_toolbar2">
+    <MudText Typo="Typo.h5" Style="color:white; cursor: pointer;" @onclick="@(() => Navigation.NavigateTo("/"))">
+        Calender
+    </MudText>
+
+    <MudSpacer /> <!-- Ini akan mendorong elemen berikut ke kanan -->
+
+@*     <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mx-2" OnClick="@ResetFilters">
+        Reset
+    </MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@ExportChart">
+        Export
+    </MudButton> *@
+</MudToolBar>
+
 <div class="container full-screen">
-    <h2 class="text-primary mb-4">Calender</h2>
+@*     <h2 class="text-primary mb-4">Calender</h2>
 
     <div class="task-form">
         <div class="form-row">
@@ -21,7 +36,7 @@
             </div>
         </div>
         <button class="button" @onclick="AddActivity">Add Activity</button>
-    </div>
+    </div> *@
 
     <div class="calendar full-width-dialog">
         <div class="table-responsive">

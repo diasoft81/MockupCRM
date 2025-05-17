@@ -3,9 +3,20 @@
 
 @using System.Globalization
 
-<PageTitle>Sales Performance Report</PageTitle>
+<MudToolBar Class="mud-toolbar mud-toolbar-gutters custom_toolbar custom_toolbar2">
+    <MudText Typo="Typo.h5" Style="color:white; cursor: pointer;" @onclick="@(() => Navigation.NavigateTo("/"))">
+        Dashboard Revenue Performance
+    </MudText>
 
-@* <h3 class="mb-4">📊 Sales Performance Report</h3> *@
+    <MudSpacer /> <!-- Ini akan mendorong elemen berikut ke kanan -->
+
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mx-2" OnClick="@ResetFilters">
+        Reset
+    </MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@ExportChart">
+        Export
+    </MudButton>
+</MudToolBar>
 
 <div class="row">
     <div class="col-md-6">
@@ -80,4 +91,13 @@
     [Inject] private IJSRuntime JS { get; set; } = default!;
 
     private record SalesData(string Month, int Deals, int Revenue);
+
+    void ResetFilters()
+    {
+    }
+
+    async Task ExportChart()
+    {
+        await JSRuntime.InvokeVoidAsync("exportDashboardCharts");
+    }
 }

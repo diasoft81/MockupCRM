@@ -6,11 +6,24 @@
 @inject IJSRuntime JS
 @inject IDialogService DialogService
 
-<PageTitle>Kanban</PageTitle>
+<MudToolBar Class="mud-toolbar mud-toolbar-gutters custom_toolbar custom_toolbar2">
+    <MudText Typo="Typo.h5" Style="color:white; cursor: pointer;" @onclick="@(() => Navigation.NavigateTo("/"))">
+        @((pipeline == "sales") ? "Sales" : "Delivery") Kanban Board
+    </MudText>
+
+    <MudSpacer /> <!-- Ini akan mendorong elemen berikut ke kanan -->
+
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mx-2" OnClick="@ResetFilters">
+        Reset
+    </MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@ExportChart">
+        Export
+    </MudButton>
+</MudToolBar>
 
 <div class="container">
     <div class="mb-4 mt-3">
-        <h2>@((pipeline == "sales") ? "Sales" : "Delivery") Kanban Board</h2>
+        <h2></h2>
         <p>Gunakan tampilan Kanban ini untuk memonitor dan memindahkan @((pipeline == "sales") ? "leads" : "customer") antar tahapan proses penjualan.</p>
         <button class="button" @onclick="AddLead"><i class="fas fa-plus"></i> Add Lead</button>
     </div>
@@ -176,6 +189,14 @@
                 lead.LeadStatus = newStage;
             }
         }
+    }
+    void ResetFilters()
+    {
+    }
+
+    async Task ExportChart()
+    {
+        await JSRuntime.InvokeVoidAsync("exportDashboardCharts");
     }
 
 }
