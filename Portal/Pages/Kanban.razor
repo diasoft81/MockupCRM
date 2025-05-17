@@ -144,7 +144,7 @@
                 BackgroundClass = "full-width-dialog"
             };
         var parameters = new DialogParameters();
-        var dialog = await DialogService.ShowAsync<ComLeadEntry>("Update Stage", parameters, options);
+        var dialog = await DialogService.ShowAsync<ComLeadEntry>("New Lead", parameters, options);
         var result = await dialog.Result;
 
         if (result?.Canceled == false)
@@ -166,7 +166,7 @@
                 BackgroundClass = "full-width-dialog"
             };
         var parameters = new DialogParameters { ["Lead"] = lead, ["TargetStage"] = newStage };
-        var dialog = await DialogService.ShowAsync<ComQualification>("Qualification", parameters, options);
+        var dialog = await DialogService.ShowAsync<ComQualification>("Update Stage", parameters, options);
         var result = await dialog.Result;
 
         if ((result?.Canceled ?? true) == false)
