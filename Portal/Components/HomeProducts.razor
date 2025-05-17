@@ -3,7 +3,7 @@
 
 <section class="recent-section">
     <div class="container">
-        <h2 class="section-title">Recent Dashboards</h2>
+        <h2 class="section-title">Product List</h2>
         <div class="row">
             @foreach (var card in VisibleCards)
             {
@@ -15,7 +15,7 @@
                             <p class="card-text">@card.Description</p>
                         </div>
                         <div class="card-footer text-muted">
-                            Views: @card.Views
+                            Quantity: @card.Quantity
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var cards = await Http.GetFromJsonAsync<List<CardModel>>("/data/cards.json");
+        var cards = await Http.GetFromJsonAsync<List<CardModel>>("/data/cards_products.json");
         if (cards != null)
         {
             AllCards = cards;
@@ -60,6 +60,7 @@
         public string Title { get; set; }
         public string Image { get; set; }
         public string Description { get; set; }
+        public int Quantity { get; set; }
         public int Views { get; set; }
     }
 }

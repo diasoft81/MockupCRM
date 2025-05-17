@@ -1,0 +1,55 @@
+
+<section class="recent-section">
+    <div class="container">
+        <h2 class="section-title">Recent Updates</h2>
+        <div class="recent-items">
+            <div class="recent-card">
+                <h5>New Lead Added</h5>
+                <p>Marketing team added a new prospect.</p>
+            </div>
+            <div class="recent-card">
+                <h5>Meeting Scheduled</h5>
+                <p>Team meeting on CRM usage tomorrow 10AM.</p>
+            </div>
+            <div class="recent-card">
+                <h5>Deal Closed</h5>
+                <p>Successfully closed deal with XYZ Corp.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.recent-section {
+    padding: 60px 0;
+    background-color: #f4f6f8;
+}
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #004080;
+    margin-bottom: 30px;
+}
+.recent-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+.recent-card {
+    background: white;
+    padding: 20px;
+    border-left: 5px solid #004080;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.recent-card h5 {
+    margin: 0 0 10px;
+    font-weight: bold;
+    color: #004080;
+}
+.recent-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+</style>

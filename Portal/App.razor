@@ -35,8 +35,10 @@
     private readonly Assembly[] additionalAssemblies = new[]{
         typeof(CoreNET.Blazor.Shared.ServiceContainer).Assembly
     };
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+        await base.OnInitializedAsync();
         AppState.Params.AppTitle = "Portal";
+
     }
 }

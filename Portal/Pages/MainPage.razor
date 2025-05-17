@@ -3,11 +3,36 @@
 @using Portal.Components
 
 <MudContainer MaxWidth="MaxWidth.False" Class="mt-4 mb-8">
-    <HomeHero />
-    <HomeRecent />
-    <HomePopular />
-    <HomeBlog />
-    <HomeNewsLetter />
+    @if (AppState.LoginStored.IsLoggedIn == true)
+    {
+        <HomeHero />
+    }
+    <HomeProducts />
+    @if (AppState.LoginStored.IsLoggedIn == true)
+    {
+        <HomeRecentUpdate />
+        <HomePopular />
+        <HomeBlog />
+        <HomeNewsLetter />
+    }
 </MudContainer>
 
 <HomeFooter />
+
+@code
+{
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        AppState.Params.AppTitle = "Portal";
+
+        await Session.IsLoginStored(LocalStorage);
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+        await base.OnInitializedAsync();
+    } 
+}

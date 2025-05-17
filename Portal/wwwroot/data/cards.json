@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "title": "Sample Dashboard Title 1",
+    "image": "https://placehold.co/600x300?text=Card+1",
+    "views": 117,
+    "description": "Insightful data dashboard #1 showing trends and analysis"
+  },
+  {
+    "id": 2,
+    "title": "Sample Dashboard Title 2",
+    "image": "https://placehold.co/600x300?text=Card+2",
+    "views": 134,
+    "description": "Insightful data dashboard #2 showing trends and analysis"
+  },
+  {
+    "id": 3,
+    "title": "Sample Dashboard Title 3",
+    "image": "https://placehold.co/600x300?text=Card+3",
+    "views": 151,
+    "description": "Insightful data dashboard #3 showing trends and analysis"
+  },
+  {
+    "id": 4,
+    "title": "Sample Dashboard Title 4",
+    "image": "https://placehold.co/600x300?text=Card+4",
+    "views": 168,
+    "description": "Insightful data dashboard #4 showing trends and analysis"
+  },
+  {
+    "id": 5,
+    "title": "Sample Dashboard Title 5",
+    "image": "https://placehold.co/600x300?text=Card+5",
+    "views": 185,
+    "description": "Insightful data dashboard #5 showing trends and analysis"
+  },
+  {
+    "id": 6,
+    "title": "Sample Dashboard Title 6",
+    "image": "https://placehold.co/600x300?text=Card+6",
+    "views": 202,
+    "description": "Insightful data dashboard #6 showing trends and analysis"
+  },
+  {
+    "id": 7,
+    "title": "Sample Dashboard Title 7",
+    "image": "https://placehold.co/600x300?text=Card+7",
+    "views": 219,
+    "description": "Insightful data dashboard #7 showing trends and analysis"
+  },
+  {
+    "id": 8,
+    "title": "Sample Dashboard Title 8",
+    "image": "https://placehold.co/600x300?text=Card+8",
+    "views": 236,
+    "description": "Insightful data dashboard #8 showing trends and analysis"
+  },
+  {
+    "id": 9,
+    "title": "Sample Dashboard Title 9",
+    "image": "https://placehold.co/600x300?text=Card+9",
+    "views": 253,
+    "description": "Insightful data dashboard #9 showing trends and analysis"
+  },
+  {
+    "id": 10,
+    "title": "Sample Dashboard Title 10",
+    "image": "https://placehold.co/600x300?text=Card+10",
+    "views": 270,
+    "description": "Insightful data dashboard #10 showing trends and analysis"
+  },
+  {
+    "id": 11,
+    "title": "Sample Dashboard Title 11",
+    "image": "https://placehold.co/600x300?text=Card+11",
+    "views": 287,
+    "description": "Insightful data dashboard #11 showing trends and analysis"
+  },
+  {
+    "id": 12,
+    "title": "Sample Dashboard Title 12",
+    "image": "https://placehold.co/600x300?text=Card+12",
+    "views": 304,
+    "description": "Insightful data dashboard #12 showing trends and analysis"
+  },
+  {
+    "id": 13,
+    "title": "Sample Dashboard Title 13",
+    "image": "https://placehold.co/600x300?text=Card+13",
+    "views": 321,
+    "description": "Insightful data dashboard #13 showing trends and analysis"
+  },
+  {
+    "id": 14,
+    "title": "Sample Dashboard Title 14",
+    "image": "https://placehold.co/600x300?text=Card+14",
+    "views": 338,
+    "description": "Insightful data dashboard #14 showing trends and analysis"
+  },
+  {
+    "id": 15,
+    "title": "Sample Dashboard Title 15",
+    "image": "https://placehold.co/600x300?text=Card+15",
+    "views": 355,
+    "description": "Insightful data dashboard #15 showing trends and analysis"
+  },
+  {
+    "id": 16,
+    "title": "Sample Dashboard Title 16",
+    "image": "https://placehold.co/600x300?text=Card+16",
+    "views": 372,
+    "description": "Insightful data dashboard #16 showing trends and analysis"
+  },
+  {
+    "id": 17,
+    "title": "Sample Dashboard Title 17",
+    "image": "https://placehold.co/600x300?text=Card+17",
+    "views": 389,
+    "description": "Insightful data dashboard #17 showing trends and analysis"
+  },
+  {
+    "id": 18,
+    "title": "Sample Dashboard Title 18",
+    "image": "https://placehold.co/600x300?text=Card+18",
+    "views": 406,
+    "description": "Insightful data dashboard #18 showing trends and analysis"
+  },
+  {
+    "id": 19,
+    "title": "Sample Dashboard Title 19",
+    "image": "https://placehold.co/600x300?text=Card+19",
+    "views": 423,
+    "description": "Insightful data dashboard #19 showing trends and analysis"
+  },
+  {
+    "id": 20,
+    "title": "Sample Dashboard Title 20",
+    "image": "https://placehold.co/600x300?text=Card+20",
+    "views": 440,
+    "description": "Insightful data dashboard #20 showing trends and analysis"
+  }
+]

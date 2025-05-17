@@ -12,13 +12,13 @@
 		"bg-body-start": "#F4F9FC",
 		"bg-body-end": "#F4F9FC",
 		"cl-toolbar": "#FFFFFF",
-		"bg-toolbar-start": "#0093D5",
-		"bg-toolbar-end": "#0093D5",
+		"bg-toolbar-start": "#212529",
+		"bg-toolbar-end": "#212529",
 		"cl-menu": "#000000",
 		"cl-menu-link": "#000000",
 		"cl-btn-setting": "#FFD700",
-		"bg-footer-start": "#0093D5",
-		"bg-footer-end": "#0093D5",
+		"bg-footer-start": "#212529",
+		"bg-footer-end": "#212529",
 		"cl-footer": "#FFFFFF"
 	},
 	"darkblue": {

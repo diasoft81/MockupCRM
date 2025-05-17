@@ -1,0 +1,233 @@
+[
+  {
+    "id": 1,
+    "title": "EIDW-E50TSEJA02",
+    "image": "https://placehold.co/600x300?text=Card+1",
+    "quantity": 5,
+    "description": "DCCT 50 KW (CCS+AC+CHADEMO)"
+  },
+  {
+    "id": 2,
+    "title": "EIAW-E22KTSE5A04",
+    "image": "https://placehold.co/600x300?text=Card+2",
+    "quantity": 7,
+    "description": "AC Max Smart 22KW"
+  },
+  {
+    "id": 3,
+    "title": "EVHE503EMCA05",
+    "image": "https://placehold.co/600x300?text=Card+3",
+    "quantity": 9,
+    "description": "DC Wallbox 50kW 2CCS+AC"
+  },
+  {
+    "id": 4,
+    "title": "AH10-7TG-W4",
+    "image": "https://placehold.co/600x300?text=Card+4",
+    "quantity": 4,
+    "description": "IOC WULING 7KW"
+  },
+  {
+    "id": 5,
+    "title": "EIAW-E11KTBE5A02",
+    "image": "https://placehold.co/600x300?text=Card+5",
+    "quantity": 23,
+    "description": "Ac Max Basic 11KW"
+  },
+  {
+    "id": 6,
+    "title": "EIDW-E50TSEEA02",
+    "image": "https://placehold.co/600x300?text=Card+6",
+    "quantity": 12,
+    "description": "DC Wallbox 50kW Double CCS"
+  },
+  {
+    "id": 7,
+    "title": "3798101215",
+    "image": "https://placehold.co/600x300?text=Card+7",
+    "quantity": 10,
+    "description": "UFC 150KW"
+  },
+  {
+    "id": 8,
+    "title": "EVPE3225MUN",
+    "image": "https://placehold.co/600x300?text=Card+8",
+    "quantity": 20,
+    "description": "AC Mini 7KW"
+  },
+  {
+    "id": 9,
+    "title": "TAC-W22-G5-R-C-0",
+    "image": "https://placehold.co/600x300?text=Card+9",
+    "quantity": 36,
+    "description": "Terra AC 22 kW"
+  },
+  {
+    "id": 10,
+    "title": "AH10-7TE-W4",
+    "image": "https://placehold.co/600x300?text=Card+10",
+    "quantity": 30,
+    "description": "IOC DFSK 7KW"
+  },
+  {
+    "id": 11,
+    "title": "AC7000-AE-25",
+    "image": "https://placehold.co/600x300?text=Card+11",
+    "quantity": 40,
+    "description": "Waigeo"
+  },
+  {
+    "id": 12,
+    "title": "EVDE25D4DUM",
+    "image": "https://placehold.co/600x300?text=Card+12",
+    "quantity": 20,
+    "description": "DC Wallbox 25kW chademo + CCS"
+  },
+  {
+    "id": 13,
+    "title": "EVHE104EFCA05",
+    "image": "https://placehold.co/600x300?text=Card+13",
+    "quantity": 40,
+    "description": "DCCT 100 KW (DOUBLE CCS)"
+  },
+  {
+    "id": 14,
+    "title": "OBCE-W7-G5-RW",
+    "image": "https://placehold.co/600x300?text=Card+14",
+    "quantity": 20,
+    "description": "OBSIDIAN 7KW"
+  },
+  {
+    "id": 15,
+    "title": "TERRA-AS-121-5CC-10R-SWH-B-C",
+    "image": "https://placehold.co/600x300?text=Card+15",
+    "quantity": 10,
+    "description": "Chargedot Wolf DC 120 kW"
+  },
+  {
+    "id": 16,
+    "title": "TWB-CE-24-C-3T-7M-0-0",
+    "image": "https://placehold.co/600x300?text=Card+16",
+    "quantity": 10,
+    "description": "Terra DC Wallbox 24 kW"
+  },
+  {
+    "id": 17,
+    "title": "AC3500-DE-20",
+    "image": "https://placehold.co/600x300?text=Card+17",
+    "quantity": 50,
+    "description": "Memo Series Portable Charger"
+  },
+  {
+    "id": 18,
+    "title": "EVHE503EECA05",
+    "image": "https://placehold.co/600x300?text=Card+18",
+    "quantity": 10,
+    "description": "DCCT 50 KW (DOUBLE CCS)"
+  },
+  {
+    "id": 19,
+    "title": "EIDW-E50TSRA02",
+    "image": "https://placehold.co/600x300?text=Card+19",
+    "quantity": 20,
+    "description": "DCCT 50 KW (DOUBLE CCS + AC)"
+  },
+  {
+    "id": 20,
+    "title": "100068",
+    "image": "https://placehold.co/600x300?text=Card+20",
+    "quantity": 13,
+    "description": "Terra 184HC CC"
+  },
+  {
+    "id": 21,
+    "title": "EIDW-E50TSPA1315",
+    "image": "https://placehold.co/600x300?text=Card+21",
+    "quantity": 20,
+    "description": "DC Wallbox 50kW CCS+CHA+AC"
+  },
+  {
+    "id": 22,
+    "title": "TAC-W7-G5-R-0",
+    "image": "https://placehold.co/600x300?text=Card+22",
+    "quantity": 200,
+    "description": "Terra AC 7.4 kW"
+  },
+  {
+    "id": 23,
+    "title": "OBCE-W7-G5-RC",
+    "image": "https://placehold.co/600x300?text=Card+23",
+    "quantity": 43,
+    "description": "Obsidian 7 kW"
+  },
+  {
+    "id": 24,
+    "title": "EVHE104ENCA05",
+    "image": "https://placehold.co/600x300?text=Card+24",
+    "quantity": 20,
+    "description": "DCCT 100 KW (CCS+CHADEMO+AC)"
+  },
+  {
+    "id": 25,
+    "title": "EIAW-E11KTSE5A04",
+    "image": "https://placehold.co/600x300?text=Card+25",
+    "quantity": 10,
+    "description": "AC Max Smart 11KW"
+  },
+  {
+    "id": 26,
+    "title": "EIDS-E200TSEEA01",
+    "image": "https://placehold.co/600x300?text=Card+26",
+    "quantity": 30,
+    "description": "DCCT 200 KW"
+  },
+  {
+    "id": 27,
+    "title": "TDC-CE-124-CC-4N2-7M-H-0",
+    "image": "https://placehold.co/600x300?text=Card+27",
+    "quantity": 40,
+    "description": "Terra DC 120 kW"
+  },
+  {
+    "id": 28,
+    "title": "EVDE25E4DUM",
+    "image": "https://placehold.co/600x300?text=Card+28",
+    "quantity": 50,
+    "description": "DC Wallbox 25kW CCS2 1 GUN"
+  },
+  {
+    "id": 29,
+    "title": "TERRA AC W7-G5-R-0",
+    "image": "https://placehold.co/600x300?text=Card+29",
+    "quantity": 60,
+    "description": "TERRA 7KW"
+  },
+  {
+    "id": 30,
+    "title": "EIAW-E22KTBE5A02",
+    "image": "https://placehold.co/600x300?text=Card+30",
+    "quantity": 20,
+    "description": "Ac Max Basic 22KW"
+  },
+  {
+    "id": 31,
+    "title": "TERRA-AS-61-5CC-10R-SWH",
+    "image": "https://placehold.co/600x300?text=Card+31",
+    "quantity": 21,
+    "description": "Chargedot Wolf DC 60 kW"
+  },
+  {
+    "id": 32,
+    "title": "AC7000-AE-05",
+    "image": "https://placehold.co/600x300?text=Card+32",
+    "quantity": 10,
+    "description": "Bello / DFSK SERES"
+  },
+  {
+    "id": 33,
+    "title": "EVPE3225MWN01",
+    "image": "https://placehold.co/600x300?text=Card+33",
+    "quantity": 20,
+    "description": "AC Mini 7KW + WIFI + LAN"
+  }
+]
