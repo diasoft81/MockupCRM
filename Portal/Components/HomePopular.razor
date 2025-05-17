@@ -1,0 +1,66 @@
+
+<section class="popular-section">
+    <div class="container">
+        <h2 class="section-title">Popular Dashboards</h2>
+        <div class="popular-cards">
+            <div class="popular-card">
+                <h5>Sales Overview</h5>
+                <p>Track all your monthly and annual sales activities.</p>
+                <a href="/dashboard/sales" class="read-more">View</a>
+            </div>
+            <div class="popular-card">
+                <h5>Leads Funnel</h5>
+                <p>Visualize lead conversions across stages.</p>
+                <a href="/dashboard/leads" class="read-more">View</a>
+            </div>
+            <div class="popular-card">
+                <h5>Team Performance</h5>
+                <p>Compare productivity across sales reps and teams.</p>
+                <a href="/dashboard/team" class="read-more">View</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.popular-section {
+    padding: 60px 0;
+    background-color: #ffffff;
+}
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #004080;
+    margin-bottom: 30px;
+}
+.popular-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+.popular-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #004080;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.popular-card h5 {
+    color: #004080;
+    margin-bottom: 10px;
+}
+.popular-card p {
+    font-size: 0.95rem;
+    color: #555;
+}
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #004080;
+    text-decoration: none;
+}
+.read-more:hover {
+    text-decoration: underline;
+}
+</style>

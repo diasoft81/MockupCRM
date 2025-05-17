@@ -1,0 +1,61 @@
+
+<section class="blog-section">
+    <div class="container">
+        <h2 class="section-title">Latest Blog Posts</h2>
+        <div class="blog-cards">
+            <div class="blog-card">
+                <h4 class="blog-title">5 Tips to Maximize CRM Usage</h4>
+                <p class="blog-snippet">Discover ways to streamline your CRM workflows for better efficiency.</p>
+                <a class="read-more" href="#">Read more</a>
+            </div>
+            <div class="blog-card">
+                <h4 class="blog-title">The Importance of Sales Tracking</h4>
+                <p class="blog-snippet">Understand how tracking sales helps your team hit targets consistently.</p>
+                <a class="read-more" href="#">Read more</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.blog-section {
+    padding: 60px 0;
+    background-color: #fff;
+}
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #004080;
+    margin-bottom: 30px;
+}
+.blog-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.blog-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #004080;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.blog-title {
+    color: #004080;
+    margin-bottom: 10px;
+}
+.blog-snippet {
+    font-size: 0.95rem;
+    color: #555;
+}
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #004080;
+    font-weight: 600;
+    text-decoration: none;
+}
+.read-more:hover {
+    text-decoration: underline;
+}
+</style>

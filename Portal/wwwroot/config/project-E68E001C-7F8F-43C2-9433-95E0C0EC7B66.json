@@ -43,7 +43,7 @@
 					"Title": "Products",
 					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
 					"Href": "/table/products",
-					"URLView": "https://api-teb.diasoft.web.id/api.php/records/products",
+					"URLView": "https://api-teb.diasoft.web.id/api.php/records/products"
 				},
 				{
 					"Name": "companies",

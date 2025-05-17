@@ -1,12 +1,14 @@
 {
 	"default": {
 		"cl-header": "#FFFFFF",
-		"bg-header-start": "#0093D5",
-		"bg-header-end": "#0093D5",
+		"bg-header-degree": "120deg",
+		"bg-header-start": "#1c0432",
+		"bg-header-end": "#1c0432",
 		"cl-aside": "#000000",
 		"bg-aside-start": "#FFFFFF",
 		"bg-aside-end": "#FFFFFF",
 		"cl-body": "#222831",
+		"bg-body-degree": "90deg",
 		"bg-body-start": "#F4F9FC",
 		"bg-body-end": "#F4F9FC",
 		"cl-toolbar": "#FFFFFF",
