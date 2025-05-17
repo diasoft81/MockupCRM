@@ -34,6 +34,34 @@
 			"Href": "/activity"
 		},
 		{
+			"Name": "reference",
+			"Title": "Reference",
+			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/conference-call.png",
+			"Children": [
+				{
+					"Name": "products",
+					"Title": "Products",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
+					"Href": "/table/products",
+					"URLView": "https://api-teb.diasoft.web.id/api.php/records/products",
+				},
+				{
+					"Name": "companies",
+					"Title": "Companies",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
+					"Href": "/table/companies",
+					"URLView": "https://api-teb.diasoft.web.id/api.php/records/companies"
+				},
+				{
+					"Name": "contact_persons",
+					"Title": "Contact Persons",
+					"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
+					"Href": "/table/contact_persons",
+					"URLView": "https://api-teb.diasoft.web.id/api.php/records/contact_persons"
+				}
+			]
+		},
+		{
 			"Name": "reports",
 			"Title": "Reports & Monitoring",
 			"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/report.png",

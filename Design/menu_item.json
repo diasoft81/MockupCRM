@@ -1,0 +1,40 @@
+{
+	"Name": "products",
+	"Title": "Products",
+	"IconUrl": "https://img.icons8.com/ios-filled/50/40916c/inventory.png",
+	"Href": "/table/products",
+	"URLView": "https://api-teb.diasoft.web.id/api.php/records/products",
+	"VisibleColumns": [
+		{
+			"Name": "Type",
+			"Title": "Type",
+			"Width": 15,
+			"RowCssStyle": "text-align:center"
+		},
+		{
+			"Name": "Merk",
+			"Title": "Merk",
+			"Width": 20,
+			"RowCssStyle": "text-align:center"
+		},
+		{
+			"Name": "Model",
+			"Title": "Model",
+			"RowCssStyle": "text-align:center"
+		},
+		{
+			"Name": "Quantity",
+			"Title": "Quantity",
+			"Width": 20,
+			"RowCssStyle": "text-align:center"
+		},
+		{
+			"Name": "UpperBound",
+			"Title": "Upper Bound",
+			"Width": 15,
+			"RowCssStyle": "text-align:right",
+			"DataType": "Money",
+			"DisplayFormat": "#,##0.00"
+		}
+	]
+}
