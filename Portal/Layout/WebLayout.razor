@@ -45,7 +45,25 @@
 
     .custom_toolbar {
         background: linear-gradient(90deg, @SelectedThemeStyle["bg-toolbar-start"], @SelectedThemeStyle["bg-toolbar-end"] );
+        width: 100%;
     }
+
+    .custom_toolbar2 {
+        height: 58px !important;
+        background: blueviolet !important;
+    }
+
+        .custom_toolbar2 .btn {
+            background-color: #ffffff;
+            color: #8A2BE2;
+            font-weight: bold;
+            border: 2px solid #ffffff;
+        }
+
+            .custom_toolbar2 .btn:hover {
+                background-color: #ffc107; /* warna terang untuk hover */
+                color: #000;
+            }
 
     .mud-navmenu {
         color: @SelectedThemeStyle["cl-menu"]; /* Putih untuk kontras maksimal */
