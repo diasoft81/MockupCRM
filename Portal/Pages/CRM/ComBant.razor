@@ -1,64 +1,83 @@
 ﻿@using Portal.Model
-<MudText Typo="Typo.h6">BANT Qualification</MudText>
-<MudSelect T="string" Label="Budget Availability" @bind-Value="BudgetAvailability">
-    <MudSelectItem Value=@("Yes")>Yes</MudSelectItem>
-    <MudSelectItem Value=@("No")>No</MudSelectItem>
-    <MudSelectItem Value=@("Unknown")>Unknown</MudSelectItem>
-</MudSelect>
-<MudSelect T="string" Label="Authority to Decide" @bind-Value="AuthorityToDecide">
-    <MudSelectItem Value=@("Yes")>Yes</MudSelectItem>
-    <MudSelectItem Value=@("No")>No</MudSelectItem>
-    <MudSelectItem Value=@("Unknown")>Unknown</MudSelectItem>
-</MudSelect>
-<MudTextField T="string" Label="Need Justification" Lines="3" />
-<MudDatePicker T="DateTime" Label="Expected Timeline" />
 
-<MudDivider Class="my-4" />
+<MudForm>
+    <MudGrid Class="form-region mr-3">
+        <MudItem xs="12" sm="12">
+            <MudText Typo="Typo.h6">BANT Qualification</MudText>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudSelect T="string" Label="Budget Availability" @bind-Value="BudgetAvailability">
+                <MudSelectItem Value=@("Yes")>Yes</MudSelectItem>
+                <MudSelectItem Value=@("No")>No</MudSelectItem>
+                <MudSelectItem Value=@("Unknown")>Unknown</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudSelect T="string" Label="Authority to Decide" @bind-Value="AuthorityToDecide">
+                <MudSelectItem Value=@("Yes")>Yes</MudSelectItem>
+                <MudSelectItem Value=@("No")>No</MudSelectItem>
+                <MudSelectItem Value=@("Unknown")>Unknown</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudTextField T="string" Label="Need Justification" Lines="3" />
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudDatePicker T="DateTime" Label="Expected Timeline" />
+        </MudItem>
+    </MudGrid>
 
-<MudText T="string" Typo="Typo.h6">Qualification Criteria</MudText>
-<MudTable T="object" Hover="true">
-    <HeaderContent>
-        <MudTh>Criteria</MudTh>
-        <MudTh>Qualified</MudTh>
-        <MudTh>Not Qualified</MudTh>
-        <MudTh>Remarks</MudTh>
-    </HeaderContent>
-    <RowTemplate>
-        <MudTr>
-            <MudTd>Project Budget Identified</MudTd>
-            <MudTd><MudRadioGroup T="string" @bind-SelectedOption="ProjectBudgetIdentified"><MudRadio T="string" Option="yes">Yes</MudRadio></MudRadioGroup></MudTd>
-            <MudTd><MudRadioGroup T="string" @bind-SelectedOption="ProjectBudgetIdentified"><MudRadio T="string" Option="no">No</MudRadio></MudRadioGroup></MudTd>
-            <MudTd><MudTextField T="string" /></MudTd>
-        </MudTr>
-        <MudTr>
-            <MudTd>Decision Maker Engaged</MudTd>
-            <MudTd><MudRadioGroup T="string" @bind-SelectedOption="DecisionMaker"><MudRadio T="string" Option="yes">Yes</MudRadio></MudRadioGroup></MudTd>
-            <MudTd><MudRadioGroup T="string" @bind-SelectedOption="DecisionMaker"><MudRadio T="string" Option="no">No</MudRadio></MudRadioGroup></MudTd>
-            <MudTd><MudTextField T="string" /></MudTd>
-        </MudTr>
-        <MudTr>
-            <MudTd>Clear Product Need</MudTd>
-            <MudTd><MudRadioGroup T="string" @bind-SelectedOption="ClearNeed"><MudRadio T="string" Option="yes">Yes</MudRadio></MudRadioGroup></MudTd>
-            <MudTd><MudRadioGroup T="string" @bind-SelectedOption="ClearNeed"><MudRadio T="string" Option="no">No</MudRadio></MudRadioGroup></MudTd>
-            <MudTd><MudTextField T="string" /></MudTd>
-        </MudTr>
-        <MudTr>
-            <MudTd>Timeline Matches Offering</MudTd>
-            <MudTd><MudRadioGroup T="string" @bind-SelectedOption="TimelineMatch"><MudRadio T="string" Option="yes">Yes</MudRadio></MudRadioGroup></MudTd>
-            <MudTd><MudRadioGroup T="string" @bind-SelectedOption="TimelineMatch"><MudRadio T="string" Option="no">No</MudRadio></MudRadioGroup></MudTd>
-            <MudTd><MudTextField T="string" /></MudTd>
-        </MudTr>
-        <MudTr>
-            <MudTd>Customer Expressed Readiness</MudTd>
-            <MudTd><MudRadioGroup T="string" @bind-SelectedOption="Readiness"><MudRadio T="string" Option="yes">Yes</MudRadio></MudRadioGroup></MudTd>
-            <MudTd><MudRadioGroup T="string" @bind-SelectedOption="Readiness"><MudRadio T="string" Option="no">No</MudRadio></MudRadioGroup></MudTd>
-            <MudTd><MudTextField T="string" /></MudTd>
-        </MudTr>
-    </RowTemplate>
-</MudTable>
+    <MudDivider Class="my-4" />
+
+    <MudGrid Class="form-region mr-3">
+        <MudItem xs="12">
+            <MudText Typo="Typo.h6">Qualification Criteria</MudText>
+        </MudItem>
+
+        <MudItem xs="12">
+            <MudTable T="QualificationCriterion" Items="@CriteriaList" Hover="true">
+                <HeaderContent>
+                    <MudTh>Criteria</MudTh>
+                    <MudTh>Qualified</MudTh>
+                    <MudTh>Not Qualified</MudTh>
+                    <MudTh>Remarks</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTr>
+                        <MudTd>@context.Title</MudTd>
+                        <MudTd>
+                            <MudRadio T="bool" @bind-Checked="@context.IsQualified" Value="true" />
+                        </MudTd>
+                        <MudTd>
+                            <MudRadio T="bool" @bind-Checked="@context.IsQualified" Value="false" />
+                        </MudTd>
+                        <MudTd>
+                            <MudTextField T="string" @bind-Value="@context.Remarks" />
+                        </MudTd>
+                    </MudTr>
+                </RowTemplate>
+            </MudTable>
+        </MudItem>
+    </MudGrid>
+</MudForm>
 
 @code {
     [Parameter] public LeadItem Lead { get; set; }
+    public class QualificationCriterion
+    {
+        public string Title { get; set; }
+        public bool? IsQualified { get; set; } = null;
+        public string Remarks { get; set; }
+    }
+
+    private List<QualificationCriterion> CriteriaList = new()
+    {
+        new QualificationCriterion { Title = "Project Budget Identified", IsQualified=true },
+        new QualificationCriterion { Title = "Decision Maker Engaged", IsQualified=false  },
+        new QualificationCriterion { Title = "Clear Product Need", IsQualified=true  },
+        new QualificationCriterion { Title = "Timeline Matches Offering", IsQualified=true  },
+        new QualificationCriterion { Title = "Customer Expressed Readiness", IsQualified=true  }
+    };
     private string BudgetAvailability;
     private string AuthorityToDecide;
     private string ProjectBudgetIdentified;

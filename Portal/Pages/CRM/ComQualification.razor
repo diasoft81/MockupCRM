@@ -16,7 +16,7 @@
             <MudButton OnClick="OnExpandCollapseClick">@((_expanded ? "Collapse" : "Expand") + " Customer Information")</MudButton>
             <MudDivider />
             <MudCollapse Expanded="_expanded">
-                <ComLeadEntry Lead="@Lead" />
+                <ComLeadEntry Lead="@Lead" Title="@Title" IsMobile="@IsMobile"/>
             </MudCollapse>
         }
         <MudDivider Class="my-4" />
@@ -51,6 +51,8 @@
 @code {
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
     [Parameter] public LeadItem Lead { get; set; }
+    [Parameter] public string? Title { get; set; } = "Update Stage";
+    [Parameter] public bool? IsMobile { get; set; } = false;
     [Parameter] public string TargetStage { get; set; } = "Qualified";
 
     private string LeadSearch;

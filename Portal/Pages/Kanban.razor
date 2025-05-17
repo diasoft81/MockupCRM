@@ -7,9 +7,12 @@
 @inject IDialogService DialogService
 
 <MudToolBar Class="mud-toolbar mud-toolbar-gutters custom_toolbar custom_toolbar2">
-    <MudText Typo="Typo.h5" Style="color:white; cursor: pointer;" @onclick="@(() => Navigation.NavigateTo("/"))">
-        @((pipeline == "sales") ? "Sales" : "Delivery") Kanban Board
-    </MudText>
+    @if (IsMobile != true)
+    {
+        <MudText Typo="Typo.h5" Style="color:white; cursor: pointer;" @onclick="@(() => Navigation.NavigateTo("/"))">
+            @((pipeline == "sales") ? "Sales" : "Delivery") Kanban Board
+        </MudText>
+    }
 
     <MudSpacer /> <!-- Ini akan mendorong elemen berikut ke kanan -->
 
@@ -23,8 +26,11 @@
 
 <div class="container">
     <div class="mb-4 mt-3">
-        <h2></h2>
-        <p>Gunakan tampilan Kanban ini untuk memonitor dan memindahkan @((pipeline == "sales") ? "leads" : "customer") antar tahapan proses penjualan.</p>
+        @if (IsMobile == true)
+        {
+            <h2>@((pipeline == "sales") ? "Sales" : "Delivery") Kanban Board</h2>
+        }
+        <p>Use this Kanban view to monitor and move @((pipeline == "sales") ? "leads" : "customers") between stages of the sales process.</p>
         <button class="button" @onclick="AddLead"><i class="fas fa-plus"></i> Add Lead</button>
     </div>
 
@@ -53,6 +59,8 @@
 
 @code {
     [Parameter] public string pipeline { get; set; }
+
+    public bool? IsMobile { get; private set; }
     private string[] Stages
     {
         get
@@ -108,6 +116,11 @@
 
     DotNetObjectReference<Kanban>? objRef;
 
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        IsMobile = await JSRuntime.InvokeAsync<bool>("isMobile");
+    }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -138,12 +151,12 @@
             {
                 MaxWidth = MaxWidth.False, // atau MaxWidth.Large
                 FullWidth = true,
-                CloseButton = true,
+                CloseButton = false,
                 BackdropClick = false,
                 FullScreen = true,
                 BackgroundClass = "full-width-dialog"
             };
-        var parameters = new DialogParameters();
+        var parameters = new DialogParameters { ["Title"] = "New Lead", ["IsMobile"] = IsMobile };
         var dialog = await DialogService.ShowAsync<ComLeadEntry>("New Lead", parameters, options);
         var result = await dialog.Result;
 
@@ -160,12 +173,18 @@
             {
                 MaxWidth = MaxWidth.False, // atau MaxWidth.Large
                 FullWidth = true,
-                CloseButton = true,
+                CloseButton = false,
                 BackdropClick = false,
                 FullScreen = true,
                 BackgroundClass = "full-width-dialog"
             };
-        var parameters = new DialogParameters { ["Lead"] = lead, ["TargetStage"] = newStage };
+        var parameters = new DialogParameters
+            {
+                ["Title"] = "Update Stage",
+                ["IsMobile"] = IsMobile,
+                ["Lead"] = lead,
+                ["TargetStage"] = newStage
+            };
         var dialog = await DialogService.ShowAsync<ComQualification>("Update Stage", parameters, options);
         var result = await dialog.Result;
 

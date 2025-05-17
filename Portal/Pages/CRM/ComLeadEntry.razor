@@ -34,11 +34,30 @@
 
 <MudDialog TitleClass="dialog-title bg-header" ActionsClass="bg-footer">
     <TitleContent>
-        <MudIcon Icon="@Icons.Material.Filled.Info" Class="mr-2" />
-        Update Stage
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div style="display: flex; align-items: center;">
+                @if (IsMobile != true)
+                {
+                    <MudIcon Icon="@Icons.Material.Filled.Info" Class="mr-2" />
+                    <span>@Title</span>
+                }
+            </div>
+
+            <div style="display: flex; gap: 0.5rem;">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveLead">Save Lead</MudButton>
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Cancel">Cancel</MudButton>
+            </div>
+        </div>
     </TitleContent>
+
     <DialogContent>
         <MudForm>
+            @if (IsMobile == true)
+            {
+                <h2>@Title</h2>
+                <MudDivider Class="my-4" />
+
+            }
             <MudGrid Class="form-region mr-3">
                 <MudItem xs="12" sm="12">
                     <MudText Typo="Typo.h5">Lead Details</MudText>
@@ -171,10 +190,10 @@
                                     <MudTextField T="string" Label="Phone" Class="mr-3" @bind-Value="Lead.ContactPhone" />
                                 </MudItem>
                                 <MudItem xs="12" md="6">
-                                    <MudTextField T="string" Label="Email" Class="mr-3" @bind-Value="Lead.ContactEmail"/>
+                                    <MudTextField T="string" Label="Email" Class="mr-3" @bind-Value="Lead.ContactEmail" />
                                 </MudItem>
                                 <MudItem xs="12" md="12">
-                                    <MudTextField T="string" Label="Address" Class="mr-3" Lines="3" @bind-Value="Lead.ContactAddress"/>
+                                    <MudTextField T="string" Label="Address" Class="mr-3" Lines="3" @bind-Value="Lead.ContactAddress" />
                                 </MudItem>
                                 <MudItem xs="12" md="6">
                                     <MudTextField T="string" Label="Region" Class="mr-3" @bind-Value="Lead.ContactRegion" />
@@ -243,21 +262,23 @@
             </MudGrid>
         </MudForm>
     </DialogContent>
-    <DialogActions>
+    @*     <DialogActions>
         <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveLead" Class="mt-4">Save Lead</MudButton>
         <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Cancel" Class="mt-4 mr-10">Cancel</MudButton>
-    </DialogActions>
+    </DialogActions> *@
 </MudDialog>
 
 @code {
     [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
     [Parameter] public LeadItem Lead { get; set; } = new();
+    [Parameter] public string? Title { get; set; } = "New Lead";
+    [Parameter] public bool? IsMobile { get; set; } = false;
     private List<ProductModel> SelectedProducts = new();
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        // Lead.StateHasChanged = StateHasChanged;
+
         Lead.PropertyChanged += (sender, args) =>
         {
             InvokeAsync(StateHasChanged); // Pastikan UI refresh saat properti berubah
