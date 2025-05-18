@@ -209,6 +209,12 @@ body {
         border-color: #f44336;
     }
 
+    .task-card:hover {
+        transform: scale(1.02);
+        background-color: #f1f1f1;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
 .task-meta span {
     display: inline-block;
     margin-right: 10px;
@@ -220,11 +226,48 @@ body {
     margin-right: 10px;
 }
 
+.kanban-stage-header {
+    display: block; /* Ensure it's block-level to occupy full width */
+    width: 100%; /* Full width of parent */
+    background-color: #1976d2;
+    color: black;
+    padding: 12px;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    border: 2px solid #1565c0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box; /* Include padding/border in width */
+}
+
+
+    .kanban-stage-header:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
 .kanban-column {
-    min-height: 300px;
+    flex: 1 1 0; /* biar fleksibel tapi tetap membagi lebar */
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* pastikan lebar penuh */
+    /*min-width: 150px;*/
+    overflow-y: auto;
     background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 6px;
+    margin: 0 4px;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.kanban-cards {
+    width: 100%; /* pastikan lebar penuh */
+    /*min-width: 150px;*/
+    min-height: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+    flex-grow: 1;
 }
 
 .kanban-ghost {
@@ -239,19 +282,14 @@ body {
     overflow-y: auto; /* Membuat konten scrollable */
 }
 
-.full-width-dialog {
+.full-width-page {
     width: 100vw !important;
-    height: 100vh !important;
-    margin: 0 !important;
+    height: 60vh !important;
+    margin: 10px !important;
     padding: 0 !important;
     top: 0 !important;
     left: 0 !important;
     border-radius: 0 !important;
-}
-
-.full-width-dialog .mud-dialog-content {
-    height: calc(100vh - 64px); /* Sesuaikan jika ada toolbar */
-    overflow-y: auto;
 }
 
 .full-width-dialog {
@@ -269,10 +307,25 @@ body {
         overflow-y: auto;
     }
 
-.full-width-dialog .mud-dialog-content {
-    max-height: 80vh; /* Tentukan tinggi maksimal konten dalam dialog */
-    overflow-y: auto; /* Membuat konten scrollable */
+.full-width-dialog {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    border-radius: 0 !important;
 }
+
+    .full-width-dialog .mud-dialog-content {
+        height: calc(100vh - 64px); /* Sesuaikan jika ada toolbar */
+        overflow-y: auto;
+    }
+
+    .full-width-dialog .mud-dialog-content {
+        max-height: 80vh; /* Tentukan tinggi maksimal konten dalam dialog */
+        overflow-y: auto; /* Membuat konten scrollable */
+    }
 
 .chat-bubble-button {
     position: fixed;

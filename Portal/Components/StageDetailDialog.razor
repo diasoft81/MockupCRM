@@ -1,0 +1,45 @@
+﻿@using CoreNET.Lib.Models.Kanban
+@using MudBlazor
+@using System.Text.Json
+
+<MudDialog>
+    <DialogContent>
+        <MudPaper Style="padding: 24px;" Elevation="2">
+            <MudStack Spacing="2">
+                <MudText Typo="Typo.h5" Color="Color.Primary">
+                    <MudIcon Icon="@StageInfo?.Icon" Class="mr-2" />
+                    @StageInfo?.Title
+                </MudText>
+
+                <MudDivider />
+
+                <MudText Typo="Typo.body1">
+                    @StageInfo?.Description
+                </MudText>
+
+                <MudText Typo="Typo.body2" Class="mt-2">
+                    <strong>Stage Type:</strong> @StageInfo?.Type
+                </MudText>
+
+                <MudText Typo="Typo.body2">
+                    <strong>Color:</strong> @StageInfo?.Color
+                </MudText>
+
+                <MudText Typo="Typo.body2">
+                    <strong>Text Color:</strong> @StageInfo?.TextColor
+                </MudText>
+            </MudStack>
+        </MudPaper>
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton Color="Color.Primary" OnClick="Close">Close</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+    [Parameter] public KanbanStageInfo? StageInfo { get; set; }
+
+    void Close() => MudDialog.Close();
+}

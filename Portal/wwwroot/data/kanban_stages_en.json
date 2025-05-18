@@ -1,0 +1,98 @@
+[
+	{
+		"type": "sales",
+		"title": "New",
+		"description": "New leads entering the system and not yet qualified.",
+		"color": "#e3f2fd",
+		"textColor": "#0d47a1",
+		"icon": "Icons.Material.Filled.FiberNew"
+	},
+	{
+		"type": "sales",
+		"title": "Qualified",
+		"description": "Leads that have been verified and meet basic criteria.",
+		"color": "#bbdefb",
+		"textColor": "#0d47a1",
+		"icon": "Icons.Material.Filled.ThumbUp"
+	},
+	{
+		"type": "sales",
+		"title": "Survey",
+		"description": "Survey or site visit is being conducted.",
+		"color": "#c8e6c9",
+		"textColor": "#1b5e20",
+		"icon": "Icons.Material.Filled.Search"
+	},
+	{
+		"type": "sales",
+		"title": "Negotiation",
+		"description": "Stage of offering and price negotiation.",
+		"color": "#fff9c4",
+		"textColor": "#f57f17",
+		"icon": "Icons.Material.Filled.AttachMoney"
+	},
+	{
+		"type": "sales",
+		"title": "Won",
+		"description": "Lead successfully converted into a customer.",
+		"color": "#c8e6c9",
+		"textColor": "#2e7d32",
+		"icon": "Icons.Material.Filled.CheckCircle"
+	},
+	{
+		"type": "sales",
+		"title": "Lost",
+		"description": "Lead failed to convert.",
+		"color": "#ffcdd2",
+		"textColor": "#b71c1c",
+		"icon": "Icons.Material.Filled.Cancel"
+	},
+	{
+		"type": "delivery",
+		"title": "New",
+		"description": "New project added to the implementation list.",
+		"color": "#e0f7fa",
+		"textColor": "#006064",
+		"icon": "Icons.Material.Filled.FiberNew"
+	},
+	{
+		"type": "delivery",
+		"title": "Preparation",
+		"description": "Preparation stage: resources, documents, and timeline setup.",
+		"color": "#ffe0b2",
+		"textColor": "#e65100",
+		"icon": "Icons.Material.Filled.Build"
+	},
+	{
+		"type": "delivery",
+		"title": "Ready to Go",
+		"description": "Team is ready to begin on-site implementation.",
+		"color": "#f0f4c3",
+		"textColor": "#827717",
+		"icon": "Icons.Material.Filled.PlayArrow"
+	},
+	{
+		"type": "delivery",
+		"title": "In Progress",
+		"description": "Implementation is currently underway.",
+		"color": "#d1c4e9",
+		"textColor": "#4a148c",
+		"icon": "Icons.Material.Filled.Sync"
+	},
+	{
+		"type": "delivery",
+		"title": "Testing",
+		"description": "Testing phase before final delivery.",
+		"color": "#fff3e0",
+		"textColor": "#e65100",
+		"icon": "Icons.Material.Filled.BugReport"
+	},
+	{
+		"type": "delivery",
+		"title": "Done",
+		"description": "Implementation completed and handed over.",
+		"color": "#c8e6c9",
+		"textColor": "#2e7d32",
+		"icon": "Icons.Material.Filled.DoneAll"
+	}
+]

@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreNET.Shared.Blazor", "..
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deprecated", "Deprecated", "{6FC0FA96-4722-4CEC-A069-CA20B426954E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{8D7551F2-9FDF-34FC-60C8-7FF0E4F59EAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal.Dev", "Portal\Portal.Dev.csproj", "{7D917AF5-8515-6780-55AE-28AEA58C3C4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,10 +56,10 @@ Global
 		{7D88362B-04BB-8E81-C9E9-228A91BBD0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D88362B-04BB-8E81-C9E9-228A91BBD0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D88362B-04BB-8E81-C9E9-228A91BBD0E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D7551F2-9FDF-34FC-60C8-7FF0E4F59EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D7551F2-9FDF-34FC-60C8-7FF0E4F59EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D7551F2-9FDF-34FC-60C8-7FF0E4F59EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D7551F2-9FDF-34FC-60C8-7FF0E4F59EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D917AF5-8515-6780-55AE-28AEA58C3C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D917AF5-8515-6780-55AE-28AEA58C3C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D917AF5-8515-6780-55AE-28AEA58C3C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D917AF5-8515-6780-55AE-28AEA58C3C4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

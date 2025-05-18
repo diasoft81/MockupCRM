@@ -1,0 +1,99 @@
+[
+	{
+		"type": "sales",
+		"title": "New",
+		"description": "Leads baru yang masuk ke sistem dan belum dikualifikasi.",
+		"color": "#e3f2fd",
+		"textColor": "#0d47a1",
+		"icon": "Icons.Material.Filled.FiberNew"
+	},
+	{
+		"type": "sales",
+		"title": "Qualified",
+		"description": "Leads yang sudah diverifikasi dan memenuhi kriteria dasar.",
+		"color": "#bbdefb",
+		"textColor": "#0d47a1",
+		"icon": "Icons.Material.Filled.ThumbUp"
+	},
+	{
+		"type": "sales",
+		"title": "Survey",
+		"description": "Proses kunjungan atau survei kebutuhan sedang dilakukan.",
+		"color": "#c8e6c9",
+		"textColor": "#1b5e20",
+		"icon": "Icons.Material.Filled.Search"
+	},
+	{
+		"type": "sales",
+		"title": "Negotiation",
+		"description": "Tahap penawaran dan diskusi harga.",
+		"color": "#fff9c4",
+		"textColor": "#f57f17",
+		"icon": "Icons.Material.Filled.AttachMoney"
+	},
+	{
+		"type": "sales",
+		"title": "Won",
+		"description": "Lead berhasil dikonversi menjadi pelanggan.",
+		"color": "#c8e6c9",
+		"textColor": "#2e7d32",
+		"icon": "Icons.Material.Filled.CheckCircle"
+	},
+	{
+		"type": "sales",
+		"title": "Lost",
+		"description": "Lead tidak berhasil dikonversi.",
+		"color": "#ffcdd2",
+		"textColor": "#b71c1c",
+		"icon": "Icons.Material.Filled.Cancel"
+	},
+
+	{
+		"type": "implementation",
+		"title": "New",
+		"description": "Proyek baru masuk ke daftar implementasi.",
+		"color": "#e0f7fa",
+		"textColor": "#006064",
+		"icon": "Icons.Material.Filled.FiberNew"
+	},
+	{
+		"type": "implementation",
+		"title": "Preparation",
+		"description": "Tahap persiapan: resource, dokumen, timeline.",
+		"color": "#ffe0b2",
+		"textColor": "#e65100",
+		"icon": "Icons.Material.Filled.Build"
+	},
+	{
+		"type": "implementation",
+		"title": "Ready to Go",
+		"description": "Tim siap menjalankan implementasi di lokasi.",
+		"color": "#f0f4c3",
+		"textColor": "#827717",
+		"icon": "Icons.Material.Filled.PlayArrow"
+	},
+	{
+		"type": "implementation",
+		"title": "In Progress",
+		"description": "Implementasi sedang berlangsung.",
+		"color": "#d1c4e9",
+		"textColor": "#4a148c",
+		"icon": "Icons.Material.Filled.Sync"
+	},
+	{
+		"type": "implementation",
+		"title": "Testing",
+		"description": "Fase uji coba sebelum finalisasi.",
+		"color": "#fff3e0",
+		"textColor": "#e65100",
+		"icon": "Icons.Material.Filled.BugReport"
+	},
+	{
+		"type": "implementation",
+		"title": "Done",
+		"description": "Proyek implementasi selesai dan handover.",
+		"color": "#c8e6c9",
+		"textColor": "#2e7d32",
+		"icon": "Icons.Material.Filled.DoneAll"
+	}
+]
