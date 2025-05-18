@@ -43,10 +43,18 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\CoreNET.Blazor\CoreNET.Blazor.AppBar\CoreNET.Blazor.AppBar.csproj" />
-        <ProjectReference Include="..\..\CoreNET.Blazor\CoreNET.Blazor.AppDrawer\CoreNET.Blazor.AppDrawer.csproj" />
-        <ProjectReference Include="..\..\CoreNET.Blazor\CoreNET.Blazor.Dashboard\CoreNET.Blazor.Dashboard.csproj" />
-        <ProjectReference Include="..\..\CoreNET.Blazor\CoreNET.Blazor.Shared\CoreNET.Blazor.Shared.csproj" />
+      <Reference Include="CoreNET.Blazor.AppBar">
+        <HintPath>..\Lib\CoreNET.Blazor.AppBar.dll</HintPath>
+      </Reference>
+      <Reference Include="CoreNET.Blazor.AppDrawer">
+        <HintPath>..\Lib\CoreNET.Blazor.AppDrawer.dll</HintPath>
+      </Reference>
+      <Reference Include="CoreNET.Blazor.Shared">
+        <HintPath>..\Lib\CoreNET.Blazor.Shared.dll</HintPath>
+      </Reference>
+      <Reference Include="CoreNET.Lib">
+        <HintPath>..\Lib\CoreNET.Lib.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
     <ItemGroup>

@@ -2,4 +2,4 @@
 /Portal/obj
 .vs
 *.env
-/API/api-teb.diasoft.web.id
+API/api-teb.diasoft.web.id/.htaccess
