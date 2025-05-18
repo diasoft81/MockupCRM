@@ -1,6 +1,6 @@
 {
-	"name": "MIA BMD",
-	"short_name": "MIA",
+	"name": "TEB CRM",
+	"short_name": "CRM",
 	"id": "./",
 	"start_url": "./",
 	"display": "standalone",
@@ -9,7 +9,7 @@
 	"prefer_related_applications": false,
 	"icons": [
 		{
-			"src": "corenet_120.png",
+			"src": "icon.png",
 			"type": "image/png",
 			"sizes": "120x120"
 		}
