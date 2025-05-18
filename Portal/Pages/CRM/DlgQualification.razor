@@ -1,0 +1,108 @@
+﻿@using MudBlazor
+@using Portal.Model
+@inject IDialogService DialogService
+
+<MudDialog TitleClass="dialog-title bg-header" ActionsClass="bg-footer">
+    <TitleContent>
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div style="display: flex; align-items: center;">
+                @if (IsMobile != true)
+                {
+                    <MudIcon Icon="@Icons.Material.Filled.Info" Class="mr-2" />
+                    <span>@Title</span>
+                }
+            </div>
+
+            <div style="display: flex; gap: 0.5rem;">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveLead">Save Lead</MudButton>
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Cancel">Cancel</MudButton>
+            </div>
+        </div>
+    </TitleContent>
+
+    <DialogContent>
+        <MudForm>
+            @if (Lead == null)
+            {
+                <MudText Typo="Typo.h5" Class="mb-4">Lead Lookup</MudText>
+
+                <MudTextField T="string" Label="Search Lead by Name or ID" @bind-Value="LeadSearch" />
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="LookupLead">Lookup</MudButton>
+            }
+            else
+            {
+                <MudButton OnClick="OnExpandCollapseClick">@((_expanded ? "Collapse" : "Expand") + " Customer Information")</MudButton>
+                <MudDivider />
+                <MudCollapse Expanded="_expanded">
+                    <ComLeadEntry Lead="@Lead" Title="@Title" IsMobile="@IsMobile" />
+                </MudCollapse>
+            }
+            <MudDivider Class="my-4" />
+
+            @if (TargetStage == "Qualified")
+            {
+                <ComBant Lead="@Lead" />
+            }
+            else if (TargetStage == "Survey")
+            {
+                <ComSurvey Lead="@Lead" />
+            }
+            else if (TargetStage == "Negotiation")
+            {
+                <ComNegotiation Lead="@Lead" />
+            }
+            else if (TargetStage == "Won")
+            {
+                <ComWon Lead="@Lead" />
+            }
+            else if (TargetStage == "Lost")
+            {
+                <ComLose Lead="@Lead" />
+            }
+            <MudDivider Class="my-4" />
+
+            <MudItem xs="12" sm="12">
+                <MudSwitch T="bool" @bind-Value="@isConfirmed">@($"Convert to {TargetStage}")</MudSwitch>
+            </MudItem>
+
+        </MudForm>
+    </DialogContent>
+</MudDialog>
+
+@code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+    [Parameter] public LeadItem Lead { get; set; }
+    [Parameter] public string? Title { get; set; } = "Update Stage";
+    [Parameter] public bool? IsMobile { get; set; } = false;
+    [Parameter] public string TargetStage { get; set; } = "Qualified";
+
+    private string LeadSearch;
+    bool _expanded = false;
+    bool isConfirmed = false;
+
+    private void OnExpandCollapseClick()
+    {
+        _expanded = !_expanded;
+    }
+    void LookupLead()
+    {
+        // Lookup logic here
+    }
+
+    void SaveLead()
+    {
+        if (isConfirmed)
+        {
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+        else
+        {
+            MudDialog.Cancel();
+        }
+    }
+
+    void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+}

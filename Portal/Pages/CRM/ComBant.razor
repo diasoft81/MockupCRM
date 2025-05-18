@@ -38,18 +38,17 @@
             <MudTable T="QualificationCriterion" Items="@CriteriaList" Hover="true">
                 <HeaderContent>
                     <MudTh>Criteria</MudTh>
-                    <MudTh>Qualified</MudTh>
-                    <MudTh>Not Qualified</MudTh>
+                    <MudTh>Qualified/Not</MudTh>
                     <MudTh>Remarks</MudTh>
                 </HeaderContent>
                 <RowTemplate>
                     <MudTr>
                         <MudTd>@context.Title</MudTd>
                         <MudTd>
-                            <MudRadio T="bool" @bind-Checked="@context.IsQualified" Value="true" />
-                        </MudTd>
-                        <MudTd>
-                            <MudRadio T="bool" @bind-Checked="@context.IsQualified" Value="false" />
+                            <MudRadioGroup T="bool" @bind-Value="@context.IsQualified">
+                                <MudRadio Value="true">Qualified</MudRadio>
+                                <MudRadio Value="false">Not Qualified</MudRadio>
+                            </MudRadioGroup>
                         </MudTd>
                         <MudTd>
                             <MudTextField T="string" @bind-Value="@context.Remarks" />
@@ -66,7 +65,7 @@
     public class QualificationCriterion
     {
         public string Title { get; set; }
-        public bool? IsQualified { get; set; } = null;
+        public bool IsQualified { get; set; } = false;
         public string Remarks { get; set; }
     }
 
@@ -80,9 +79,9 @@
     };
     private string BudgetAvailability;
     private string AuthorityToDecide;
-    private string ProjectBudgetIdentified;
-    private string DecisionMaker;
-    private string ClearNeed;
-    private string TimelineMatch;
-    private string Readiness;
+    // private string ProjectBudgetIdentified;
+    // private string DecisionMaker;
+    // private string ClearNeed;
+    // private string TimelineMatch;
+    // private string Readiness;
 }

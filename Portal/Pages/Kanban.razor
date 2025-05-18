@@ -135,13 +135,12 @@
     }
 
     [JSInvokable]
-    public async Task OnLeadMoved(string title, string newStage)
+    public async Task OnLeadMoved(string title, string newStage, string oldColumnId, int oldIndex)
     {
         var lead = Leads.FirstOrDefault(l => l.ContactMobile == title);
         if (lead != null && lead.Stage != newStage)
         {
-            await OnMoveLeadClicked(lead, newStage);
-            StateHasChanged();
+            await OnMoveLeadClicked(lead, title, newStage, oldColumnId, oldIndex);
         }
     }
 
@@ -157,7 +156,7 @@
                 BackgroundClass = "full-width-dialog"
             };
         var parameters = new DialogParameters { ["Title"] = "New Lead", ["IsMobile"] = IsMobile };
-        var dialog = await DialogService.ShowAsync<ComLeadEntry>("New Lead", parameters, options);
+        var dialog = await DialogService.ShowAsync<DlgLeadEntry>("New Lead", parameters, options);
         var result = await dialog.Result;
 
         if (result?.Canceled == false)
@@ -167,7 +166,7 @@
         }
     }
 
-    async Task OnMoveLeadClicked(LeadItem lead, string newStage)
+    public async Task OnMoveLeadClicked(LeadItem lead, string title, string newStage, string oldColumnId, int oldIndex)
     {
         var options = new DialogOptions()
             {
@@ -185,12 +184,20 @@
                 ["Lead"] = lead,
                 ["TargetStage"] = newStage
             };
-        var dialog = await DialogService.ShowAsync<ComQualification>("Update Stage", parameters, options);
+        var dialog = await DialogService.ShowAsync<DlgQualification>("Update Stage", parameters, options);
         var result = await dialog.Result;
 
         if ((result?.Canceled ?? true) == false)
         {
             await MoveLead(lead, newStage, true);
+            StateHasChanged();
+            await JS.InvokeVoidAsync("kanbanInterop.initSortable", objRef);
+        }
+        else
+        {
+            await InvokeAsync(StateHasChanged);
+            await JS.InvokeVoidAsync("kanbanInterop.revertItem", title, oldColumnId, oldIndex);
+            Snackbar.Add("Update stage is cancelled!");
         }
     }
 

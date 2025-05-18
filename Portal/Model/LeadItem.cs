@@ -11,7 +11,7 @@ namespace Portal.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         [JsonIgnore]
-        public Action StateHasChanged { get; set; }
+        public Action? StateHasChanged { get; set; }
         private bool _IsExistingCustomer = false;
         public bool IsExistingCustomer
         {

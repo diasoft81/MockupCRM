@@ -1,0 +1,80 @@
+﻿@using MudBlazor
+@using Portal.Model
+@using Portal.Pages.Dialog
+@using System.ComponentModel
+
+@inject IDialogService DialogService
+
+<style>
+    .dialog-title {
+        font-size: 1.5rem; /* Lebih besar dari Typo.h5 */
+        font-weight: 600;
+        color: #1976d2; /* Biru khas MudBlazor Primary */
+        padding: 16px 24px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .expansions {
+        margin-right: 20px;
+    }
+
+    .expansion-panel {
+        font-size: 2rem; /* Lebih besar dari Typo.h5 */
+        font-weight: 600; /* Teks tebal (semi-bold) */
+        text-decoration: underline; /* Garis bawah */
+        color: blue; /* Warna biru */
+        border: 1px solid #1976d2; /* Border biru */
+    }
+
+    .form-region {
+        width: 100%;
+        border: 1px solid #1976d2; /* Border biru */
+        margin: 3px 3px 3px 10px;
+    }
+</style>
+
+<MudDialog TitleClass="dialog-title bg-header" ActionsClass="bg-footer">
+    <TitleContent>
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div style="display: flex; align-items: center;">
+                @if (IsMobile != true)
+                {
+                    <MudIcon Icon="@Icons.Material.Filled.Info" Class="mr-2" />
+                    <span>@Title</span>
+                }
+            </div>
+
+            <div style="display: flex; gap: 0.5rem;">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveLead">Save Lead</MudButton>
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Cancel">Cancel</MudButton>
+            </div>
+        </div>
+    </TitleContent>
+
+    <DialogContent>
+        <ComLeadEntry Lead="@Lead" IsMobile="@IsMobile" Title="@Title"></ComLeadEntry>
+    </DialogContent>
+</MudDialog>
+
+@code {
+    [CascadingParameter] private IMudDialogInstance? MudDialog { get; set; }
+    [Parameter] public LeadItem Lead { get; set; } = new();
+    [Parameter] public string? Title { get; set; } = "New Lead";
+    [Parameter] public bool? IsMobile { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+    }
+
+    private void SaveLead()
+    {
+        // Save logic
+        Snackbar.Add("Lead successfully saved", Severity.Success);
+        MudDialog.Close(DialogResult.Ok(true));
+    }
+    private void Cancel()
+    {
+        MudDialog.Close();
+    }
+}
