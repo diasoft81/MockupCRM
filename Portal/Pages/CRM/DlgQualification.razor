@@ -61,10 +61,12 @@
             }
             <MudDivider Class="my-4" />
 
-            <MudItem xs="12" sm="12">
-                <MudSwitch T="bool" @bind-Value="@isConfirmed">@($"Convert to {TargetStage}")</MudSwitch>
-            </MudItem>
-
+            @if (TargetStage != Lead.Stage)
+            {
+                <MudItem xs="12" sm="12">
+                    <MudSwitch T="bool" @bind-Value="@isConfirmed">@($"Convert to {TargetStage}")</MudSwitch>
+                </MudItem>
+            }
         </MudForm>
     </DialogContent>
 </MudDialog>
