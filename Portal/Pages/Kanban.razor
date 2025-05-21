@@ -52,7 +52,7 @@
                     @foreach (var lead in Leads.Where(l => l.Stage == stage))
                     {
                         <div class="task-card @GetStatusClass(lead)" @onclick="() => ShowLeadDetailPopup(lead)">
-                            <strong>@lead.ContactMobile</strong>
+                            <strong>@lead.CompanyShortName</strong>
                             <div class="task-meta mt-2">
                                 <span>@lead.CompanyName</span>
                                 <span>@lead.Status</span>
@@ -93,37 +93,37 @@
             {
                 return new()
                     {
-                        new LeadItem("Lead 1", "Perusahaan A", "New"),
-                        new LeadItem("Lead 2", "Perusahaan B", "New"),
-                        new LeadItem("Lead 3", "Perusahaan C", "Qualified"),
-                        new LeadItem("Lead 4", "Perusahaan D", "Negotiation"),
-                        new LeadItem("Lead 5", "Perusahaan E", "Lost"),
-                        new LeadItem("Lead 6", "Perusahaan F", "Survey"),
-                        new LeadItem("Lead 7", "Perusahaan G", "Won"),
-                        new LeadItem("Lead 8", "Perusahaan A", "New"),
-                        new LeadItem("Lead 9", "Perusahaan B", "New"),
-                        new LeadItem("Lead 10", "Perusahaan C", "Qualified"),
-                        new LeadItem("Lead 11", "Perusahaan D", "Negotiation"),
-                        new LeadItem("Lead 12", "Perusahaan E", "Lost"),
-                        new LeadItem("Lead 13", "Perusahaan F", "Survey"),
-                        new LeadItem("Lead 14", "Perusahaan G", "Won"),
-                        new LeadItem("Lead 15", "Perusahaan A", "New"),
-                        new LeadItem("Lead 16", "Perusahaan B", "New"),
-                        new LeadItem("Lead 17", "Perusahaan A", "New"),
-                        new LeadItem("Lead 18", "Perusahaan B", "New")
+                        new LeadItem("PT 1", "Perusahaan A", "New"),
+                        new LeadItem("PT 2", "Perusahaan B", "New"),
+                        new LeadItem("PT 3", "Perusahaan C", "Qualified"),
+                        new LeadItem("PT 4", "Perusahaan D", "Negotiation"),
+                        new LeadItem("PT 5", "Perusahaan E", "Lost"),
+                        new LeadItem("PT 6", "Perusahaan F", "Survey"),
+                        new LeadItem("PT 7", "Perusahaan G", "Won"),
+                        new LeadItem("PT 8", "Perusahaan A", "New"),
+                        new LeadItem("PT 9", "Perusahaan B", "New"),
+                        new LeadItem("PT 10", "Perusahaan C", "Qualified"),
+                        new LeadItem("PT 11", "Perusahaan D", "Negotiation"),
+                        new LeadItem("PT 12", "Perusahaan E", "Lost"),
+                        new LeadItem("PT 13", "Perusahaan F", "Survey"),
+                        new LeadItem("PT 14", "Perusahaan G", "Won"),
+                        new LeadItem("PT 15", "Perusahaan A", "New"),
+                        new LeadItem("PT 16", "Perusahaan B", "New"),
+                        new LeadItem("PT 17", "Perusahaan A", "New"),
+                        new LeadItem("PT 18", "Perusahaan B", "New")
                     };
             }
             else
             {
                 return new()
                     {
-                        new LeadItem("Lead 1", "Perusahaan A", "New"),
-                        new LeadItem("Lead 2", "Perusahaan B", "In Progress"),
-                        new LeadItem("Lead 3", "Perusahaan C", "Preparation"),
-                        new LeadItem("Lead 4", "Perusahaan D", "Ready to Go"),
-                        new LeadItem("Lead 5", "Perusahaan E", "In Progress"),
-                        new LeadItem("Lead 6", "Perusahaan F", "Testing"),
-                        new LeadItem("Lead 7", "Perusahaan G", "Done")
+                        new LeadItem("PT 1", "Perusahaan A", "New"),
+                        new LeadItem("PT 2", "Perusahaan B", "In Progress"),
+                        new LeadItem("PT 3", "Perusahaan C", "Preparation"),
+                        new LeadItem("PT 4", "Perusahaan D", "Ready to Go"),
+                        new LeadItem("PT 5", "Perusahaan E", "In Progress"),
+                        new LeadItem("PT 6", "Perusahaan F", "Testing"),
+                        new LeadItem("PT 7", "Perusahaan G", "Done")
                     };
             }
 
@@ -177,7 +177,7 @@
         await OnMoveLeadClicked(lead, "Edit Lead", lead.Stage);
 
         // var info = StageInfos?.FirstOrDefault(s => s.Type == pipeline && s.Title == stage);
-        // await DialogService.ShowAsync<Portal.Components.StageDetailDialog>("Lead Info", new DialogParameters { ["Stage"] = info.Description });
+        // await DialogService.ShowAsync<Portal.Components.StageDetailDialog>("PT Info", new DialogParameters { ["Stage"] = info.Description });
     }
 
     private string GetStageDetailColor(string stage)
@@ -197,23 +197,47 @@
 
     async Task AddLead()
     {
-        var options = new DialogOptions()
-            {
-                MaxWidth = MaxWidth.False, // atau MaxWidth.Large
-                FullWidth = true,
-                CloseButton = false,
-                BackdropClick = false,
-                FullScreen = true,
-                BackgroundClass = "full-width-dialog"
-            };
-        var parameters = new DialogParameters { ["Title"] = "New Lead", ["IsMobile"] = IsMobile };
-        var dialog = await DialogService.ShowAsync<DlgLeadEntry>("New Lead", parameters, options);
-        var result = await dialog.Result;
-
-        if (result?.Canceled == false)
+        if (pipeline == "sales")
         {
-            var newLead = new LeadItem($"Lead {Leads.Count + 1}", "Perusahaan Baru", "Lead");
-            Leads.Add(newLead);
+            var options = new DialogOptions()
+                {
+                    MaxWidth = MaxWidth.False, // atau MaxWidth.Large
+                    FullWidth = true,
+                    CloseButton = false,
+                    BackdropClick = false,
+                    FullScreen = true,
+                    BackgroundClass = "full-width-dialog"
+                };
+            var parameters = new DialogParameters { ["Title"] = "New Lead", ["IsMobile"] = IsMobile };
+            var dialog = await DialogService.ShowAsync<DlgLeadEntry>("New Lead", parameters, options);
+            var result = await dialog.Result;
+
+            if (result?.Canceled == false)
+            {
+                var newLead = new LeadItem($"PT {Leads.Count + 1}", "Perusahaan Baru", "Lead");
+                Leads.Add(newLead);
+            }
+        }
+        else
+        {
+            var options = new DialogOptions()
+                {
+                    MaxWidth = MaxWidth.False, // atau MaxWidth.Large
+                    FullWidth = true,
+                    CloseButton = false,
+                    BackdropClick = false,
+                    FullScreen = true,
+                    BackgroundClass = "full-width-dialog"
+                };
+            var parameters = new DialogParameters { ["Title"] = "New Work Order", ["IsMobile"] = IsMobile };
+            var dialog = await DialogService.ShowAsync<DlgWorkOrder>("New Work Order", parameters, options);
+            var result = await dialog.Result;
+
+            if (result?.Canceled == false)
+            {
+                var newLead = new LeadItem($"WO {Leads.Count + 1}", "WO Baru", "WO");
+                Leads.Add(newLead);
+            }
         }
     }
 

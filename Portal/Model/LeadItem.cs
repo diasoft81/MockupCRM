@@ -90,7 +90,7 @@ namespace Portal.Model
         }
         public LeadItem(string name, string company, string stage)
         {
-            ContactMobile = name;
+            CompanyShortName = name;
             CompanyName = company;
             LeadStatus = stage;
         }
