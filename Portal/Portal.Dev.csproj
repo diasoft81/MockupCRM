@@ -24,6 +24,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Include="Portal.csproj" />
+      <None Include="Portal.csproj.user" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
         <PackageReference Include="Blazored.TextEditor" Version="1.1.2" />
         <PackageReference Include="BootstrapBlazor" Version="9.4.9" />

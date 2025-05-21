@@ -34,7 +34,7 @@
             <h2>@((pipeline == "sales") ? "Sales" : "Delivery") Kanban Board</h2>
         }
         <p>Use this Kanban view to monitor and move @((pipeline == "sales") ? "leads" : "customers") between stages of the sales process.</p>
-        <button class="button" @onclick="AddLead"><i class="fas fa-plus"></i> Add Lead</button>
+        <button class="button" @onclick="AddLead"><i class="fas fa-plus"></i> Add @((pipeline == "sales") ? "Lead" : "Work Order")</button>
     </div>
 
     <div class="row g-3">
