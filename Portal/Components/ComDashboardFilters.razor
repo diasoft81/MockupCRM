@@ -1,0 +1,81 @@
+﻿@using CoreNET.Lib.Data.References
+@using CoreNET.Lib.Models.References
+
+<div class="row ml-3 mt-3 mb-3">
+    <div class="col-md-2">
+        <label>Bulan:</label>
+        <select class="form-control" Value="@DashboardFilters.SelectedMonth" @onchange="OnFilterChanged">
+            @foreach (var month in MonthList.All)
+            {
+                <option value="@month.MonthId">@month.MonthNameEn</option>
+            }
+        </select>
+
+    </div>
+    <div class="col-md-2">
+        <label>Sales Person:</label>
+        <select class="form-control" Value="selectedSales" @onchange="OnFilterChanged">
+            @foreach (var sales in salesPersons)
+            {
+                <option value="@sales">@sales</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label>Region:</label>
+        <select class="form-control" Value="selectedRegion" @onchange="OnFilterChanged">
+            @foreach (var region in regions)
+            {
+                <option value="@region">@region</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label>Channel:</label>
+        <select class="form-control" Value="selectedChannel" @onchange="OnFilterChanged">
+            @foreach (var channel in channels)
+            {
+                <option value="@channel">@channel</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label>Product:</label>
+        <select class="form-control" Value="selectedProduct" @onchange="OnFilterChanged">
+            @foreach (var product in products)
+            {
+                <option value="@product">@product</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <div class="row mb-3">
+            <div class="col">
+                @*                     <button class="btn btn-secondary me-2" @onclick="ResetFilters">Reset</button>
+                    <button class="btn btn-primary" @onclick="ExportChart">Export</button> *@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public EventCallback<DashboardFilters>? OnFilterChangedHandler { get; set; }
+
+    private DashboardFilters Filters = new();
+    // Options
+    List<string> months = new() { "January", "February", "March", "April", "May" };
+    List<string> salesPersons = new() { "All", "Sales A", "Sales B", "Sales C" };
+    List<string> regions = new() { "All", "West", "East", "Central" };
+    List<string> channels = new() { "All", "Online", "Retail", "Partner" };
+    List<string> products = new() { "All", "EV Charger A", "EV Charger B", "EV Adapter" };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+    }
+    async Task OnFilterChanged(ChangeEventArgs? e)
+    {
+        await OnFilterChangedHandler?.InvokeAsync(Filters);
+    }
+}
