@@ -1,0 +1,45 @@
+﻿@using CoreNET.Lib.Helper
+@using CoreNET.Lib.Models.References
+@using MudBlazor
+
+<MudAutocomplete T="string"
+                 Label="Wilayah"
+                 Variant="Variant.Filled"
+                 @bind-Value="@Filters.SelectedRegion"
+                 SearchFunc="SearchRegion"
+                 ToStringFunc="@(s => s)"
+                 ResetValueOnEmptyText="true"
+                 Clearable="true"
+                 Dense="true"
+                 Adornment="Adornment.End"
+                 AdornmentIcon="@Icons.Material.Filled.LocationOn" />
+
+@code {
+    [Parameter] public EventCallback<DashboardFilters>? OnFilterChangedHandler { get; set; }
+    [Parameter] public DashboardFilters Filters { get; set; }
+
+    private string selectedRegion;
+    private List<string> allRegionsFlat;
+
+    protected override void OnInitialized()
+    {
+        // Ambil data dari helper dan flatten menjadi 1 list string
+        allRegionsFlat = ResourceHelper.GetRegions()
+            .SelectMany(region =>
+                new[] { region.Name }
+                .Concat(region.SubRegions.Select(sr => $"-- {sr.Name}")))
+            .ToList();
+    }
+
+    private Task<IEnumerable<string>> SearchRegion(string value, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return Task.FromResult(allRegionsFlat.AsEnumerable());
+
+        var result = allRegionsFlat
+            .Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+
+        return Task.FromResult(result);
+    }
+
+}

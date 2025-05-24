@@ -1,0 +1,20 @@
+﻿@using CoreNET.Lib.Models.References
+<label>Bulan:</label>
+<select class="form-control" Value="@Filters.SelectedMonth" @onchange="OnFilterChanged">
+    @foreach (var month in MonthList.All)
+    {
+        <option value="@month.MonthId">@month.MonthNameEn</option>
+    }
+</select>
+
+
+@code {
+    [Parameter] public EventCallback<DashboardFilters>? OnFilterChangedHandler { get; set; }
+    [Parameter] public DashboardFilters Filters { get; set; }
+
+    async Task OnFilterChanged(ChangeEventArgs? e)
+    {
+        await OnFilterChangedHandler?.InvokeAsync(Filters);
+    }
+
+}

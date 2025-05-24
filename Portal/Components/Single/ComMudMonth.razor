@@ -1,0 +1,50 @@
+﻿@using CoreNET.Lib.Models.References
+@using MudBlazor
+@using System.Globalization
+
+<MudAutocomplete T="Month"
+                 Label="Bulan"
+                 Variant="Variant.Filled"
+                 Dense="true"
+                 @bind-Value="Filters.SelectedMonth"
+                 SearchFunc="SearchMonths"
+                 ToStringFunc="GetMonthDisplayName"
+                 ResetValueOnEmptyText="true"
+                 Clearable="true"
+                 Adornment="Adornment.End"
+                 AdornmentIcon="@Icons.Material.Filled.CalendarToday" />
+
+@code {
+    [Parameter] public EventCallback<DashboardFilters>? OnFilterChangedHandler { get; set; }
+    [Parameter] public DashboardFilters Filters { get; set; }
+
+    private List<Month> months = MonthList.All;
+
+    private Task<IEnumerable<Month>> SearchMonths(string value, CancellationToken token)
+    {
+        var filtered = months
+            .Where(m =>
+                m.MonthNameId.Contains(value ?? string.Empty, StringComparison.OrdinalIgnoreCase) ||
+                m.MonthNameEn.Contains(value ?? string.Empty, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+
+        return Task.FromResult<IEnumerable<Month>>(filtered);
+    }
+
+    private string GetMonthDisplayName(Month? month)
+    {
+        if (month == null) return string.Empty;
+
+        return CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "id"
+            ? month.MonthNameId
+            : month.MonthNameEn;
+    }
+
+    private async Task OnFilterChanged(Month? value, CancellationToken token)
+    {
+        Filters.SelectedMonth = value;
+
+        if (OnFilterChangedHandler.HasValue)
+            await OnFilterChangedHandler.Value.InvokeAsync(Filters);
+    }
+}

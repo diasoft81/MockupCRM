@@ -1,35 +1,16 @@
 ﻿@using CoreNET.Lib.Models.References
+@using Portal.Components.Single
 
 <div class="row ml-3 mt-3 mb-3">
     <div class="col-md-2">
-        <label>Bulan:</label>
-        <select class="form-control" Value="@DashboardFilters.SelectedMonth" @onchange="OnFilterChanged">
-            @foreach (var month in MonthList.All)
-            {
-                <option value="@month.MonthId">@month.MonthNameEn</option>
-            }
-        </select>
-
+        <ComMudMonth Filters="@Filters" OnFilterChangedHandler="@OnFilterChangedHandler"></ComMudMonth>
     </div>
     <div class="col-md-2">
-        <label>Sales Person:</label>
-        <select class="form-control" Value="selectedSales" @onchange="OnFilterChanged">
-            @foreach (var sales in salesPersons)
-            {
-                <option value="@sales">@sales</option>
-            }
-        </select>
+        <ComMudSales Filters="@Filters" OnFilterChangedHandler="@OnFilterChangedHandler"></ComMudSales>
     </div>
-    <ComRegion></ComRegion>
-@*     <div class="col-md-2">
-        <label>Region:</label>
-        <select class="form-control" Value="selectedRegion" @onchange="OnFilterChanged">
-            @foreach (var region in regions)
-            {
-                <option value="@region">@region</option>
-            }
-        </select>
-    </div> *@
+    <div class="col-md-2">
+        <ComMudRegion Filters="@Filters" OnFilterChangedHandler="@OnFilterChangedHandler"></ComMudRegion>
+    </div>
     <div class="col-md-2">
         <label>Channel:</label>
         <select class="form-control" Value="selectedChannel" @onchange="OnFilterChanged">
