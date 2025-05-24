@@ -12,13 +12,7 @@
         <ComMudRegion Filters="@Filters" OnFilterChangedHandler="@OnFilterChangedHandler"></ComMudRegion>
     </div>
     <div class="col-md-2">
-        <label>Channel:</label>
-        <select class="form-control" Value="selectedChannel" @onchange="OnFilterChanged">
-            @foreach (var channel in channels)
-            {
-                <option value="@channel">@channel</option>
-            }
-        </select>
+        <ComMudChannels Filters="@Filters" OnFilterChangedHandler="@OnFilterChangedHandler"></ComMudChannels>
     </div>
     <div class="col-md-2">
         <label>Product:</label>

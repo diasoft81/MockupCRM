@@ -1,41 +1,41 @@
 ﻿@using CoreNET.Lib.Models.References
+@using MudBlazor
+
 <MudAutocomplete T="string"
-                 Label="Sales Person"
+                 Label="Product"
                  Variant="Variant.Filled"
-                 Dense="true"
-                 Value="selectedSales"
+                 Value="Filters.SelectedProduct"
+                 ValueChanged="OnFilterChanged"
                  SearchFunc="SearchFunc"
                  ToStringFunc="@(s => s)"
-                 ValueChanged="OnFilterChanged"
+                 CoerceText="true"
                  ResetValueOnEmptyText="true"
                  Clearable="true"
+                 Dense="true"
                  Adornment="Adornment.End"
-                 AdornmentIcon="@Icons.Material.Filled.Search" />
-
+                 AdornmentIcon="@Icons.Material.Filled.Category" />
 
 @code {
     [Parameter] public EventCallback<DashboardFilters>? OnFilterChangedHandler { get; set; }
     [Parameter] public DashboardFilters Filters { get; set; }
 
-    private string selectedSales;
-    private List<string> salesPersons = new() { "Andi", "Budi", "Citra", "Dewi" }; // contoh data
-
     private Task<IEnumerable<string>> SearchFunc(string value, CancellationToken token)
     {
         if (string.IsNullOrWhiteSpace(value))
-            return Task.FromResult(salesPersons.AsEnumerable());
+            return Task.FromResult(products.AsEnumerable());
 
-        var result = salesPersons
-            .Where(x => x.Contains(value ?? string.Empty, StringComparison.InvariantCultureIgnoreCase));
-
-        return Task.FromResult(result);
+        return Task.FromResult(products.Where(p => p.Contains(value ?? string.Empty, StringComparison.InvariantCultureIgnoreCase)));
     }
 
-    private async Task OnFilterChanged(string newValue)
+    private List<string> products = new()
     {
-        selectedSales = newValue;
+        "All", "Product A", "Product B", "Product C" // Gantilah sesuai dengan data real
+    };
+
+    private async Task OnFilterChanged(string value)
+    {
+        Filters.SelectedProduct = value;
         if (OnFilterChangedHandler.HasValue)
             await OnFilterChangedHandler.Value.InvokeAsync(Filters);
     }
 }
-

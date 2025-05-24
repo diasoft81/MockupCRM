@@ -1,51 +1,42 @@
-﻿@using CoreNET.Lib.Helper
-@using CoreNET.Lib.Models.References
+﻿@using CoreNET.Lib.Models.References
 @using MudBlazor
 
 <MudAutocomplete T="string"
-                 Label="Wilayah"
+                 Label="Channel"
                  Variant="Variant.Filled"
-                 Value="@Filters.SelectedRegion"
+                 Value="Filters.SelectedChannel"
                  ValueChanged="OnFilterChanged"
                  SearchFunc="SearchFunc"
                  ToStringFunc="@(s => s)"
+                 CoerceText="true"
                  ResetValueOnEmptyText="true"
                  Clearable="true"
                  Dense="true"
                  Adornment="Adornment.End"
-                 AdornmentIcon="@Icons.Material.Filled.LocationOn" />
+                 AdornmentIcon="@Icons.Material.Filled.PersonPinCircle"
+                  />
 
 @code {
-    [Parameter] public EventCallback<DashboardFilters>? OnFilterChangedHandler { get; set; }
     [Parameter] public DashboardFilters Filters { get; set; }
+    [Parameter] public EventCallback<DashboardFilters>? OnFilterChangedHandler { get; set; }
 
-    private List<string> allRegionsFlat;
-
-    protected override void OnInitialized()
-    {
-        // Ambil data dari helper dan flatten menjadi 1 list string
-        allRegionsFlat = ResourceHelper.GetRegions()
-            .SelectMany(region =>
-                new[] { region.Name }
-                .Concat(region.SubRegions.Select(sr => $"-- {sr.Name}")))
-            .ToList();
-    }
+    private List<string> channels = new() { "All", "Online", "Offline", "Retail", "Direct" };
 
     private Task<IEnumerable<string>> SearchFunc(string value, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(value))
-            return Task.FromResult(allRegionsFlat.AsEnumerable());
+            return Task.FromResult(channels.AsEnumerable());
 
-        var result = allRegionsFlat
+        var result = channels
             .Where(x => x.Contains(value ?? string.Empty, StringComparison.InvariantCultureIgnoreCase));
 
         return Task.FromResult(result);
     }
+
     private async Task OnFilterChanged(string value)
     {
         Filters.SelectedChannel = value;
         if (OnFilterChangedHandler.HasValue)
             await OnFilterChangedHandler.Value.InvokeAsync(Filters);
     }
-
 }

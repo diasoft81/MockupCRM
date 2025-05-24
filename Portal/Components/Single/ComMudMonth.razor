@@ -5,12 +5,13 @@
 <MudAutocomplete T="Month"
                  Label="Bulan"
                  Variant="Variant.Filled"
-                 Dense="true"
-                 @bind-Value="Filters.SelectedMonth"
-                 SearchFunc="SearchMonths"
+                 Value="Filters.SelectedMonth"
+                 ValueChanged="OnFilterChanged"
+                 SearchFunc="SearchFunc"
                  ToStringFunc="GetMonthDisplayName"
                  ResetValueOnEmptyText="true"
                  Clearable="true"
+                 Dense="true"
                  Adornment="Adornment.End"
                  AdornmentIcon="@Icons.Material.Filled.CalendarToday" />
 
@@ -20,7 +21,7 @@
 
     private List<Month> months = MonthList.All;
 
-    private Task<IEnumerable<Month>> SearchMonths(string value, CancellationToken token)
+    private Task<IEnumerable<Month>> SearchFunc(string value, CancellationToken token)
     {
         var filtered = months
             .Where(m =>
@@ -40,7 +41,7 @@
             : month.MonthNameEn;
     }
 
-    private async Task OnFilterChanged(Month? value, CancellationToken token)
+    private async Task OnFilterChanged(Month? value)
     {
         Filters.SelectedMonth = value;
 
