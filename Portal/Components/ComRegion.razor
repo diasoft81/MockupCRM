@@ -1,0 +1,35 @@
+﻿@page "/dropdown"
+@using System.Collections.Generic
+@using CoreNET.Lib.Helper
+
+<div class="col-md-2">
+    <label>Region:</label>
+    <select class="form-control" @bind="selectedRegion">
+        @foreach (var region in ResourceHelper.GetRegions())
+        {
+            <option value="@region.Name">@region.Name</option>
+            @foreach (var subRegion in region.SubRegions)
+            {
+                <option value="@subRegion.Name">-- @subRegion.Name</option>
+            }
+        }
+    </select>
+</div>
+
+@code {
+    private string selectedRegion;
+    // private List<Region> regions = new List<Region>
+    // {
+    //     new Region { Name = "Provinsi A", SubRegions = new List<SubRegion>
+    //     {
+    //         new SubRegion { Name = "Kabupaten/Kota A1" },
+    //         new SubRegion { Name = "Kabupaten/Kota A2" }
+    //     }},
+    //     new Region { Name = "Provinsi B", SubRegions = new List<SubRegion>
+    //     {
+    //         new SubRegion { Name = "Kabupaten/Kota B1" },
+    //         new SubRegion { Name = "Kabupaten/Kota B2" }
+    //     }}
+    // };
+
+}

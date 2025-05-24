@@ -1,5 +1,4 @@
-﻿@using CoreNET.Lib.Data.References
-@using CoreNET.Lib.Models.References
+﻿@using CoreNET.Lib.Models.References
 
 <div class="row ml-3 mt-3 mb-3">
     <div class="col-md-2">
@@ -21,7 +20,8 @@
             }
         </select>
     </div>
-    <div class="col-md-2">
+    <ComRegion></ComRegion>
+@*     <div class="col-md-2">
         <label>Region:</label>
         <select class="form-control" Value="selectedRegion" @onchange="OnFilterChanged">
             @foreach (var region in regions)
@@ -29,7 +29,7 @@
                 <option value="@region">@region</option>
             }
         </select>
-    </div>
+    </div> *@
     <div class="col-md-2">
         <label>Channel:</label>
         <select class="form-control" Value="selectedChannel" @onchange="OnFilterChanged">
