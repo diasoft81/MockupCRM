@@ -59,7 +59,7 @@ namespace Portal.Layout
             _isDarkMode = await LocalStorage.IsDarkMode();
             _theme = ThemesHelper.GetTheme();
 
-            pars = new WidgetMainParams() { FixedProject = true, AlwaysShowAppTitle = true };
+            pars = new WidgetMainParams(AppSettings) { FixedProject = true, AlwaysShowAppTitle = true };
             if (WidgetService != null && WidgetService.WidgetList != null && WidgetService.WidgetList.Count > 0)
             {
                 topBar = WidgetService.GetWidgetAppBar(pars, EventCallback.Factory.Create<object>(this, EventCallBack));
